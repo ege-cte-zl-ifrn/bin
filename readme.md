@@ -51,12 +51,16 @@ Desenvolver e implementar um Web Single Sign-On (W-SSO) e um Android Mobile Auth
 
 *Lista 3 - Implementações possíveis*
 1. WSO2 Identity Server
-2. CAS / Central Authentication Service
+2. CAS - django-cas-server - https://github.com/nitmir/django-cas-server
 3. Django OAuth Toolkit
 4. django-saml-service-provider
 5. django-saml2-auth
 6. django-oidc-provider
-7. django-cas-server
+
+*Lista 4 - Implementações descartadas*
+1. CAS - https://github.com/KTHse/django-cas2 - 5 anos sem suporte em 2017/12/15
+2. CAS - https://github.com/castlabs/django-cas - 6 anos sem suporte em 2017/12/15
+
 
 
 
@@ -72,3 +76,8 @@ Desenvolver e implementar um Web Single Sign-On (W-SSO) e um Android Mobile Auth
 8.	Poderá usar como opções de W-SSO as implementações da lista Lista 3.
 
 
+## Sobre a implementação
+
+1. É necessário usar HTTPS, para tanto, podemos usar o NGINX ou uma implementação puramente em Django, para a 
+implementaçãom em Django vamos testar http://www.marinamele.com/2014/09/security-on-django-app-https-everywhere.html
+2. Usarei, sempre que possível, o Moodle como cliente de teste
