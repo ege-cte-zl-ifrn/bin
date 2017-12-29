@@ -5,6 +5,7 @@ from django.views.generic import RedirectView
 urlpatterns = [
     url(r'^sso/admin/', admin.site.urls),
     url(r'^sso/cas/', include('cas_server.urls', namespace="cas_server")),
+    url(r'^sso/oauth2/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^sso/$', RedirectView.as_view(url='/sso/admin/')),
     url(r'^$', RedirectView.as_view(url='/sso/admin/')),
 ]

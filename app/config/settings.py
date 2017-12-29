@@ -7,18 +7,24 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+
+    'suapsso',
+
+    'cas_server',
+    'oauth2_provider',
+    'corsheaders',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    'cas_server',
-    'suapsso',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,12 +65,15 @@ DATABASES = {
     }
 }
 
+# https://django-oauth-toolkit.readthedocs.io/en/latest/tutorial/tutorial_01.html
 #AUTH_PASSWORD_VALIDATORS = [
 #    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
 #    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
 #    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
 #    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
 #]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
