@@ -11,23 +11,23 @@ NO_COLOR='\033[0m'
 pwd=$(pwd -P)
 
 if [[ ! -f "$pwd/.env" ]]; then
-  cp $pwd/env.example $pwd/.env
+  cp $pwd/example.env $pwd/.env
 fi
 
 source "$pwd/.env"
 
 echo_warning() {
-  echo ${@:3} -e "$ORANGE_COLOR$1$NO_COLOR"
+  echo ${@:3} -e "$ORANGE_COLOR WARN: $(date) $1$NO_COLOR"
 }
 
 echo_danger() {
-  echo ${@:3} -e "$RED_COLOR$1$NO_COLOR"
+  echo ${@:3} -e "$RED_COLOR DANG: $(date) $1$NO_COLOR"
 }
 
 echo_info() {
-  echo ${@:3} -e "$BLUE_COLOR$1$NO_COLOR"
+  echo ${@:3} -e "$BLUE_COLOR INFO: $(date) $1$NO_COLOR"
 }
 
 echo_success() {
-  echo ${@:3} -e "$GREEN_COLOR$1$NO_COLOR"
+  echo ${@:3} -e "$GREEN_COLOR SUCC: $(date) $1$NO_COLOR"
 }
