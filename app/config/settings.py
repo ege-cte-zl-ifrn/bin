@@ -73,6 +73,9 @@ DATABASES = {
 #    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
 #]
 
+URL_PATH_PREFIX = os.environ['URL_PATH_PREFIX'] if 'URL_PATH_PREFIX' in os.environ else 'sso'
+LOGIN_URL = '/%s/accounts/login/' % URL_PATH_PREFIX
+LOGIN_REDIRECT_URL = '/%s/accounts/profile/'
 CORS_ORIGIN_ALLOW_ALL = True
 
 LANGUAGE_CODE = 'en-us'
