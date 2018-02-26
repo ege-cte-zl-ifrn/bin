@@ -35,7 +35,7 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
 ]
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATES = [
     {
@@ -53,14 +53,15 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'db',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'HOST': os.environ.get('POSTGRES_HOST'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'PORT': 5432,
     }
 }
@@ -78,7 +79,7 @@ LOGIN_URL = '/%s/accounts/login/' % URL_PATH_PREFIX
 LOGIN_REDIRECT_URL = '/%s/accounts/profile/'
 CORS_ORIGIN_ALLOW_ALL = True
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True

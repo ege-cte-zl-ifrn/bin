@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Up the Docker-Composer containers.
+
+source env.sh
+
+echo_info "Aguardando a base de dados..."
+until docker-compose exec db psql -h localhost -U $POSTGRES_USER -d $POSTGRES_DB -c '\l' >/dev/null 2>&1; do
+  echo_warning "Postgres is unavailable - sleeping"; sleep 1
+done
+
+echo_success "Connectado com sucesso"
+

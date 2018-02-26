@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Up the Docker-Composer containers.
+
+source .env
+
+docker-compose exec db psql -h localhost -U $POSTGRES_USER -d $POSTGRES_DB $@
+

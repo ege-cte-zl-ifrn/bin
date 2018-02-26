@@ -17,17 +17,18 @@ fi
 source "$pwd/.env"
 
 echo_warning() {
-  echo ${@:3} -e "$ORANGE_COLOR WARN: $(date) $1$NO_COLOR"
+  echo ${@:3} -e "$ORANGE_COLOR WARN: $(date +\"%F\ %T\") $1$NO_COLOR"
 }
 
 echo_danger() {
-  echo ${@:3} -e "$RED_COLOR DANG: $(date) $1$NO_COLOR"
+  echo ${@:3} -e "$RED_COLOR DANG: $(date +\"%F\ %T\") $1$NO_COLOR"
 }
 
 echo_info() {
-  echo ${@:3} -e "$BLUE_COLOR INFO: $(date) $1$NO_COLOR"
+  echo ${@:3} -e "$BLUE_COLOR INFO: $(date +\"%F\ %T\") $1$NO_COLOR"
 }
 
 echo_success() {
-  echo ${@:3} -e "$GREEN_COLOR SUCC: $(date) $1$NO_COLOR"
+  echo ${@:3} -e "$GREEN_COLOR SUCC: $(date +\"%F\ %T\") $1$NO_COLOR"
 }
+

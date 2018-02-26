@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# Deploy the PTD applications.
+
+source env.sh
+
+echo_info "Parar o mundo"
+./down
+
+echo_info "Construir o mundo"
+./build
+
+echo_info "Subir o banco"
+./up -d db
+
+echo_info "Esperar o banco subir"
+./dbwait
+
+echo_info "Migrar o banco"
+./migrate
+
+echo_info "Parar o mundo novamente"
+./down
+
+echo_success "Tudo pronto"
