@@ -1,14 +1,21 @@
-from django.conf.urls import url, include
-from django.contrib import admin
-from django.views.generic import RedirectView
-from django.conf import settings
-from django.contrib.auth import views as auth_views
+"""suapsso URL Configuration
 
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/2.0/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
 
 urlpatterns = [
-    url(r'^%s/admin/' % settings.URL_PATH_PREFIX, admin.site.urls),
-    url(r'^%s/cas/' % settings.URL_PATH_PREFIX, include('cas_server.urls', namespace="cas_server")),
-    url(r'^%s/oauth2/' % settings.URL_PATH_PREFIX, include('oauth2_provider.urls', namespace='oauth2_provider')),
-    url(r'^%s/$' % settings.URL_PATH_PREFIX, RedirectView.as_view(url=r'/%s/admin/' % settings.URL_PATH_PREFIX)),
-    url(r'^$', RedirectView.as_view(url=r'/%s/admin/' % settings.URL_PATH_PREFIX)),
+    path('sso/admin/', admin.site.urls),
 ]
