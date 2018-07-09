@@ -47,7 +47,9 @@ Desenvolver e implementar um Web Single Sign-On (W-SSO) e um Android Mobile Auth
 1.	CAS
 2.	OpenID
 3.	SAML 1 e SAML2
-4.	OAuth2
+4.	**OAuth2**
+5.	JWT
+
 
 *Lista 3 - Implementações possíveis*
 1. WSO2 Identity Server
