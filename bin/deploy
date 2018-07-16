@@ -11,7 +11,7 @@ echo_info "Construir o mundo"
 ./build
 
 echo_info "Subir o banco"
-./up -d db
+docker-compose up -d db
 
 echo_info "Esperar o banco subir"
 ./dbwait
