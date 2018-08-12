@@ -83,3 +83,7 @@ Desenvolver e implementar um Web Single Sign-On (W-SSO) e um Android Mobile Auth
 1. É necessário usar HTTPS, para tanto, podemos usar o NGINX ou uma implementação puramente em Django, para a 
 implementaçãom em Django vamos testar http://www.marinamele.com/2014/09/security-on-django-app-https-everywhere.html
 2. Usarei, sempre que possível, o Moodle como cliente de teste
+3. https://vuematerial.io
+4. http://michal.karzynski.pl/blog/2013/07/14/using-redis-as-django-session-store-and-cache-backend/
+5. https://www.silviogutierrez.com/blog/django-dynamic-admin-forms/
+6. https://pkp.sfu.ca/ojs/
