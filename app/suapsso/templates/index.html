@@ -1,0 +1,109 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}">{% endblock %}
+
+{% block title %}{{ title }} {{ site_title|default:_('First page') }}{% endblock %}
+
+{% block branding %}
+    <div class="page-container">
+        <div class="md-app" name="reveal">
+          <div class="md-app-toolbar md-primary menu w-100">
+            <button id="btn-menu" class="md-button md-icon-button f-left">
+              <span class="md-icon">menu</span>
+            </button>
+            <h4 id="home-link"><a href="{% url 'index' %}">{{ site_header|default:_('First page') }}</a></h4>
+            <h5 id="admin-link" class="mr-3""><a href="{% url 'admin:index' %}">{{ site_header|default:_('Admin') }}</a></h5>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        var cont = 0;
+        $('#btn-menu').click(function () {
+            $('.modal-back').toggleClass('d-block');
+            if (cont == 0) {
+                $('.md-app-drawer').fadeIn(500);
+                cont = 1;
+            } else {
+                $('.md-app-drawer').fadeOut(100);
+                cont = 0;
+            }
+
+        })
+    </script>
+
+{% endblock %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+    <div id="content-main" class="d-flex">
+
+        <div class="md-app-drawer" style="display: none">
+            <ul class="md-list left-menu">
+
+              <li class="md-list-item ml-3">
+                  <a href="#" class="menu">
+                      <span class="md-icon">move_to_inbox</span>
+                      <span class="md-list-item-text ml-2">Inbox</span>
+                  </a>
+              </li>
+              <li class="md-list-item ml-3">
+                  <a href="#" class="menu">
+                      <span class="md-icon">send</span>
+                      <span class="md-list-item-text ml-2">Sent Mail</span>
+                  </a>
+              </li>
+              <li class="md-list-item ml-3">
+                  <a href="#" class="menu">
+                      <span class="md-icon">delete</span>
+                      <span class="md-list-item-text ml-2">Trash</span>
+                  </a>
+              </li>
+              <li class="md-list-item ml-3">
+                  <a href="#" class="menu">
+                      <span class="md-icon">error</span>
+                      <span class="md-list-item-text ml-2">Span</span>
+                  </a>
+              </li>
+
+            </ul>
+        </div>
+
+        <div class="modal-back d-none"></div>
+
+        <div class="pt-5">
+          <div>
+            <div class="md-card md-with-hover">
+              <div class="md-ripple">
+                <div class="md-card-header">
+                  <div class="md-title">Card with hover effect</div>
+                  <div class="md-subhead">It also have a ripple</div>
+                </div>
+
+                <div class="md-card-content">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non.
+                </div>
+
+                <div class="md-card-actions">
+                  <button class="md-button">Action</button>
+                  <button class="md-button">Action</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+<div id="content-related">
+
+</div>
+{% endblock %}

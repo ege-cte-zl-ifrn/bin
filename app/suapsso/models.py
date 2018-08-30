@@ -2,6 +2,16 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User, Permission
 from django.db.models import Model, CharField, BooleanField, ForeignKey as OriginalForeignKey, DateTimeField
 
+from django.db import models
+
+
+class Input(models.Model):
+    input_text = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.input_text
+
+
 class ForeignKey(OriginalForeignKey):
 
     def __init__(self, verbose_name, to, on_delete=None, related_name=None, related_query_name=None,

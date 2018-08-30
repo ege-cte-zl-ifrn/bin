@@ -35,6 +35,7 @@ urlpatterns = [
         settings.URL_PATH_PREFIX,
         include(
             [
+                path('', include('suapsso.urls')),
                 path('admin/', admin.site.urls),
                 path('oauth2/', include('oauth2_provider.urls', namespace='oauth2_provider')),
                 path('', redirect_to("admin"))
