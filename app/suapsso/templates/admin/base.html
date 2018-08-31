@@ -45,8 +45,22 @@
             border: 0.5px solid rgba(255, 255, 255, 0.1);
         }
 
+        #branding {
+            background: #5D81C1;
+        }
+
         #branding a {
             text-decoration: none;
+            color: #fff;
+        }
+
+        #content-main {
+            background: #fff;
+        }
+
+        form .submit-row > input {
+            background: #33588E;
+            color: #fff;
         }
 
         .right-menu {
@@ -126,7 +140,7 @@
     {% endblock messages %}
 
     <!-- Content -->
-    <div id="content" class="{% block coltype %}colM{% endblock %} w-100 p-0">
+    <div id="content" class="{% block coltype %}colM{% endblock %} w-100 p-0 d-flex justify-content-center">
         {% block pretitle %}{% endblock %}
         {% comment %}{% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}{% endcomment %}
         {% block content %}
