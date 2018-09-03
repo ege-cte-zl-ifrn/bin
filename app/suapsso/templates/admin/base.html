@@ -1,4 +1,6 @@
-{% load i18n static %}<!DOCTYPE html>
+{% load i18n static %}
+{% load static %}
+<!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
@@ -10,6 +12,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">
     <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %}">
 
     <style rel="stylesheet" type="text/css">
 
@@ -56,6 +60,7 @@
 
         #content-main {
             background: #fff;
+            width: 98%;
         }
 
         form .submit-row > input {
@@ -100,8 +105,6 @@
         }
 
     </style>
-
-{% comment %}<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}">{% endcomment %}
 
 {% block extrastyle %}{% endblock %}
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}">{% endif %}

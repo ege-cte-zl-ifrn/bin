@@ -33,7 +33,7 @@ MY_APPS = env_as_list('MY_APPS', 'suapsso')
 
 DEV_APPS = env_as_list('THIRD_APPS', 'django_extensions')
 
-THIRD_APPS = env_as_list('THIRD_APPS', 'oauth2_provider,corsheaders')
+THIRD_APPS = env_as_list('THIRD_APPS', 'oauth2_provider', 'corsheaders')
 
 DJANGO_APPS = env_as_list('DJANGO_APPS', 'django.contrib.admin,'
                                          'django.contrib.auth,'
@@ -44,8 +44,14 @@ DJANGO_APPS = env_as_list('DJANGO_APPS', 'django.contrib.admin,'
 
 INSTALLED_APPS = MY_APPS + THIRD_APPS + DEV_APPS + DJANGO_APPS
 
+AUTHENTICATION_BACKENDS = (
+    'oauth2_provider.backends.OAuth2Backend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -112,3 +118,5 @@ LOGGING = {
 JET_INDEX_DASHBOARD = 'barramento_theme.dashboard.CustomIndexDashboard'
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+APPEND_SLASH = False
