@@ -38,7 +38,7 @@ urlpatterns = [
             [
                 path('', include('suapsso.urls')),
                 path('admin/', admin.site.urls),
-                path('oauth2/', include(('oauth2_provider.urls', 'oauth2_provider_app', ), namespace='oauth2_provider'),
+                path('sso/oauth/', include(('oauth2_provider.urls', 'oauth2_provider_app', ), namespace='oauth2_provider'),
                      ),
                 path('', redirect_to("admin")),
                 # OAuth 2 endpoints:
