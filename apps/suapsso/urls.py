@@ -74,4 +74,5 @@ if settings.DEBUG:
     ]
 
     import debug_toolbar
-    urlpatterns.append(path(r'%s__debug__/' % settings.URL_PATH_PREFIX, include(debug_toolbar.urls)))
+    urlpatterns.append(path('%s__debug__/' % settings.URL_PATH_PREFIX, include(debug_toolbar.urls)))
+

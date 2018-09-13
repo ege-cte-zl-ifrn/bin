@@ -2,5 +2,5 @@
 #
 # Run the PTD containers.
 
-docker-compose run suapsso python3 manage.py $@
+docker-compose exec suapsso python3 manage.py $@
 

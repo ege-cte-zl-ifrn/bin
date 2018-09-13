@@ -94,4 +94,10 @@ implementaçãom em Django vamos testar http://www.marinamele.com/2014/09/securi
 git clone git@github.com:CoticEaDIFRN/suapsso-build.git
 cd suapsso-build
 git submodule update --init
+cd bin
+cp example.env .env
+./build 
+./up -d db
+
+
 ``` 

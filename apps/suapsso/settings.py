@@ -23,6 +23,12 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import os
 from python_brfied.env import env, env_as_bool, env_as_list, env_as_list_of_maps
 
+def show_debug_toolbar():
+    print('show_debug_toolbar')
+    return True
+
+
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 SECRET_KEY = env('DJANGO_SECRET_KEY', 'changeme')
@@ -31,9 +37,9 @@ ALLOWED_HOSTS = env_as_list('DJANGO_ALLOWED_HOSTS', '*' if DEBUG else '')
 
 MY_APPS = env_as_list('MY_APPS', 'suapsso')
 
-DEV_APPS = env_as_list('THIRD_APPS', 'django_extensions')
+DEV_APPS = env_as_list('DEV_APPS', 'debug_toolbar,django_extensions')
 
-THIRD_APPS = env_as_list('THIRD_APPS', 'oauth2_provider', 'corsheaders')
+THIRD_APPS = env_as_list('THIRD_APPS', 'ege_django_theme,oauth2_provider,corsheaders')
 
 DJANGO_APPS = env_as_list('DJANGO_APPS', 'django.contrib.admin,'
                                          'django.contrib.auth,'
@@ -43,6 +49,7 @@ DJANGO_APPS = env_as_list('DJANGO_APPS', 'django.contrib.admin,'
                                          'django.contrib.staticfiles')
 
 INSTALLED_APPS = MY_APPS + THIRD_APPS + DEV_APPS + DJANGO_APPS
+
 
 AUTHENTICATION_BACKENDS = (
     'oauth2_provider.backends.OAuth2Backend',
@@ -60,6 +67,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if DEBUG:
+    MIDDLEWARE = MIDDLEWARE + ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
 ROOT_URLCONF = env('DJANGO_ROOT_URLCONF', 'urls')
 
@@ -120,3 +130,7 @@ JET_INDEX_DASHBOARD = 'barramento_theme.dashboard.CustomIndexDashboard'
 CORS_ORIGIN_ALLOW_ALL = True
 
 APPEND_SLASH = False
+
+SHOW_TOOLBAR_CALLBACK = 'show_debug_toolbar'
+INTERNAL_IPS = '172.20.0.3'
+
