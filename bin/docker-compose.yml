@@ -18,7 +18,7 @@ services:
     env_file:
       - .env
     volumes:
-      - '../app/:/app'
+      - '../apps/suapsso/:/app'
     depends_on:
       - db
     command: python3 manage.py runserver 0.0.0.0:8000
