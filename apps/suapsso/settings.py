@@ -23,12 +23,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import os
 from python_brfied.env import env, env_as_bool, env_as_list, env_as_list_of_maps
 
-def show_debug_toolbar():
-    print('show_debug_toolbar')
-    return True
-
-
-
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 SECRET_KEY = env('DJANGO_SECRET_KEY', 'changeme')
@@ -131,6 +125,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 APPEND_SLASH = False
 
-SHOW_TOOLBAR_CALLBACK = 'show_debug_toolbar'
-INTERNAL_IPS = '172.20.0.3'
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': lambda request: 'localhost' in request.get_host(),
+}
 
