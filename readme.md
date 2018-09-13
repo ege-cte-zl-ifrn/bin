@@ -87,3 +87,11 @@ implementaçãom em Django vamos testar http://www.marinamele.com/2014/09/securi
 4. http://michal.karzynski.pl/blog/2013/07/14/using-redis-as-django-session-store-and-cache-backend/
 5. https://www.silviogutierrez.com/blog/django-dynamic-admin-forms/
 6. https://pkp.sfu.ca/ojs/
+
+
+## Iniciando o projeto
+```
+git clone git@github.com:CoticEaDIFRN/suapsso-build.git
+cd suapsso-build
+git submodule update --init
+``` 
