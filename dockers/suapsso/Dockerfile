@@ -1,9 +1,7 @@
-FROM python:3.7
-ENV PYTHONUNBUFFERED 1
-ADD requirements-build.txt . 
-ADD startup.sh . 
-RUN pip install --upgrade pip
-RUN pip install -r requirements-build.txt
+FROM kelsoncm/django_psycopg2:1.0
+
+ADD requirements-custom-build.txt /
+RUN pip install -r /requirements-custom-build.txt
+
 WORKDIR /apps/suapsso
-CMD /startup.sh
 
