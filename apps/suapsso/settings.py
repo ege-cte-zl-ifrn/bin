@@ -50,17 +50,15 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'oauth2_provider.middleware.OAuth2TokenMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
+MIDDLEWARE = env_as_list('MIDDLEWARE', 'corsheaders.middleware.CorsMiddleware,'
+                                       'oauth2_provider.middleware.OAuth2TokenMiddleware,'
+                                       'django.middleware.security.SecurityMiddleware,'
+                                       'django.contrib.sessions.middleware.SessionMiddleware,'
+                                       'django.middleware.common.CommonMiddleware,'
+                                       'django.middleware.csrf.CsrfViewMiddleware,'
+                                       'django.contrib.auth.middleware.AuthenticationMiddleware,'
+                                       'django.contrib.messages.middleware.MessageMiddleware,'
+                                       'django.middleware.clickjacking.XFrameOptionsMiddleware')
 
 if DEBUG:
     MIDDLEWARE = MIDDLEWARE + ['debug_toolbar.middleware.DebugToolbarMiddleware']
@@ -110,7 +108,7 @@ USE_I18N = env_as_bool('DJANGO_USE_I18N', True)
 USE_L10N = env_as_bool('DJANGO_USE_L10N', True)
 USE_TZ = env_as_bool('DJANGO_USE_TZ', True)
 
-STATIC_URL = env('DJANGO_STATIC_URL', '/static/')
+STATIC_URL = env('DJANGO_STATIC_URL', '/static/admin/')
 
 LOGGING = {
     'version': 1,
