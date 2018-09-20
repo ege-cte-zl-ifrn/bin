@@ -108,7 +108,7 @@ USE_I18N = env_as_bool('DJANGO_USE_I18N', True)
 USE_L10N = env_as_bool('DJANGO_USE_L10N', True)
 USE_TZ = env_as_bool('DJANGO_USE_TZ', True)
 
-STATIC_URL = env('DJANGO_STATIC_URL', '/static/admin/')
+STATIC_URL = env('DJANGO_STATIC_URL', '/static/')
 
 LOGGING = {
     'version': 1,
