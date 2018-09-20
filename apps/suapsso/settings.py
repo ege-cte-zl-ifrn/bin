@@ -22,8 +22,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 import os
 from python_brfied.env import env, env_as_bool, env_as_list, env_as_list_of_maps
-import ldap
-from django_auth_ldap.config import LDAPSearch
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -35,7 +34,7 @@ MY_APPS = env_as_list('MY_APPS', 'suapsso')
 
 DEV_APPS = env_as_list('DEV_APPS', 'debug_toolbar,django_extensions')
 
-THIRD_APPS = env_as_list('THIRD_APPS', 'ege_django_theme,oauth2_provider,corsheaders')
+THIRD_APPS = env_as_list('THIRD_APPS', 'ege_django_theme,oauth2_provider,corsheaders,django_python3_ldap')
 
 DJANGO_APPS = env_as_list('DJANGO_APPS', 'django.contrib.admin,'
                                          'django.contrib.auth,'
@@ -47,20 +46,67 @@ DJANGO_APPS = env_as_list('DJANGO_APPS', 'django.contrib.admin,'
 INSTALLED_APPS = MY_APPS + THIRD_APPS + DEV_APPS + DJANGO_APPS
 
 
-AUTHENTICATION_BACKENDS = env_as_list('AUTHENTICATION_BACKENDS', 'django_auth_ldap.backend.LDAPBackend,'
+AUTHENTICATION_BACKENDS = env_as_list('AUTHENTICATION_BACKENDS', 'django_python3_ldap.auth.LDAPBackend,'
                                           'oauth2_provider.backends.OAuth2Backend,'
                                           'django.contrib.auth.backends.ModelBackend')
 
-AUTH_LDAP_SERVER_URI = "ldap://ldap.example.com"
+# The URL of the LDAP server.
+LDAP_AUTH_URL = "ldap://10.22.0.155"
 
-AUTH_LDAP_BIND_DN = ""
+# Initiate TLS on connection.
+LDAP_AUTH_USE_TLS = False
 
-AUTH_LDAP_BIND_PASSWORD = ""
+# The LDAP search base for looking up users.
+LDAP_AUTH_SEARCH_BASE = "ou=people,dc=example,dc=com"
 
-AUTH_LDAP_USER_SEARCH = LDAPSearch("ou=users,dc=example,dc=com",
-    ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
+# The LDAP class that represents a user.
+LDAP_AUTH_OBJECT_CLASS = "inetOrgPerson"
 
-AUTH_LDAP_START_TLS = True
+# User model fields mapped to the LDAP
+# attributes that represent them.
+LDAP_AUTH_USER_FIELDS = {
+    "username": "uid",
+    "first_name": "givenName",
+    "last_name": "sn",
+    "email": "mail",
+}
+
+# A tuple of django model fields used to uniquely identify a user.
+LDAP_AUTH_USER_LOOKUP_FIELDS = ("username",)
+
+# Path to a callable that takes a dict of {model_field_name: value},
+# returning a dict of clean model data.
+# Use this to customize how data loaded from LDAP is saved to the User model.
+LDAP_AUTH_CLEAN_USER_DATA = "django_python3_ldap.utils.clean_user_data"
+
+# Path to a callable that takes a user model and a dict of {ldap_field_name: [value]},
+# and saves any additional user relationships based on the LDAP data.
+# Use this to customize how data loaded from LDAP is saved to User model relations.
+# For customizing non-related User model fields, use LDAP_AUTH_CLEAN_USER_DATA.
+LDAP_AUTH_SYNC_USER_RELATIONS = "django_python3_ldap.utils.sync_user_relations"
+
+# Path to a callable that takes a dict of {ldap_field_name: value},
+# returning a list of [ldap_search_filter]. The search filters will then be AND'd
+# together when creating the final search filter.
+LDAP_AUTH_FORMAT_SEARCH_FILTERS = "django_python3_ldap.utils.format_search_filters"
+
+# Path to a callable that takes a dict of {model_field_name: value}, and returns
+# a string of the username to bind to the LDAP server.
+# Use this to support different types of LDAP server.
+LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_openldap"
+
+# Sets the login domain for Active Directory users.
+LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = None
+
+# The LDAP username and password of a user for querying the LDAP database for user
+# details. If None, then the authenticated user will be used for querying, and
+# the `ldap_sync_users` command will perform an anonymous query.
+LDAP_AUTH_CONNECTION_USERNAME = None
+LDAP_AUTH_CONNECTION_PASSWORD = None
+
+# Set connection/receive timeouts (in seconds) on the underlying `ldap3` library.
+LDAP_AUTH_CONNECT_TIMEOUT = None
+LDAP_AUTH_RECEIVE_TIMEOUT = None
 
 MIDDLEWARE = env_as_list('MIDDLEWARE', 'corsheaders.middleware.CorsMiddleware,'
                                        'oauth2_provider.middleware.OAuth2TokenMiddleware,'
