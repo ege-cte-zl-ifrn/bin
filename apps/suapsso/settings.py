@@ -22,6 +22,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 import os
 from python_brfied.env import env, env_as_bool, env_as_list, env_as_list_of_maps
+import ldap
+from django_auth_ldap.config import LDAPSearch
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -45,10 +47,20 @@ DJANGO_APPS = env_as_list('DJANGO_APPS', 'django.contrib.admin,'
 INSTALLED_APPS = MY_APPS + THIRD_APPS + DEV_APPS + DJANGO_APPS
 
 
-AUTHENTICATION_BACKENDS = (
-    'oauth2_provider.backends.OAuth2Backend',
-    'django.contrib.auth.backends.ModelBackend',
-)
+AUTHENTICATION_BACKENDS = env_as_list('AUTHENTICATION_BACKENDS', 'django_auth_ldap.backend.LDAPBackend,'
+                                          'oauth2_provider.backends.OAuth2Backend,'
+                                          'django.contrib.auth.backends.ModelBackend')
+
+AUTH_LDAP_SERVER_URI = "ldap://ldap.example.com"
+
+AUTH_LDAP_BIND_DN = ""
+
+AUTH_LDAP_BIND_PASSWORD = ""
+
+AUTH_LDAP_USER_SEARCH = LDAPSearch("ou=users,dc=example,dc=com",
+    ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
+
+AUTH_LDAP_START_TLS = True
 
 MIDDLEWARE = env_as_list('MIDDLEWARE', 'corsheaders.middleware.CorsMiddleware,'
                                        'oauth2_provider.middleware.OAuth2TokenMiddleware,'
