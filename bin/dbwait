@@ -10,4 +10,3 @@ until docker-compose exec db psql -h localhost -U $POSTGRES_USER -d $POSTGRES_DB
 done
 
 echo_success "Connectado com sucesso"
-

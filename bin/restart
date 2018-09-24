@@ -1,6 +1,4 @@
 #!/bin/bash
-#
-# Restart the Docker-Compose containers.
 
 ./down $@
 ./up -d $@

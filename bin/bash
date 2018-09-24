@@ -2,5 +2,5 @@
 #
 # Build the Docker images.
 
-docker-compose exec suapsso bash
+./exec bash
 

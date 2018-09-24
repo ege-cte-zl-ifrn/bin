@@ -21,14 +21,23 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 import os
-from python_brfied.env import env, env_as_bool, env_as_list, env_as_list_of_maps
+from python_brfied.env import env, env_as_bool, env_as_list, env_as_list_of_maps, env_as_int
 
+def env_from_json(key, default=''):
+    import json
+    return json.loads(env(key, default))
+
+def env_as_int(key, default=None):
+    import json
+    return json.loads(env(key, default))
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 SECRET_KEY = env('DJANGO_SECRET_KEY', 'changeme')
 DEBUG = env_as_bool('DJANGO_DEBUG', True)
 ALLOWED_HOSTS = env_as_list('DJANGO_ALLOWED_HOSTS', '*' if DEBUG else '')
+
+USE_LDAP = LDAP_AUTH_URL=env('LDAP_AUTH_URL', None) is not None
 
 MY_APPS = env_as_list('MY_APPS', 'suapsso')
 
@@ -49,64 +58,6 @@ INSTALLED_APPS = MY_APPS + THIRD_APPS + DEV_APPS + DJANGO_APPS
 AUTHENTICATION_BACKENDS = env_as_list('AUTHENTICATION_BACKENDS', 'django_python3_ldap.auth.LDAPBackend,'
                                           'oauth2_provider.backends.OAuth2Backend,'
                                           'django.contrib.auth.backends.ModelBackend')
-
-# The URL of the LDAP server.
-LDAP_AUTH_URL = "ldap://200.137.2.241:443"
-
-# Initiate TLS on connection.
-LDAP_AUTH_USE_TLS = False
-
-# The LDAP search base for looking up users.
-LDAP_AUTH_SEARCH_BASE = "ou=people,dc=example,dc=com"
-
-# The LDAP class that represents a user.
-LDAP_AUTH_OBJECT_CLASS = "inetOrgPerson"
-
-# User model fields mapped to the LDAP
-# attributes that represent them.
-LDAP_AUTH_USER_FIELDS = {
-    "username": "uid",
-    "first_name": "givenName",
-    "last_name": "sn",
-    "email": "mail",
-}
-
-# A tuple of django model fields used to uniquely identify a user.
-LDAP_AUTH_USER_LOOKUP_FIELDS = ("username",)
-
-# Path to a callable that takes a dict of {model_field_name: value},
-# returning a dict of clean model data.
-# Use this to customize how data loaded from LDAP is saved to the User model.
-LDAP_AUTH_CLEAN_USER_DATA = "django_python3_ldap.utils.clean_user_data"
-
-# Path to a callable that takes a user model and a dict of {ldap_field_name: [value]},
-# and saves any additional user relationships based on the LDAP data.
-# Use this to customize how data loaded from LDAP is saved to User model relations.
-# For customizing non-related User model fields, use LDAP_AUTH_CLEAN_USER_DATA.
-LDAP_AUTH_SYNC_USER_RELATIONS = "django_python3_ldap.utils.sync_user_relations"
-
-# Path to a callable that takes a dict of {ldap_field_name: value},
-# returning a list of [ldap_search_filter]. The search filters will then be AND'd
-# together when creating the final search filter.
-LDAP_AUTH_FORMAT_SEARCH_FILTERS = "django_python3_ldap.utils.format_search_filters"
-
-# Path to a callable that takes a dict of {model_field_name: value}, and returns
-# a string of the username to bind to the LDAP server.
-# Use this to support different types of LDAP server.
-LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_openldap"
-
-# Sets the login domain for Active Directory users.
-LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = None
-
-# The LDAP username and password of a user for querying the LDAP database for user
-# details. If None, then the authenticated user will be used for querying, and
-# the `ldap_sync_users` command will perform an anonymous query.
-LDAP_AUTH_CONNECTION_USERNAME = None
-LDAP_AUTH_CONNECTION_PASSWORD = None
-
-# Set connection/receive timeouts (in seconds) on the underlying `ldap3` library.
-LDAP_AUTH_CONNECT_TIMEOUT = None
-LDAP_AUTH_RECEIVE_TIMEOUT = None
 
 MIDDLEWARE = env_as_list('MIDDLEWARE', 'corsheaders.middleware.CorsMiddleware,'
                                        'oauth2_provider.middleware.OAuth2TokenMiddleware,'
@@ -160,6 +111,22 @@ AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS',
                                                'django.contrib.auth.password_validation.CommonPasswordValidator,'
                                                'django.contrib.auth.password_validation.NumericPasswordValidator')
 
+LDAP_AUTH_URL = env('LDAP_AUTH_URL')
+LDAP_AUTH_USE_TLS = env('LDAP_AUTH_USE_TLS')
+LDAP_AUTH_SEARCH_BASE = env('LDAP_AUTH_SEARCH_BASE')
+LDAP_AUTH_OBJECT_CLASS = env('LDAP_AUTH_OBJECT_CLASS')
+LDAP_AUTH_USER_FIELDS = env_from_json('LDAP_AUTH_USER_FIELDS')
+LDAP_AUTH_USER_LOOKUP_FIELDS = env_as_list('LDAP_AUTH_USER_LOOKUP_FIELDS')
+LDAP_AUTH_CLEAN_USER_DATA = env('LDAP_AUTH_CLEAN_USER_DATA')
+LDAP_AUTH_SYNC_USER_RELATIONS = env('LDAP_AUTH_SYNC_USER_RELATIONS')
+LDAP_AUTH_FORMAT_SEARCH_FILTERS = env('LDAP_AUTH_FORMAT_SEARCH_FILTERS')
+LDAP_AUTH_FORMAT_USERNAME = env('LDAP_AUTH_FORMAT_USERNAME')
+LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = env('LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN')
+LDAP_AUTH_CONNECTION_USERNAME = env('LDAP_AUTH_CONNECTION_USERNAME')
+LDAP_AUTH_CONNECTION_PASSWORD = env('LDAP_AUTH_CONNECTION_PASSWORD')
+LDAP_AUTH_CONNECT_TIMEOUT = env_as_int('LDAP_AUTH_CONNECT_TIMEOUT')
+LDAP_AUTH_RECEIVE_TIMEOUT = env_as_int('LDAP_AUTH_RECEIVE_TIMEOUT')
+
 LANGUAGE_CODE = env('DJANGO_USE_I18N', 'pt-br')
 TIME_ZONE = env('DJANGO_USE_I18N', 'UTC')
 USE_I18N = env_as_bool('DJANGO_USE_I18N', True)
@@ -174,8 +141,6 @@ LOGGING = {
     'handlers': {'console': {'class': 'logging.StreamHandler'}, },
     'loggers': {'': {'handlers': ['console'], 'level': 'DEBUG'}, },
 }
-
-JET_INDEX_DASHBOARD = 'barramento_theme.dashboard.CustomIndexDashboard'
 
 CORS_ORIGIN_ALLOW_ALL = True
 

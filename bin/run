@@ -1,6 +1,4 @@
 #!/bin/bash
-#
-# Run the PTD containers.
 
-docker-compose run suapsso $@
+docker-compose run app $@
 

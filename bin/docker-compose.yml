@@ -10,7 +10,7 @@ services:
     volumes:
       - "../volumes/pgdata:/var/lib/postgresql/data"
   app:
-    image: 'suapsso'
+    image: 'ifrn/suap-sso:1.0'
     build:
       context: ../dockers/suapsso
     ports:
@@ -21,4 +21,3 @@ services:
       - '../apps:/apps'
     depends_on:
       - db
-

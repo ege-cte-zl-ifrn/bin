@@ -1,10 +1,8 @@
 #!/bin/bash
-#
-# Undeploy the PTD applications.
 
 source env.sh
 
 ./down
 rm -f .env
-docker rmi suapsso:latest
+docker rmi ifrn/suap-sso:1.0
 
