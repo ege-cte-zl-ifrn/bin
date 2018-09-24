@@ -1,6 +1,6 @@
 #!/bin/bash
-#
-# Deploy the PTD applications.
+
+source color_logs
 
 source env.sh
 

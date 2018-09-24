@@ -1,6 +1,5 @@
 #!/bin/bash
-#
-# Up the Docker-Composer containers.
+source color_logs
 
 source env.sh
 

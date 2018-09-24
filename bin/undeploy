@@ -1,6 +1,5 @@
 #!/bin/bash
-
-source env.sh
+source color_logs
 
 ./down
 rm -f .env
