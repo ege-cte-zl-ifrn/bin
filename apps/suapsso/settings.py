@@ -2,17 +2,14 @@
 The MIT License (MIT)
 
 Copyright 2015 Umbrella Tech.
-
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
 the Software without restriction, including without limitation the rights to
 use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
 the Software, and to permit persons to whom the Software is furnished to do so,
 subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
 FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -21,15 +18,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 import os
-from python_brfied.env import env, env_as_bool, env_as_list, env_as_list_of_maps, env_as_int
-
-def env_from_json(key, default=''):
-    import json
-    return json.loads(env(key, default))
-
-def env_as_int(key, default=None):
-    import json
-    return json.loads(env(key, default))
+from python_brfied.env import env, env_as_bool, env_as_list, env_as_list_of_maps, env_as_int, env_from_json
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -41,7 +30,7 @@ USE_LDAP = LDAP_AUTH_URL=env('LDAP_AUTH_URL', None) is not None
 
 MY_APPS = env_as_list('MY_APPS', 'suapsso')
 
-DEV_APPS = env_as_list('DEV_APPS', 'debug_toolbar,django_extensions')
+DEV_APPS = env_as_list('DEV_APPS', 'debug_toolbar,django_extensions' if DEBUG else '')
 
 THIRD_APPS = env_as_list('THIRD_APPS', 'ege_django_theme,oauth2_provider,corsheaders,django_python3_ldap')
 
@@ -55,10 +44,6 @@ DJANGO_APPS = env_as_list('DJANGO_APPS', 'django.contrib.admin,'
 INSTALLED_APPS = MY_APPS + THIRD_APPS + DEV_APPS + DJANGO_APPS
 
 
-AUTHENTICATION_BACKENDS = env_as_list('AUTHENTICATION_BACKENDS', 'django_python3_ldap.auth.LDAPBackend,'
-                                          'oauth2_provider.backends.OAuth2Backend,'
-                                          'django.contrib.auth.backends.ModelBackend')
-
 MIDDLEWARE = env_as_list('MIDDLEWARE', 'corsheaders.middleware.CorsMiddleware,'
                                        'oauth2_provider.middleware.OAuth2TokenMiddleware,'
                                        'django.middleware.security.SecurityMiddleware,'
@@ -70,7 +55,7 @@ MIDDLEWARE = env_as_list('MIDDLEWARE', 'corsheaders.middleware.CorsMiddleware,'
                                        'django.middleware.clickjacking.XFrameOptionsMiddleware')
 
 if DEBUG:
-    MIDDLEWARE = MIDDLEWARE + ['debug_toolbar.middleware.DebugToolbarMiddleware']
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
 ROOT_URLCONF = env('DJANGO_ROOT_URLCONF', 'urls')
 
@@ -104,6 +89,10 @@ DATABASES = {
         'PASSWORD': env('POSTGRES_PASSWORD', 'postgres'),
     }
 }
+
+AUTHENTICATION_BACKENDS = env_as_list('AUTHENTICATION_BACKENDS', 'django_python3_ldap.auth.LDAPBackend,'
+                                          'oauth2_provider.backends.OAuth2Backend,'
+                                          'django.contrib.auth.backends.ModelBackend')
 
 AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS', 'NAME',
                                                'django.contrib.auth.password_validation.UserAttributeSimilarityValidator,'
@@ -147,6 +136,6 @@ CORS_ORIGIN_ALLOW_ALL = True
 APPEND_SLASH = False
 
 DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_TOOLBAR_CALLBACK': lambda request: 'localhost' in request.get_host(),
+    'SHOW_TOOLBAR_CALLBACK': lambda request: 'localhost' in request.get_host() or '127.0.0.1' in request.get_host(),
 }
 
