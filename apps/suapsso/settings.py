@@ -99,18 +99,24 @@ AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS',
                                                'django.contrib.auth.password_validation.CommonPasswordValidator,'
                                                'django.contrib.auth.password_validation.NumericPasswordValidator')
 
+def env2(key, default=None, wrapped=False):
+    r = env(key, default)
+    if wrapped and isinstance(r, str) and r[0:1] == "'" and r[-1:] == "'":
+        return r[1:-1]
+    return r
+
 LDAP_AUTH_URL = env('LDAP_AUTH_URL')
 LDAP_AUTH_USE_TLS = env('LDAP_AUTH_USE_TLS')
 LDAP_AUTH_SEARCH_BASE = env('LDAP_AUTH_SEARCH_BASE')
 LDAP_AUTH_OBJECT_CLASS = env('LDAP_AUTH_OBJECT_CLASS')
-LDAP_AUTH_USER_FIELDS = json.loads(env('LDAP_AUTH_USER_FIELDS', None)[1:-1]) if env('LDAP_AUTH_USER_FIELDS', None) is not None else None
+LDAP_AUTH_USER_FIELDS = json.loads(env2('LDAP_AUTH_USER_FIELDS', None, True)) if env2 is not None else None
 LDAP_AUTH_USER_LOOKUP_FIELDS = env_as_list('LDAP_AUTH_USER_LOOKUP_FIELDS')
 LDAP_AUTH_CLEAN_USER_DATA = env('LDAP_AUTH_CLEAN_USER_DATA')
 LDAP_AUTH_SYNC_USER_RELATIONS = env('LDAP_AUTH_SYNC_USER_RELATIONS')
 LDAP_AUTH_FORMAT_SEARCH_FILTERS = env('LDAP_AUTH_FORMAT_SEARCH_FILTERS')
 LDAP_AUTH_FORMAT_USERNAME = env('LDAP_AUTH_FORMAT_USERNAME')
 LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = env('LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN')
-LDAP_AUTH_CONNECTION_USERNAME = env('LDAP_AUTH_CONNECTION_USERNAME')
+LDAP_AUTH_CONNECTION_USERNAME = env2('LDAP_AUTH_CONNECTION_USERNAME', wrapped=True)
 LDAP_AUTH_CONNECTION_PASSWORD = env('LDAP_AUTH_CONNECTION_PASSWORD')
 LDAP_AUTH_CONNECT_TIMEOUT = env_as_int('LDAP_AUTH_CONNECT_TIMEOUT')
 LDAP_AUTH_RECEIVE_TIMEOUT = env_as_int('LDAP_AUTH_RECEIVE_TIMEOUT')
