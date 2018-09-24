@@ -25,6 +25,7 @@ from django.contrib import admin
 from django.views.generic import RedirectView
 from django.conf import settings
 import oauth2_provider.views as oauth2_views
+from django.conf.urls.static import static
 
 
 def redirect_to(to):
@@ -48,7 +49,7 @@ urlpatterns = [
         )
     ),
     path('', redirect_to(settings.URL_PATH_PREFIX))
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # OAuth2 provider endpoints
 oauth2_endpoint_views = [

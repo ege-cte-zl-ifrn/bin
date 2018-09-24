@@ -60,8 +60,6 @@ if DEBUG:
 
 ROOT_URLCONF = env('DJANGO_ROOT_URLCONF', 'urls')
 
-URL_PATH_PREFIX = env('URL_PATH_PREFIX', 'idp/')
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -123,7 +121,10 @@ USE_I18N = env_as_bool('DJANGO_USE_I18N', True)
 USE_L10N = env_as_bool('DJANGO_USE_L10N', True)
 USE_TZ = env_as_bool('DJANGO_USE_TZ', True)
 
-STATIC_URL = env('DJANGO_STATIC_URL', '/static/')
+URL_PATH_PREFIX = env('URL_PATH_PREFIX', 'idp/')
+
+STATIC_URL = "/%s%s" % (URL_PATH_PREFIX, env('DJANGO_STATIC_URL', 'static/'))
+STATIC_ROOT = "/static"
 
 LOGGING = {
     'version': 1,
@@ -134,9 +135,6 @@ LOGGING = {
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-APPEND_SLASH = False
-
 DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TOOLBAR_CALLBACK': lambda request: 'localhost' in request.get_host() or '127.0.0.1' in request.get_host(),
 }
-
