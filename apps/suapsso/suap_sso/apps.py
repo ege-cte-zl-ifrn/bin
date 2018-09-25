@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class SuapssoConfig(AppConfig):
-    name = 'suapsso'
+    name = 'suap_sso'

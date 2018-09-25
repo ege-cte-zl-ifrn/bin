@@ -16,4 +16,4 @@ def secret_page(request, *args, **kwargs):
 @login_required()
 def perfil_index(request, *args, **kwargs):
     context = {"perfil": "soy yo"}
-    return render(request, 'suapsso/perfil_index.html', context)
+    return render(request, 'suap_sso/perfil_index.html', context)

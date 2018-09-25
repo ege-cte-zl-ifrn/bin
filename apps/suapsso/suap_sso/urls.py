@@ -8,5 +8,5 @@ def barra(request):
 urlpatterns = [
     path('api/hello', ApiEndpoint.as_view()),
     path('secret', views.secret_page, name='secret_page'),
-    path('', views.perfil_index, name='suapsso__perfil_index'),
+    path('', views.perfil_index, name='suap_sso__perfil_index'),
 ]

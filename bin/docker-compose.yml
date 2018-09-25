@@ -12,7 +12,7 @@ services:
   app:
     image: 'ifrn/suap-sso:1.0'
     build:
-      context: ../dockers/suapsso
+      context: ../dockers/suap_sso
     ports:
       - "${APP_EXTERNAL_PORT}:8000"
     env_file:
