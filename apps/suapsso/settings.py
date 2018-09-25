@@ -27,11 +27,11 @@ SECRET_KEY = env('DJANGO_SECRET_KEY', 'changeme')
 DEBUG = env_as_bool('DJANGO_DEBUG', True)
 ALLOWED_HOSTS = env_as_list('DJANGO_ALLOWED_HOSTS', '*' if DEBUG else '')
 
-URL_PATH_PREFIX = env('URL_PATH_PREFIX', 'perfil/')
+URL_PATH_PREFIX = env('URL_PATH_PREFIX', 'idp/')
 
 USE_LDAP = LDAP_AUTH_URL=env('LDAP_AUTH_URL', None) is not None
 
-MY_APPS = env_as_list('MY_APPS', 'suapsso')
+MY_APPS = env_as_list('MY_APPS', 'suap_sso,suap_auth,suap_id')
 
 DEV_APPS = env_as_list('DEV_APPS', 'debug_toolbar,django_extensions' if DEBUG else '')
 
