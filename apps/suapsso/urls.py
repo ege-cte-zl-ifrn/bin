@@ -39,9 +39,8 @@ urlpatterns = [
             [
                 path('', include('suapsso.urls')),
                 path('admin/', admin.site.urls),
-                path('sso/oauth/', include(('oauth2_provider.urls', 'oauth2_provider_app', ), namespace='oauth2_provider'),
-                     ),
-                path('', redirect_to("admin")),
+                path('accounts/', include('django.contrib.auth.urls')),
+                path('sso/oauth/', include(('oauth2_provider.urls', 'oauth2_provider_app', ), namespace='oauth2_provider'),),
                 # OAuth 2 endpoints:
                 path('api/hello', include('suapsso.urls')),
                 path('secret', include('suapsso.urls')),
