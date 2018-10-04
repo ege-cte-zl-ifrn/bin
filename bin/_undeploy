@@ -1,0 +1,7 @@
+#!/bin/bash
+source _color_logs
+
+./_down
+rm -f .env
+docker rmi ifrn/suap-sso:1.0
+

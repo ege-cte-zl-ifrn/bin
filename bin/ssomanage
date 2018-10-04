@@ -1,0 +1,5 @@
+#!/bin/bash
+source _color_logs
+
+./ssoexec python3 manage.py $@
+

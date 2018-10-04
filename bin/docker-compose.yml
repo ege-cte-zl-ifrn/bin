@@ -9,15 +9,48 @@ services:
       - "${POSTGRES_EXTERNAL_PORT}:5432"
     volumes:
       - "../volumes/pgdata:/var/lib/postgresql/data"
-  app:
+
+  proxy:
+    image: nginx:1.15.5-alpine
+    ports:
+      - "${NGINX_EXTERNAL_PORT}:80"
+    volumes:
+      - "../dockers/proxy/conf.d:/etc/nginx/conf.d"
+    depends_on:
+      - sso
+      - auth
+      - id
+
+  sso:
     image: 'ifrn/suap-sso:1.0'
     build:
       context: ../dockers/suap_sso
     ports:
-      - "${APP_EXTERNAL_PORT}:8000"
+      - "8000:8000"
     env_file:
       - .env
     volumes:
       - '../apps:/apps'
+    depends_on:
+      - db
+  auth:
+    image: 'ifrn/ege_django_base:1.0'
+    ports:
+      - "8001:8000"
+    env_file:
+      - .env
+    volumes:
+      - '../apps/suap_auth:/apps/app'
+    depends_on:
+      - db
+  id:
+    image: 'ifrn/ege_django_base:1.0'
+    ports:
+      - "8002:8000"
+    env_file:
+      - .env
+    volumes:
+      - '../apps/ege_django_theme:/apps/ege_django_theme'
+      - '../apps/suap_id:/apps/app'
     depends_on:
       - db

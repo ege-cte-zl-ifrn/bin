@@ -1,7 +1,5 @@
 #!/bin/bash
-source color_logs
-
-source env.sh
+source _color_logs
 
 echo_info "Aguardando a base de dados..."
 until docker-compose exec db psql -h localhost -U $POSTGRES_USER -d $POSTGRES_DB -c '\l' >/dev/null 2>&1; do
