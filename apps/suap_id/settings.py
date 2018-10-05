@@ -91,7 +91,7 @@ DATABASES = {
 AUTHENTICATION_BACKENDS = env_as_list('DJANGO_AUTHENTICATION_BACKENDS', 'sabia_backend.backends.SabiaOAuth2')
 
 LOGIN_REDIRECT_URL = env("DJANGO_LOGIN_REDIRECT_URL", 'http://localhost/id/perfil')
-LOGIN_URL = env("DJANGO_LOGIN_URL", 'http://localhost/id/acesso/login')
+LOGIN_URL = env("DJANGO_LOGIN_URL", '/id/perfil/login/ifrnid/')
 
 AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS', 'NAME', '')
 
@@ -108,8 +108,8 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.user_details',
     'social.pipeline.debug.debug',
 )
-SOCIAL_AUTH_SABIA_KEY = 'gNoGccw3NH46DOQHRbnOUAxqtJRxGxvvl369SwVS'
-SOCIAL_AUTH_SABIA_SECRET = 'ED6sEyV9cesNtrPvlqUgG2dVbGwVxTnEswCn1ZKyOxFPIlgO0j35GRYfZA7PDkluVzuKCed0CKgqhZShLEqfguvfxBuS3PSyrTNOt3TRf0OqWHGLum0kKGngVZfNxMjI'
+SOCIAL_AUTH_IFRNID_KEY = 'gNoGccw3NH46DOQHRbnOUAxqtJRxGxvvl369SwVS'
+SOCIAL_AUTH_IFRNID_SECRET = 'ED6sEyV9cesNtrPvlqUgG2dVbGwVxTnEswCn1ZKyOxFPIlgO0j35GRYfZA7PDkluVzuKCed0CKgqhZShLEqfguvfxBuS3PSyrTNOt3TRf0OqWHGLum0kKGngVZfNxMjI'
 
 
 LANGUAGE_CODE = env('DJANGO_USE_I18N', 'pt-br')

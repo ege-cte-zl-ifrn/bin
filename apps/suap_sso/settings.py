@@ -107,6 +107,8 @@ AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS',
                                                'django.contrib.auth.password_validation.CommonPasswordValidator,'
                                                'django.contrib.auth.password_validation.NumericPasswordValidator')
 
+# AUTH_USER_MODEL = env("DJANGO_AUTH_USER_MODEL", 'suap_sso.Usuario')
+
 LDAP_AUTH_URL = env('LDAP_AUTH_URL')
 LDAP_AUTH_USE_TLS = env_as_bool('LDAP_AUTH_USE_TLS')
 LDAP_AUTH_SEARCH_BASE = env('LDAP_AUTH_SEARCH_BASE')
@@ -123,8 +125,8 @@ LDAP_AUTH_CONNECTION_PASSWORD = env('LDAP_AUTH_CONNECTION_PASSWORD', wrapped=Tru
 LDAP_AUTH_CONNECT_TIMEOUT = env_as_int('LDAP_AUTH_CONNECT_TIMEOUT')
 LDAP_AUTH_RECEIVE_TIMEOUT = env_as_int('LDAP_AUTH_RECEIVE_TIMEOUT')
 
-LANGUAGE_CODE = env('DJANGO_USE_I18N', 'pt-br')
-TIME_ZONE = env('DJANGO_USE_I18N', 'UTC')
+LANGUAGE_CODE = env('LANGUAGE_CODE', 'pt-br')
+TIME_ZONE = env('TIME_ZONE', 'UTC')
 USE_I18N = env_as_bool('DJANGO_USE_I18N', True)
 USE_L10N = env_as_bool('DJANGO_USE_L10N', True)
 USE_TZ = env_as_bool('DJANGO_USE_TZ', True)
