@@ -29,7 +29,7 @@ ALLOWED_HOSTS = env_as_list('DJANGO_ALLOWED_HOSTS', '*' if DEBUG else '')
 
 URL_PATH_PREFIX = env('URL_PATH_PREFIX', 'id/perfil/')
 
-MY_APPS = env_as_list('MY_APPS', 'suap_id,oauth2_provider')
+MY_APPS = env_as_list('MY_APPS', 'suap_id')
 
 DEV_APPS = env_as_list('DEV_APPS', 'debug_toolbar,django_extensions' if DEBUG else '')
 
@@ -51,8 +51,8 @@ MIDDLEWARE = env_as_list('MIDDLEWARE', 'django.middleware.security.SecurityMiddl
                                        'django.middleware.csrf.CsrfViewMiddleware,'
                                        'django.contrib.auth.middleware.AuthenticationMiddleware,'
                                        'django.contrib.messages.middleware.MessageMiddleware,'
-                                       'django.middleware.clickjacking.XFrameOptionsMiddleware')
-
+                                       'django.middleware.clickjacking.XFrameOptionsMiddleware,'
+                                       'social_django.middleware.SocialAuthExceptionMiddleware')
 if DEBUG:
     MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
@@ -88,28 +88,29 @@ DATABASES = {
 }
 
 # AUTHENTICATION_BACKENDS = env_as_list('AUTHENTICATION_BACKENDS', 'oauth2_provider.backends.OAuth2Backend')
-AUTHENTICATION_BACKENDS = env_as_list('DJANGO_AUTHENTICATION_BACKENDS', 'sabia_backend.backends.SabiaOAuth2')
+AUTHENTICATION_BACKENDS = env_as_list('DJANGO_AUTHENTICATION_BACKENDS', 'ifrnid.backends.IfrnIdOAuth2')
 
-LOGIN_REDIRECT_URL = env("DJANGO_LOGIN_REDIRECT_URL", 'http://localhost/id/perfil')
-LOGIN_URL = env("DJANGO_LOGIN_URL", '/id/perfil/login/ifrnid/')
+LOGIN_REDIRECT_URL = env("DJANGO_LOGIN_REDIRECT_URL", 'http://sso/id/perfil')
+LOGIN_URL = '/id/perfil/login/ifrnid/'
 
 AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS', 'NAME', '')
 
 SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.user.create_user',
     'social.pipeline.social_auth.social_details',
     'social.pipeline.social_auth.social_uid',
     'social.pipeline.social_auth.auth_allowed',
     'social.pipeline.social_auth.social_user',
-    'sabia_backend.pipelines.associate_by_username',
-    'social.pipeline.user.create_user',
+    'ifrnid.pipelines.create_or_update_user',
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.debug.debug',
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details',
     'social.pipeline.debug.debug',
 )
-SOCIAL_AUTH_IFRNID_KEY = 'gNoGccw3NH46DOQHRbnOUAxqtJRxGxvvl369SwVS'
-SOCIAL_AUTH_IFRNID_SECRET = 'ED6sEyV9cesNtrPvlqUgG2dVbGwVxTnEswCn1ZKyOxFPIlgO0j35GRYfZA7PDkluVzuKCed0CKgqhZShLEqfguvfxBuS3PSyrTNOt3TRf0OqWHGLum0kKGngVZfNxMjI'
+
+SOCIAL_AUTH_IFRNID_KEY = env('SOCIAL_AUTH_IFRNID_KEY')
+SOCIAL_AUTH_IFRNID_SECRET = env('SOCIAL_AUTH_IFRNID_KEY')
 
 
 LANGUAGE_CODE = env('DJANGO_USE_I18N', 'pt-br')
@@ -136,5 +137,5 @@ USE_X_FORWARDED_HOST = True
 CORS_ORIGIN_ALLOW_ALL = True
 
 DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_TOOLBAR_CALLBACK': lambda request: 'localhost' in request.get_host() or '127.0.0.1' in request.get_host(),
+    'SHOW_TOOLBAR_CALLBACK': lambda request: 'localhost' in request.get_host() or '127.0.0.1' in request.get_host() or 'sso' in request.get_host(),
 }

@@ -1,7 +1,9 @@
 from django.contrib.auth.models import User
 from social.exceptions import AuthException
 
-def associate_by_username(backend, details, user=None, *args, **kwargs):
+
+def create_or_update_user(backend, details, user=None, *args, **kwargs):
+    print('create_or_update_user (backend=%s, details=%s, user=%s, args=%s, kwargs=%s)' % (backend, details, user, args, kwargs))
     if user:
         return None
 

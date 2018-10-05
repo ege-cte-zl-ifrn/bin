@@ -98,8 +98,8 @@ AUTHENTICATION_BACKENDS = env_as_list('AUTHENTICATION_BACKENDS',
                                       'django_python3_ldap.auth.LDAPBackend,oauth2_provider.backends.OAuth2Backend')
 # AUTH_USER_MODEL = 'suap_sso.Usuario'
 
-LOGIN_REDIRECT_URL = env("DJANGO_LOGIN_REDIRECT_URL", 'http://localhost/id/perfil')
-LOGIN_URL = env("DJANGO_LOGIN_URL", 'http://localhost/id/acesso/login')
+LOGIN_REDIRECT_URL = env("DJANGO_LOGIN_REDIRECT_URL", 'http://sso/id/perfil')
+LOGIN_URL = env("DJANGO_LOGIN_URL", 'http://sso/id/acesso/login')
 
 AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS', 'NAME',
                                                'django.contrib.auth.password_validation.UserAttributeSimilarityValidator,'
@@ -107,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS',
                                                'django.contrib.auth.password_validation.CommonPasswordValidator,'
                                                'django.contrib.auth.password_validation.NumericPasswordValidator')
 
-# AUTH_USER_MODEL = env("DJANGO_AUTH_USER_MODEL", 'suap_sso.Usuario')
+AUTH_USER_MODEL = env("DJANGO_AUTH_USER_MODEL", 'suap_sso.Usuario')
 
 LDAP_AUTH_URL = env('LDAP_AUTH_URL')
 LDAP_AUTH_USE_TLS = env_as_bool('LDAP_AUTH_USE_TLS')
@@ -148,5 +148,5 @@ LOGGING = {
 CORS_ORIGIN_ALLOW_ALL = True
 
 DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_TOOLBAR_CALLBACK': lambda request: 'localhost' in request.get_host() or '127.0.0.1' in request.get_host(),
+    'SHOW_TOOLBAR_CALLBACK': lambda request: 'localhost' in request.get_host() or '127.0.0.1' in request.get_host() or 'sso' in request.get_host(),
 }
