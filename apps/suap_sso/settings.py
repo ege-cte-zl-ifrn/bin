@@ -100,6 +100,7 @@ AUTHENTICATION_BACKENDS = env_as_list('AUTHENTICATION_BACKENDS',
 
 LOGIN_REDIRECT_URL = env("DJANGO_LOGIN_REDIRECT_URL", 'http://sso/id/perfil')
 LOGIN_URL = env("DJANGO_LOGIN_URL", 'http://sso/id/acesso/login')
+LOGIN_URL = 'http://sso/id/acesso/login'
 
 AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS', 'NAME',
                                                'django.contrib.auth.password_validation.UserAttributeSimilarityValidator,'

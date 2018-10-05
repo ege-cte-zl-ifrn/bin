@@ -9,6 +9,12 @@ services:
       - "${POSTGRES_EXTERNAL_PORT}:5432"
     volumes:
       - "../volumes/pgdata:/var/lib/postgresql/data"
+  db_id:
+    image: postgres:10.5-alpine
+    env_file:
+      - .env
+    volumes:
+      - "../volumes/id_pgdata:/var/lib/postgresql/data"
 
   proxy:
     image: nginx:1.15.5-alpine

@@ -30,7 +30,8 @@ thumbnailPhoto
     social_name = CharField(_('social_name'), max_length=150, null=True, blank=True)
     department = CharField(_('department'), max_length=150, null=True, blank=True)
     campus = CharField(_('extensionAttribute1'), max_length=150, null=True, blank=True)
-    is_active = CharField(_('extensionAttribute10'), max_length=150, null=True, blank=True)
+    ativo = CharField(_('extensionAttribute10'), max_length=150, null=True, blank=True)
+    is_active = BooleanField(_('Está ativo?'), default=True)
     is_staff = BooleanField(_('staff status'), default=False)
     is_superuser = BooleanField(_('superuser status'), default=False)
     carreira = CharField(_('extensionAttribute2'), max_length=150, null=True, blank=True)
@@ -46,6 +47,10 @@ thumbnailPhoto
     password_set_at = CharField(_('pwdLastSet'), max_length=150, null=True, blank=True)
     last_access = DateTimeField(_('last access'), null=True, blank=True)
     date_joined = DateTimeField(_('date joined'), default=timezone.now)
+
+    def save(self, *args, **kwargs):
+        self.is_active = 'Ativo' == self.ativo
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = _('Usuário')

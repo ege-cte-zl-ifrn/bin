@@ -3,21 +3,24 @@
 source _color_logs
 
 echo_info "Parar o mundo"
-./down
+./_down
 
 echo_info "Construir o mundo"
-./build
+./_build
 
 echo_info "Subir o banco"
-./up -d db
+./_up -d db
+./_up -d db_id
 
 echo_info "Esperar o banco subir"
 ./dbwait
 
 echo_info "Migrar o banco"
-./migrate
+./ssomigrate
+./idmigrate
 
 echo_info "Parar o mundo novamente"
-./down
+./_down
 
 echo_success "Tudo pronto"
+    
