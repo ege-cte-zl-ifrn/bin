@@ -1,0 +1,5 @@
+#!/bin/bash
+source _color_logs
+
+docker-compose up sso $@
+
