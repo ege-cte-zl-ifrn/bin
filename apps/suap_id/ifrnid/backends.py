@@ -4,23 +4,27 @@ from social.backends.oauth import BaseOAuth2
 
 class IfrnIdOAuth2(BaseOAuth2):
     name = 'ifrnid'
-    AUTHORIZATION_URL = 'http://sso/id/acesso/oauth/authorize/'
+    AUTHORIZATION_URL = 'http://sso:8000/id/acesso/oauth/authorize/'
     ACCESS_TOKEN_METHOD = 'POST'
     ACCESS_TOKEN_URL = 'http://sso:8000/id/acesso/oauth/token/'
     ID_KEY = 'cpf'
     RESPONSE_TYPE = 'code'
     REDIRECT_STATE = True
     STATE_PARAMETER = True
+    USER_DATA_URL = 'http://sso:8000/id/acesso/api/v1/me/'
     
-    # def user_data(self, access_token, *args, **kwargs):
-    #     USER_DATA_URL = 'https://login.sabia.ufrn.br/api/perfil/dados/'
-    #     print("user_data(%s, %s, %s)" % (access_token, args, kwargs))
-    #     return self.request(
-    #         url=self.USER_DATA_URL,
-    #         data={'scope': kwargs['response']['scope']},
-    #         method='POST',
-    #         headers={'Authorization': 'Bearer {0}'.format(access_token)}
-    #     ).json()
+    def user_data(self, access_token, *args, **kwargs):
+        
+        response = self.request(
+            url=self.USER_DATA_URL,
+            data={'scope': kwargs['response']['scope']},
+            method='POST',
+            headers={
+                'Authorization': 'Bearer {0}'.format(access_token)
+            }
+        )
+        print("USER_DATA: token=%s, response=%s, " % (access_token, response))
+        return response.json()
 
     def get_user_details(self, response):
         """
@@ -28,7 +32,7 @@ class IfrnIdOAuth2(BaseOAuth2):
         você pode fazer aqui outras coisas, como salvar os dados do usuário
         (`response`) em algum outro model.
         """
-        print(response)
+        print("RESPONSE=%s" % response)
         splitted_name = response['name'].split()
         first_name, last_name = splitted_name[0], ''
         if len(splitted_name) > 1:

@@ -35,7 +35,7 @@ MY_APPS = env_as_list('MY_APPS', 'suap_sso')
 
 DEV_APPS = env_as_list('DEV_APPS', 'debug_toolbar,django_extensions' if DEBUG else '')
 
-THIRD_APPS = env_as_list('THIRD_APPS', 'ege_django_theme,oauth2_provider,corsheaders,django_python3_ldap')
+THIRD_APPS = env_as_list('THIRD_APPS', 'oauth2_provider,corsheaders,django_python3_ldap,rest_framework,rest_framework.authtoken')
 
 DJANGO_APPS = env_as_list('DJANGO_APPS', 'django.contrib.admin,'
                                          'django.contrib.auth,'
@@ -91,11 +91,12 @@ DATABASES = {
     }
 }
 
-# AUTHENTICATION_BACKENDS = env_as_list('AUTHENTICATION_BACKENDS', 'django_python3_ldap.auth.LDAPBackend,'
-#                                           'oauth2_provider.backends.OAuth2Backend,'
-#                                           'django.contrib.auth.backends.ModelBackend')
 AUTHENTICATION_BACKENDS = env_as_list('AUTHENTICATION_BACKENDS', 
-                                      'django_python3_ldap.auth.LDAPBackend,oauth2_provider.backends.OAuth2Backend')
+                                      'oauth2_provider.backends.OAuth2Backend,'
+                                      'django_python3_ldap.auth.LDAPBackend,'
+                                      'django.contrib.auth.backends.ModelBackend')
+# AUTHENTICATION_BACKENDS = env_as_list('AUTHENTICATION_BACKENDS', 
+#                                       'django_python3_ldap.auth.LDAPBackend,oauth2_provider.backends.OAuth2Backend')
 # AUTH_USER_MODEL = 'suap_sso.Usuario'
 
 LOGIN_REDIRECT_URL = env("DJANGO_LOGIN_REDIRECT_URL", 'http://sso/id/perfil')
@@ -109,6 +110,7 @@ AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS',
                                                'django.contrib.auth.password_validation.NumericPasswordValidator')
 
 AUTH_USER_MODEL = env("DJANGO_AUTH_USER_MODEL", 'suap_sso.Usuario')
+ACCESS_TOKEN_METHOD = 'POST'
 
 LDAP_AUTH_URL = env('LDAP_AUTH_URL')
 LDAP_AUTH_USE_TLS = env_as_bool('LDAP_AUTH_USE_TLS')
@@ -138,16 +140,49 @@ STATIC_ROOT = "/static"
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'handlers': {'console': {'class': 'logging.StreamHandler', 'formatter': 'console'}},
-    'formatters': {'console': {'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'}},
+    'handlers': {'console': {'class': 'logging.StreamHandler'}, },
     'loggers': {
-        '': {'handlers': ['console'], 'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG')},
+        '': {'handlers': ['console'], 'level': 'DEBUG'}, 
     },
 }
-
 
 CORS_ORIGIN_ALLOW_ALL = True
 
 DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TOOLBAR_CALLBACK': lambda request: 'localhost' in request.get_host() or '127.0.0.1' in request.get_host() or 'sso' in request.get_host(),
+}
+
+SESSION_CACHE_ALIAS = env('DJANGO_SESSION_CACHE_ALIAS', 'default')
+SESSION_COOKIE_AGE = env_as_int('DJANGO_SESSION_COOKIE_AGE', 1209600)
+SESSION_COOKIE_DOMAIN = env('DJANGO_SESSION_COOKIE_DOMAIN', None)
+SESSION_COOKIE_HTTPONLY = env_as_bool('DJANGO_SESSION_COOKIE_HTTPONLY', True)
+SESSION_COOKIE_NAME = env('DJANGO_SESSION_COOKIE_NAME', 'ssosessionid')
+SESSION_COOKIE_PATH = env('DJANGO_SESSION_COOKIE_PATH', '/')
+SESSION_COOKIE_SAMESITE = env('DJANGO_SESSION_COOKIE_SAMESITE', 'Strict')
+SESSION_COOKIE_SECURE = env_as_bool('DJANGO_SESSION_COOKIE_SECURE', False) 
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    # 'DEFAULT_THROTTLE_CLASSES': (
+    #     'rest_framework.throttling.AnonRateThrottle',
+    #     'rest_framework.throttling.UserRateThrottle'
+    # ),
+    # 'DEFAULT_THROTTLE_RATES': {
+    #     'anon': '5/second',
+    #     'user': '20/second'
+    # },
+    # 'DEFAULT_FILTER_BACKENDS': 'cnes.apiutils.APIFilterBackend',
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE': 2,
+    # 'ORDERING': 'codigo',
+    # 'PAGINATE_BY': 10,
+    # 'PAGINATE_BY_PARAM': 'page_size',
 }

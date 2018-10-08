@@ -110,7 +110,8 @@ SOCIAL_AUTH_PIPELINE = (
 )
 
 SOCIAL_AUTH_IFRNID_KEY = env('SOCIAL_AUTH_IFRNID_KEY')
-SOCIAL_AUTH_IFRNID_SECRET = env('SOCIAL_AUTH_IFRNID_KEY')
+SOCIAL_AUTH_IFRNID_SECRET = env('SOCIAL_AUTH_IFRNID_SECRET')
+SOCIAL_AUTH_USER_MODEL = 'auth.User'
 
 
 LANGUAGE_CODE = env('DJANGO_USE_I18N', 'pt-br')
@@ -139,3 +140,4 @@ CORS_ORIGIN_ALLOW_ALL = True
 DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TOOLBAR_CALLBACK': lambda request: 'localhost' in request.get_host() or '127.0.0.1' in request.get_host() or 'sso' in request.get_host(),
 }
+ 

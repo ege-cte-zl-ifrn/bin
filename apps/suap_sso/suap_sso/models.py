@@ -25,7 +25,7 @@ pwdLastSet	02/10/2018 20:19
 thumbnailPhoto
     """
     username = CharField(_('username'), max_length=150, primary_key=True)
-    fisrt_name = CharField(_('givenName'), max_length=150, null=True, blank=True)
+    first_name = CharField(_('givenName'), max_length=150, null=True, blank=True)
     last_name = CharField(_('sn'), max_length=150, null=True, blank=True)
     social_name = CharField(_('social_name'), max_length=150, null=True, blank=True)
     department = CharField(_('department'), max_length=150, null=True, blank=True)
@@ -34,12 +34,12 @@ thumbnailPhoto
     is_active = BooleanField(_('Está ativo?'), default=True)
     is_staff = BooleanField(_('staff status'), default=False)
     is_superuser = BooleanField(_('superuser status'), default=False)
-    carreira = CharField(_('extensionAttribute2'), max_length=150, null=True, blank=True)
+    carrer = CharField(_('extensionAttribute2'), max_length=150, null=True, blank=True)
     job = CharField(_('extensionAttribute3'), max_length=150, null=True, blank=True)
     cpf = CharField(_('extensionAttribute6'), max_length=150, null=True, blank=True)
     academic_email = CharField(_('extensionAttribute4'), max_length=150, null=True, blank=True)
-    enterprise_mail = CharField(_('mail'), max_length=150, null=True, blank=True)
-    mail = CharField(_('personal mail'), max_length=150, null=True, blank=True)
+    enterprise_email = CharField(_('mail'), max_length=150, null=True, blank=True)
+    email = CharField(_('personal mail'), max_length=150, null=True, blank=True)
     title = CharField(_('title'), max_length=150, null=True, blank=True)
     photo_blob = TextField(_('thumbnailPhoto'), null=True, blank=True)
     created_at = CharField(_('whenCreated'), max_length=150, null=True, blank=True)
@@ -51,6 +51,10 @@ thumbnailPhoto
     def save(self, *args, **kwargs):
         self.is_active = 'Ativo' == self.ativo
         super().save(*args, **kwargs)
+
+    @property
+    def presentation_name(self):
+        return "%s %s" % (self.first_name, self.last_name)
 
     class Meta:
         verbose_name = _('Usuário')
