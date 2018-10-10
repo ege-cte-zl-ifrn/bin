@@ -9,6 +9,7 @@ services:
       - "${POSTGRES_EXTERNAL_PORT}:5432"
     volumes:
       - "../volumes/pgdata:/var/lib/postgresql/data"
+      - "../dockers/db/initdb.d:/docker-entrypoint-initdb.d"
   db_id:
     image: postgres:10.5-alpine
     env_file:

@@ -4,7 +4,7 @@ from social.backends.oauth import BaseOAuth2
 
 class IfrnIdOAuth2(BaseOAuth2):
     name = 'ifrnid'
-    AUTHORIZATION_URL = 'http://sso:8000/id/acesso/oauth/authorize/'
+    AUTHORIZATION_URL = 'http://sso/id/acesso/oauth/authorize/'
     ACCESS_TOKEN_METHOD = 'POST'
     ACCESS_TOKEN_URL = 'http://sso:8000/id/acesso/oauth/token/'
     ID_KEY = 'cpf'
@@ -14,16 +14,21 @@ class IfrnIdOAuth2(BaseOAuth2):
     USER_DATA_URL = 'http://sso:8000/id/acesso/api/v1/me/'
     
     def user_data(self, access_token, *args, **kwargs):
-        
+        print("ACCESS_TOKEN=%s" % access_token)
+        print(args)
+        print(kwargs)
+        print(kwargs['response']['token_type'])
+        data = {'token_type': kwargs['response']['token_type'], 'access_token': access_token}
+        print("ACCESS_TOKEN=END")
         response = self.request(
             url=self.USER_DATA_URL,
             data={'scope': kwargs['response']['scope']},
             method='POST',
             headers={
-                'Authorization': 'Bearer {0}'.format(access_token)
+                'Authorization': '{token_type} {access_token}'.format(**data)
             }
         )
-        print("USER_DATA: token=%s, response=%s, " % (access_token, response))
+        print("USER_DATA: token={access_token}, response={response}, ".format({'access_token': access_token, 'response': response}))
         return response.json()
 
     def get_user_details(self, response):

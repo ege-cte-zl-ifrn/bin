@@ -79,9 +79,9 @@ WSGI_APPLICATION = env('DJANGO_WSGI_APPLICATION', 'wsgi.application')
 DATABASES = {
     'default': {
         'ENGINE': env('POSTGRES_ENGINE', 'django.db.backends.postgresql_psycopg2'),
-        'HOST': env('POSTGRES_HOST_ID', 'db_id'),
+        'HOST': env('POSTGRES_HOST', 'db'),
         'PORT': env('POSTGRES_PORT', '5432'),
-        'NAME': env('POSTGRES_DB_ID', 'postgres'),
+        'NAME': env('POSTGRES_DB_ID', 'suap_id'),
         'USER': env('POSTGRES_USER', 'postgres'),
         'PASSWORD': env('POSTGRES_PASSWORD', 'postgres'),
     }
