@@ -6,12 +6,12 @@ class IfrnIdOAuth2(BaseOAuth2):
     name = 'ifrnid'
     AUTHORIZATION_URL = 'http://sso/id/acesso/oauth/authorize/'
     ACCESS_TOKEN_METHOD = 'POST'
-    ACCESS_TOKEN_URL = 'http://sso:8000/id/acesso/oauth/token/'
+    ACCESS_TOKEN_URL = 'http://sso/id/acesso/oauth/token/'
     ID_KEY = 'cpf'
     RESPONSE_TYPE = 'code'
     REDIRECT_STATE = True
     STATE_PARAMETER = True
-    USER_DATA_URL = 'http://sso:8000/id/acesso/api/v1/me/'
+    USER_DATA_URL = 'http://sso/id/acesso/api/v1/me/'
     
     def user_data(self, access_token, *args, **kwargs):
         print("ACCESS_TOKEN=%s" % access_token)
