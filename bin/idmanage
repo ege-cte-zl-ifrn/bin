@@ -1,5 +1,0 @@
-#!/bin/bash
-source _color_logs
-
-./idexec python3 manage.py $@
-

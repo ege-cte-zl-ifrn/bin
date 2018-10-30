@@ -10,12 +10,6 @@ services:
     volumes:
       - "../volumes/pgdata:/var/lib/postgresql/data"
       - "../dockers/db/initdb.d:/docker-entrypoint-initdb.d"
-  db_id:
-    image: postgres:10.5-alpine
-    env_file:
-      - .env
-    volumes:
-      - "../volumes/id_pgdata:/var/lib/postgresql/data"
 
   proxy:
     image: nginx:1.15.5-alpine
@@ -24,30 +18,30 @@ services:
     volumes:
       - "../dockers/proxy/conf.d:/etc/nginx/conf.d"
     depends_on:
-      - auth
-      - id
-      - sso
+      - acesso
+      - authn
+      - perfil
 
-  sso:
-    image: 'ifrn/suap-sso:1.1'
+  acesso:
+    image: 'ifrn/suap-acesso:1.1'
     build:
-      context: ../dockers/suap_sso
+      context: ../dockers/suap_acesso
     env_file:
       - .env
     volumes:
-      - '../apps:/apps'
+      - '../apps/suap_acesso:/apps/app'
 
-  auth:
+  authn:
     image: 'ifrn/ege_django_base:1.0'
     env_file:
       - .env
     volumes:
-      - '../apps/suap_auth:/apps/app'
+      - '../apps/suap_authn:/apps/app'
 
-  id:
+  perfil:
     image: 'ifrn/ege_django_base:1.0'
     env_file:
       - .env
     volumes:
       - '../apps/ege_django_theme:/apps/ege_django_theme'
-      - '../apps/suap_id:/apps/app'
+      - '../apps/suap_perfil:/apps/app'

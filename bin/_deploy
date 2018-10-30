@@ -9,15 +9,14 @@ echo_info "Construir o mundo"
 ./_build
 
 echo_info "Subir o banco"
-./_up -d db
-./_up -d db_id
+./db_up
 
 echo_info "Esperar o banco subir"
-./dbwait
+./db_wait
 
 echo_info "Migrar o banco"
-./ssomigrate
-./idmigrate
+./acesso_migrate
+./perfil_migrate
 
 echo_info "Parar o mundo novamente"
 ./_down

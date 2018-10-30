@@ -1,0 +1,5 @@
+#-e ../ege_django_theme
+ege-django-theme==3.7
+
+python-social-auth==0.3.6
+social-auth-app-django==2.1.0
