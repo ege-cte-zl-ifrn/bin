@@ -20,16 +20,17 @@ class SuapSsoOAuth2(BaseOAuth2):
         print(kwargs['response']['token_type'])
         data = {'token_type': kwargs['response']['token_type'], 'access_token': access_token}
         print("ACCESS_TOKEN=END")
-        response = self.request(
-            url=self.USER_DATA_URL,
-            data={'scope': kwargs['response']['scope']},
-            method='POST',
-            headers={
-                'Authorization': '{token_type} {access_token}'.format(**data)
-            }
-        )
-        print("USER_DATA: token={access_token}, response={response}, ".format({'access_token': access_token, 'response': response}))
-        return response.json()
+        # response = self.request(
+        #     url=self.USER_DATA_URL,
+        #     data={'scope': kwargs['response']['scope']},
+        #     method='POST',
+        #     headers={
+        #         'Authorization': '{token_type} {access_token}'.format(**data)
+        #     }
+        # )
+        # print("USER_DATA: token={access_token}, response={response}, ".format({'access_token': access_token, 'response': response}))
+        # return response.json()
+        return {'username': 'Keslon', 'name': 'Kelson da Costa Medeiros'}
 
     def get_user_details(self, response):
         """

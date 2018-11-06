@@ -33,7 +33,9 @@ MY_APPS = env_as_list('MY_APPS', 'suap_perfil')
 
 DEV_APPS = env_as_list('DEV_APPS', 'debug_toolbar,django_extensions' if DEBUG else '')
 
-THIRD_APPS = env_as_list('THIRD_APPS', 'ege_django_theme,social.apps.django_app.default')
+# THIRD_APPS = env_as_list('THIRD_APPS', 'ege_django_theme,social.apps.django_app.default')
+# THIRD_APPS = env_as_list('THIRD_APPS', 'social.apps.django_app.default')
+THIRD_APPS = env_as_list('THIRD_APPS', 'social_django')
 
 DJANGO_APPS = env_as_list('DJANGO_APPS', 'django.contrib.admin,'
                                          'django.contrib.auth,'
@@ -69,6 +71,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -86,32 +90,6 @@ DATABASES = {
         'PASSWORD': env('POSTGRES_PASSWORD', 'postgres'),
     }
 }
-
-# AUTHENTICATION_BACKENDS = env_as_list('AUTHENTICATION_BACKENDS', 'oauth2_provider.backends.OAuth2Backend')
-# AUTHENTICATION_BACKENDS = env_as_list('DJANGO_AUTHENTICATION_BACKENDS', 'suapsso.backends.SuapSsoOAuth2')
-
-LOGIN_REDIRECT_URL = env("DJANGO_LOGIN_REDIRECT_URL", '/id/perfil')
-LOGIN_URL = env("DJANGO_LOGIN_URL", '/id/perfil/login/suapsso/') 
-
-AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS', 'NAME', '')
-
-SOCIAL_AUTH_PIPELINE = (
-    'social.pipeline.user.create_user',
-    'social.pipeline.social_auth.social_details',
-    'social.pipeline.social_auth.social_uid',
-    'social.pipeline.social_auth.auth_allowed',
-    'social.pipeline.social_auth.social_user',
-    'suapsso.pipelines.create_or_update_user',
-    'social.pipeline.social_auth.associate_user',
-    'social.pipeline.debug.debug',
-    'social.pipeline.social_auth.load_extra_data',
-    'social.pipeline.user.user_details',
-    'social.pipeline.debug.debug',
-)
-
-SOCIAL_AUTH_SUAPSSO_KEY = env('SOCIAL_AUTH_SUAPSSO_KEY')
-SOCIAL_AUTH_SUAPSSO_SECRET = env('SOCIAL_AUTH_SUAPSSO_SECRET')
-SOCIAL_AUTH_USER_MODEL = 'auth.User'
 
 
 LANGUAGE_CODE = env('DJANGO_USE_I18N', 'pt-br')
@@ -141,6 +119,10 @@ DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TOOLBAR_CALLBACK': lambda request: 'localhost' in request.get_host() or '127.0.0.1' in request.get_host() or 'sso' in request.get_host(),
 }
 
+LOGIN_REDIRECT_URL = env("DJANGO_LOGIN_REDIRECT_URL", '/id/perfil')
+LOGIN_URL = env("DJANGO_LOGIN_URL", '/id/perfil/login/suapsso/') 
+
+AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS', 'NAME', '')
 
 SUAPSSO_NAME = env('SUAPSSO_NAME', 'suapsso')
 SUAPSSO_AUTHORIZATION_URL = env('SUAPSSO_AUTHORIZATION_URL', 'http://sso/id/acesso/oauth/authorize/')
@@ -152,4 +134,48 @@ SUAPSSO_REDIRECT_STATE = env_as_bool('SUAPSSO_REDIRECT_STATE', True)
 SUAPSSO_STATE_PARAMETER = env_as_bool('SUAPSSO_STATE_PARAMETER', True)
 SUAPSSO_USER_DATA_URL = env('SUAPSSO_USER_DATA_URL', 'http://sso/id/acesso/api/v1/me/')
 
+SOCIAL_AUTH_SUAPSSO_OAUTH2_KEY = env('SOCIAL_AUTH_SUAPSSO_KEY')
+SOCIAL_AUTH_SUAPSSO_OAUTH2_SECRET = env('SOCIAL_AUTH_SUAPSSO_SECRET')
+SOCIAL_AUTH_SUAPSSO_KEY = env('SOCIAL_AUTH_SUAPSSO_KEY')
+SOCIAL_AUTH_SUAPSSO_SECRET = env('SOCIAL_AUTH_SUAPSSO_SECRET')
+SOCIAL_AUTH_USER_MODEL = env('SOCIAL_AUTH_USER_MODEL', 'auth.User') 
+SOCIAL_AUTH_RAISE_EXCEPTIONS = env_as_bool('SOCIAL_AUTH_RAISE_EXCEPTIONS', True)
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = LOGIN_REDIRECT_URL
+SOCIAL_AUTH_LOGIN_URL = LOGIN_URL
+SOCIAL_AUTH_LOGIN_ERROR_URL = env("SOCIAL_AUTH_LOGIN_ERROR_URL", '/id/perfil/login-error/')
+SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = env("SOCIAL_AUTH_DISCONNECT_REDIRECT_URL", '/id/perfil/disconnected/')
+SOCIAL_AUTH_INACTIVE_USER_URL = env("SOCIAL_AUTH_INACTIVE_USER_URL", '/id/perfil/inactive-user/')
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    # 'social_core.pipeline.user.create_user',
+    'suapsso.pipelines.create_or_update_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+    'social_core.pipeline.social_auth.associate_by_email',
+)
+SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+# AUTHENTICATION_BACKENDS = (
+#     'social_core.backends.open_id.OpenIdAuth',
+#     'social_core.backends.google.GoogleOpenId',
+#     'social_core.backends.google.GoogleOAuth2',
+#     'social_core.backends.google.GoogleOAuth',
+#     'social_core.backends.twitter.TwitterOAuth',
+#     'social_core.backends.yahoo.YahooOpenId',
+#     'django.contrib.auth.backends.ModelBackend',
+# )
+AUTHENTICATION_BACKENDS = (
+    'suapsso.backends.SuapSsoOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+# SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['field1', 'field2']
+# SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
+# SOCIAL_AUTH_ADMIN_SEARCH_FIELDS = ['field1', 'field2']
+SUAPSSO_SOCIAL_AUTH_RAISE_EXCEPTIONS = True
 SOCIAL_AUTH_RAISE_EXCEPTIONS = True
+RAISE_EXCEPTIONS = True
+DEBUG = True
+
