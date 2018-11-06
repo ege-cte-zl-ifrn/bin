@@ -19,8 +19,8 @@ services:
       - "../dockers/proxy/conf.d:/etc/nginx/conf.d"
     depends_on:
       - acesso
-      - authn
       - perfil
+      # - authn
 
   acesso:
     image: 'ifrn/suap-acesso:1.1'
@@ -31,17 +31,18 @@ services:
     volumes:
       - '../apps/suap_acesso:/apps/app'
 
-  authn:
-    image: 'ifrn/ege_django_base:1.0'
-    env_file:
-      - .env
-    volumes:
-      - '../apps/suap_authn:/apps/app'
-
   perfil:
-    image: 'ifrn/ege_django_base:1.0'
+    image: 'ifrn/suap-perfil:1.0'
+    build:
+      context: ../dockers/suap_perfil
     env_file:
       - .env
     volumes:
-      - '../apps/ege_django_theme:/apps/ege_django_theme'
       - '../apps/suap_perfil:/apps/app'
+
+  # authn:
+  #   image: 'ifrn/ege_django_base:1.0'
+  #   env_file:
+  #     - .env
+  #   volumes:
+  #     - '../apps/suap_authn:/apps/app'
