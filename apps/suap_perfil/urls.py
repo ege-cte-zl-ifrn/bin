@@ -35,7 +35,7 @@ def redirect_to(to):
 
 
 urlpatterns = [
-    path(settings.URL_PATH_PREFIX, include('social.apps.django_app.urls', namespace='social')),
+    path(settings.URL_PATH_PREFIX, include('social_django.urls', namespace='social')),
     path(
         settings.URL_PATH_PREFIX,
         include(
