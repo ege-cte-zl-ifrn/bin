@@ -1,0 +1,5 @@
+#!/bin/bash
+source _color_logs
+
+./acesso_exec sh
+

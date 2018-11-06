@@ -2,6 +2,7 @@
 source _color_logs
 
 ./_down
-rm -f .env
-docker rmi ifrn/suap-sso:1.0
+#rm -f .env
+sudo rm -rf ../volumes
+#docker rmi ifrn/suap-sso:1.0
 
