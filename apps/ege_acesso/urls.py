@@ -24,14 +24,7 @@ from django.urls import path, include
 from django.contrib import admin
 from django.views.generic import RedirectView
 from django.conf import settings
-import oauth2_provider.views as oauth2_views
 from django.conf.urls.static import static
-from django.shortcuts import redirect
-
-
-def redirect_to(to):
-    print("redirect_to %s " % to)
-    return RedirectView.as_view(url=to)
 
 
 urlpatterns = [
@@ -40,15 +33,15 @@ urlpatterns = [
         include(
             [
                 path('admin/', admin.site.urls),
-                path('oauth/', include(('oauth2_provider.urls', 'oauth2_provider_app'), namespace='oauth2_provider')),
                 path('', include('django.contrib.auth.urls')),
-                path('', include('suap_acesso.urls')),
-                path('', redirect_to(settings.LOGIN_REDIRECT_URL)),
+                path('', include('ege_acesso.urls')),
+                path('', RedirectView.as_view(url=settings.LOGIN_REDIRECT_URL)),
             ]
         )
     ),
-    path('', redirect_to(settings.LOGIN_REDIRECT_URL))
+    path('', RedirectView.as_view(url=settings.LOGIN_REDIRECT_URL))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 
 if settings.DEBUG:
     import debug_toolbar

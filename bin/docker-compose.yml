@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    image: postgres:10.5-alpine
+    image: postgres:11.1-alpine
     env_file:
       - .env
     ports:
@@ -19,30 +19,34 @@ services:
       - "../dockers/proxy/conf.d:/etc/nginx/conf.d"
     depends_on:
       - acesso
-      - perfil
+#      - perfil
       # - authn
 
   acesso:
-    image: 'ifrn/suap-acesso:1.1'
+    image: 'ifrn/ege/acesso'
     build:
-      context: ../dockers/suap_acesso
+      context: ../dockers/ege_acesso
     env_file:
       - .env
     volumes:
-      - '../apps/suap_acesso:/apps/app'
+      - '../apps/ege_acesso:/apps/app'
 
   perfil:
-    image: 'ifrn/suap-perfil:1.0'
+    image: 'ifrn/ege/perfil'
     build:
-      context: ../dockers/suap_perfil
+      context: ../dockers/ege_perfil
     env_file:
       - .env
     volumes:
-      - '../apps/suap_perfil:/apps/app'
+      - '../apps/ege_perfil:/apps/app'
 
-  # authn:
-  #   image: 'ifrn/ege_django_base:1.0'
-  #   env_file:
-  #     - .env
-  #   volumes:
-  #     - '../apps/suap_authn:/apps/app'
+#   authn:
+#     image: 'ifrn/ege_django_base:1.3'
+#     env_file:
+#       - .env
+#     volumes:
+#       - '../apps/suap_authn:/apps/app'
+
+#SUAPSSO_JWT_ROOT_URL=http://provider:8001/
+#SUAPSSO_JWT_CLIENT_ID=_SUAPSSO_JWT_CLIENT_ID_
+#SUAPSSO_JWT_CLIENT_SECRET=_SUAPSSO_JWT_CLIENT_SECRET_

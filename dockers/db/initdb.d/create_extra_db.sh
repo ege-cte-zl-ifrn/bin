@@ -1,2 +1,3 @@
-createdb -e -U $POSTGRES_USER -O $POSTGRES_USER suap_perfil
-createdb -e -U $POSTGRES_USER -O $POSTGRES_USER suap_authn
+createdb -e -U $POSTGRES_USER -O $POSTGRES_USER ege_acesso
+createdb -e -U $POSTGRES_USER -O $POSTGRES_USER ege_perfil
+createdb -e -U $POSTGRES_USER -O $POSTGRES_USER ege_authn

@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class SuapAuthConfig(AppConfig):
-    name = 'suap_auth'
+    name = 'ege_authn'

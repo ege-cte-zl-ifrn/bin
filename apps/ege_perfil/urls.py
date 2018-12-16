@@ -40,7 +40,7 @@ urlpatterns = [
         settings.URL_PATH_PREFIX,
         include(
             [
-                path('', include('suap_perfil.urls')),
+                path('', include('ege_perfil.urls')),
                 path('admin/', admin.site.urls),
             ]
         )
