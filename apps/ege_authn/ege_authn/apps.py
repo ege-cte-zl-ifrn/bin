@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class SuapAuthConfig(AppConfig):
+class EgeAuthnConfig(AppConfig):
     name = 'ege_authn'

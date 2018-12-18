@@ -58,7 +58,7 @@ thumbnailPhoto:
         ordering = ['first_name']
 
     def __str__(self):
-        return "%s (%s: %s)" % (self.presentation_name, self.username, self.status)
+        return "%s (%s as a %s)" % (self.username, self.presentation_name, self.status)
 
     def save(self, *args, **kwargs):
         self.is_active = 'Ativo' == self.ativo
@@ -66,7 +66,12 @@ thumbnailPhoto:
 
     @property
     def presentation_name(self):
-        return "%s %s" % (self.first_name, self.last_name)
+        if self.social_name is not None:
+            return self.social_name
+        elif self.first_name is not None and self.last_name is not None:
+            return "%s %s" % (self.first_name, self.last_name)
+        else:
+            return self.username
 
     @property
     def status(self):
@@ -83,23 +88,23 @@ thumbnailPhoto:
 
 class Aplicacao(Model):
     responsavel = ForeignKey(verbose_name=_('Responsável'), to=Usuario, on_delete=CASCADE)
-    nome = CharField(_('whenCreated'), max_length=150, null=True, blank=True)
+    nome = CharField(_('Nome'), max_length=150)
     descricao = TextField(_('Descrição'), null=True, blank=True)
-    client_id = CharField(_('Cliend ID'), max_length=150, null=True, blank=True)
-    segredo = CharField(_('Segredo do cliente'), max_length=150, null=True, blank=True)
-    logo = FileField(_('Descrição'), null=True, blank=True)
+    client_id = CharField(_('Cliend ID'), max_length=150)
+    segredo = CharField(_('Segredo do cliente'), max_length=150)
+    logo = FileField(_('logo'), null=True, blank=True)
     urls_callbacks_permitidas = TextField(_('URLs de callback permitidas'), null=True, blank=True)
     urls_origem_permitidas = TextField(_('URLs de origem permitidas'), null=True, blank=True)
     expiracao = PositiveIntegerField(_('Expira em segundos'), default=300)
     criado_em = DateTimeField(_('whenCreated'))
-    excluido_em = DateTimeField(_('whenCreated'), null=True, blank=True)
+    excluido_em = DateTimeField(_('is deleted'), null=True, blank=True)
 
     class Meta:
         verbose_name = _('Aplicação')
         verbose_name_plural = _('Aplicações')
 
     def __str__(self):
-        return "%s (%s: %s)" % (self.presentation_name, self.username, self.ativo)
+        return "%s [%s]" % (self.nome, self.responsavel)
 
 
 class TransationToken(Model):

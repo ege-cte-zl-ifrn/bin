@@ -25,7 +25,6 @@ from django.contrib import admin
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
-from social.apps.django_app import urls
 from django.conf.urls import include as include_old, url
 
 
@@ -35,12 +34,12 @@ def redirect_to(to):
 
 
 urlpatterns = [
-    path(settings.URL_PATH_PREFIX, include('social_django.urls', namespace='social')),
     path(
         settings.URL_PATH_PREFIX,
         include(
             [
                 path('', include('ege_perfil.urls')),
+                path('', include('ege_django_auth_jwt.urls', namespace='ege_django_auth_jwt')),
                 path('admin/', admin.site.urls),
             ]
         )

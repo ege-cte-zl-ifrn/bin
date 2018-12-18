@@ -22,7 +22,7 @@ import json
 from python_brfied.env import env, env_as_bool, env_as_list, env_as_list_of_maps, env_as_int, env_from_json
 
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 SECRET_KEY = env('DJANGO_SECRET_KEY', 'changeme')
 DEBUG = env_as_bool('DJANGO_DEBUG', True)
@@ -81,41 +81,6 @@ DATABASES = {
     }
 }
 
-
-# Auth
-LOGIN_URL = env("DJANGO_LOGIN_URL", 'http://sso/id/acesso/login')
-LOGIN_REDIRECT_URL = env("DJANGO_LOGIN_REDIRECT_URL", 'http://sso/id/perfil')
-LOGOUT_REDIRECT_URL = "/"
-AUTHENTICATION_BACKENDS = env_as_list('DJANGO_AUTHENTICATION_BACKENDS',
-                                      'django_python3_ldap.auth.LDAPBackend,'
-                                      'django.contrib.auth.backends.ModelBackend')
-AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS', 'NAME',
-                                               'django.contrib.auth.password_validation.UserAttributeSimilarityValidator,'
-                                               'django.contrib.auth.password_validation.MinimumLengthValidator,'
-                                               'django.contrib.auth.password_validation.CommonPasswordValidator,'
-                                               'django.contrib.auth.password_validation.NumericPasswordValidator')
-AUTH_USER_MODEL = env("DJANGO_AUTH_USER_MODEL", 'ege_acesso.Usuario')
-
-
-# LDAP
-USE_LDAP = LDAP_AUTH_URL=env('LDAP_AUTH_URL', None) is not None
-LDAP_AUTH_URL = env('LDAP_AUTH_URL')
-LDAP_AUTH_USE_TLS = env_as_bool('LDAP_AUTH_USE_TLS')
-LDAP_AUTH_SEARCH_BASE = env('LDAP_AUTH_SEARCH_BASE')
-LDAP_AUTH_OBJECT_CLASS = env('LDAP_AUTH_OBJECT_CLASS')
-LDAP_AUTH_USER_FIELDS = env_from_json('LDAP_AUTH_USER_FIELDS', None, True)
-LDAP_AUTH_USER_LOOKUP_FIELDS = env_as_list('LDAP_AUTH_USER_LOOKUP_FIELDS')
-LDAP_AUTH_CLEAN_USER_DATA = env('LDAP_AUTH_CLEAN_USER_DATA')
-LDAP_AUTH_SYNC_USER_RELATIONS = env('LDAP_AUTH_SYNC_USER_RELATIONS')
-LDAP_AUTH_FORMAT_SEARCH_FILTERS = env('LDAP_AUTH_FORMAT_SEARCH_FILTERS')
-LDAP_AUTH_FORMAT_USERNAME = env('LDAP_AUTH_FORMAT_USERNAME')
-LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = env('LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN')
-LDAP_AUTH_CONNECTION_USERNAME = env('LDAP_AUTH_CONNECTION_USERNAME', wrapped=True)
-LDAP_AUTH_CONNECTION_PASSWORD = env('LDAP_AUTH_CONNECTION_PASSWORD', wrapped=True)
-LDAP_AUTH_CONNECT_TIMEOUT = env_as_int('LDAP_AUTH_CONNECT_TIMEOUT')
-LDAP_AUTH_RECEIVE_TIMEOUT = env_as_int('LDAP_AUTH_RECEIVE_TIMEOUT')
-
-
 # Localization
 LANGUAGE_CODE = env('LANGUAGE_CODE', 'pt-br')
 TIME_ZONE = env('TIME_ZONE', 'UTC')
@@ -123,20 +88,20 @@ USE_I18N = env_as_bool('DJANGO_USE_I18N', True)
 USE_L10N = env_as_bool('DJANGO_USE_L10N', True)
 USE_TZ = env_as_bool('DJANGO_USE_TZ', True)
 
+# Devepment
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {'console': {'class': 'logging.StreamHandler'}, },
     'loggers': {
-        '': {'handlers': ['console'], 'level': 'DEBUG'}, 
+        '': {'handlers': ['console'], 'level': 'DEBUG'},
     },
 }
-
-CORS_ORIGIN_ALLOW_ALL = True
-
 DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TOOLBAR_CALLBACK': lambda request: 'localhost' in request.get_host() or '127.0.0.1' in request.get_host() or 'sso' in request.get_host(),
 }
+
+# CORS_ORIGIN_ALLOW_ALL = True
 
 # Session
 SESSION_CACHE_ALIAS = env('DJANGO_SESSION_CACHE_ALIAS', 'default')
@@ -149,7 +114,7 @@ SESSION_COOKIE_SAMESITE = env('DJANGO_SESSION_COOKIE_SAMESITE', 'Strict')
 SESSION_COOKIE_SECURE = env_as_bool('DJANGO_SESSION_COOKIE_SECURE', False) 
 
 # URL and routers
-URL_PATH_PREFIX = env('URL_PATH_PREFIX', 'id/acesso/')
+URL_PATH_PREFIX = env('ACESSO_URL_PATH_PREFIX', 'id/acesso/')
 STATIC_URL = "/%s%s" % (URL_PATH_PREFIX, env('DJANGO_STATIC_URL', 'static/'))
 STATIC_ROOT = "/static"
 ROOT_URLCONF = env('DJANGO_ROOT_URLCONF', 'urls')
@@ -180,4 +145,38 @@ REST_FRAMEWORK = {
     # 'PAGINATE_BY_PARAM': 'page_size',
 }
 
+
+# Auth
+LOGIN_URL = '/%slogin/' % URL_PATH_PREFIX
+LOGOUT_URL = '/%slogout/' % URL_PATH_PREFIX
+LOGIN_REDIRECT_URL = 'http://localhost/id/perfil'
+LOGOUT_REDIRECT_URL = 'http://localhost/id/perfil'
+AUTHENTICATION_BACKENDS = env_as_list('DJANGO_AUTHENTICATION_BACKENDS',
+                                      'django_python3_ldap.auth.LDAPBackend,'
+                                      'django.contrib.auth.backends.ModelBackend')
+AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS', 'NAME',
+                                               'django.contrib.auth.password_validation.UserAttributeSimilarityValidator,'
+                                               'django.contrib.auth.password_validation.MinimumLengthValidator,'
+                                               'django.contrib.auth.password_validation.CommonPasswordValidator,'
+                                               'django.contrib.auth.password_validation.NumericPasswordValidator')
+AUTH_USER_MODEL = env("DJANGO_AUTH_USER_MODEL", 'ege_acesso.Usuario')
+
+
+# LDAP
+USE_LDAP = LDAP_AUTH_URL=env('LDAP_AUTH_URL', None) is not None
+LDAP_AUTH_URL = env('LDAP_AUTH_URL')
+LDAP_AUTH_USE_TLS = env_as_bool('LDAP_AUTH_USE_TLS')
+LDAP_AUTH_SEARCH_BASE = env('LDAP_AUTH_SEARCH_BASE')
+LDAP_AUTH_OBJECT_CLASS = env('LDAP_AUTH_OBJECT_CLASS')
+LDAP_AUTH_USER_FIELDS = env_from_json('LDAP_AUTH_USER_FIELDS', None, True)
+LDAP_AUTH_USER_LOOKUP_FIELDS = env_as_list('LDAP_AUTH_USER_LOOKUP_FIELDS')
+LDAP_AUTH_CLEAN_USER_DATA = env('LDAP_AUTH_CLEAN_USER_DATA')
+LDAP_AUTH_SYNC_USER_RELATIONS = env('LDAP_AUTH_SYNC_USER_RELATIONS')
+LDAP_AUTH_FORMAT_SEARCH_FILTERS = env('LDAP_AUTH_FORMAT_SEARCH_FILTERS')
+LDAP_AUTH_FORMAT_USERNAME = env('LDAP_AUTH_FORMAT_USERNAME')
+LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = env('LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN')
+LDAP_AUTH_CONNECTION_USERNAME = env('LDAP_AUTH_CONNECTION_USERNAME', wrapped=True)
+LDAP_AUTH_CONNECTION_PASSWORD = env('LDAP_AUTH_CONNECTION_PASSWORD', wrapped=True)
+LDAP_AUTH_CONNECT_TIMEOUT = env_as_int('LDAP_AUTH_CONNECT_TIMEOUT')
+LDAP_AUTH_RECEIVE_TIMEOUT = env_as_int('LDAP_AUTH_RECEIVE_TIMEOUT')
 

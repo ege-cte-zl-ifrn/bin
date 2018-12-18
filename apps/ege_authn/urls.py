@@ -37,13 +37,13 @@ urlpatterns = [
         settings.URL_PATH_PREFIX,
         include(
             [
-                path('', include('suap_acesso.urls')),
+                path('', include('ege_acesso.urls')),
                 path('admin/', admin.site.urls),
                 path('accounts/', include('django.contrib.auth.urls')),
                 path('sso/oauth/', include(('oauth2_provider.urls', 'oauth2_provider_app', ), namespace='oauth2_provider'),),
                 # OAuth 2 endpoints:
-                path('api/hello', include('suap_acesso.urls')),
-                path('secret', include('suap_acesso.urls')),
+                path('api/hello', include('ege_acesso.urls')),
+                path('secret', include('ege_acesso.urls')),
             ]
         )
     ),
