@@ -114,7 +114,7 @@ SESSION_COOKIE_SAMESITE = env('DJANGO_SESSION_COOKIE_SAMESITE', 'Strict')
 SESSION_COOKIE_SECURE = env_as_bool('DJANGO_SESSION_COOKIE_SECURE', False) 
 
 # URL and routers
-URL_PATH_PREFIX = env('ACESSO_URL_PATH_PREFIX', 'id/acesso/')
+URL_PATH_PREFIX = env('ACESSO_URL_PATH_PREFIX', 'ege/acesso/')
 STATIC_URL = "/%s%s" % (URL_PATH_PREFIX, env('DJANGO_STATIC_URL', 'static/'))
 STATIC_ROOT = "/static"
 ROOT_URLCONF = env('DJANGO_ROOT_URLCONF', 'urls')
@@ -149,8 +149,8 @@ REST_FRAMEWORK = {
 # Auth
 LOGIN_URL = '/%slogin/' % URL_PATH_PREFIX
 LOGOUT_URL = '/%slogout/' % URL_PATH_PREFIX
-LOGIN_REDIRECT_URL = 'http://localhost/id/perfil'
-LOGOUT_REDIRECT_URL = 'http://localhost/id/perfil'
+LOGIN_REDIRECT_URL = '/%sperfil' % URL_PATH_PREFIX
+LOGOUT_REDIRECT_URL = '/%s../perfil' % URL_PATH_PREFIX
 AUTHENTICATION_BACKENDS = env_as_list('DJANGO_AUTHENTICATION_BACKENDS',
                                       'django_python3_ldap.auth.LDAPBackend,'
                                       'django.contrib.auth.backends.ModelBackend')
