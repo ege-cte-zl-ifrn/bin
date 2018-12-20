@@ -23,7 +23,7 @@ from python_brfied.env import env, env_as_bool, env_as_list, env_as_list_of_maps
 
 # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Devepment
+# Development
 DEBUG = env_as_bool('DJANGO_DEBUG', True)
 LOGGING = {
     'version': 1,
@@ -99,7 +99,7 @@ WSGI_APPLICATION = env('DJANGO_WSGI_APPLICATION', 'wsgi.application')
 ALLOWED_HOSTS = env_as_list('DJANGO_ALLOWED_HOSTS', '*' if DEBUG else '')
 USE_X_FORWARDED_HOST = True
 ROOT_URLCONF = env('DJANGO_ROOT_URLCONF', 'urls')
-URL_PATH_PREFIX = env('URL_PATH_PREFIX', 'id/perfil/')
+URL_PATH_PREFIX = env('URL_PATH_PREFIX', 'ege/perfil/')
 STATIC_URL = env('DJANGO_STATIC_URL', "/%s%s" % (URL_PATH_PREFIX, 'static/'))
 STATIC_ROOT = "/static"
 
@@ -114,14 +114,17 @@ USE_TZ = env_as_bool('DJANGO_USE_TZ', True)
 
 # Auth and Security... some another points impact on security, take care!
 SECRET_KEY = env('DJANGO_SECRET_KEY', 'changeme')
-LOGIN_URL = env("DJANGO_LOGIN_URL", 'http://localhost/id/perfil/jwt/login')
-LOGOUT_URL = env("DJANGO_LOGOUT_URL", 'http://localhost/id/acesso/logout/')
-LOGIN_REDIRECT_URL = env("DJANGO_LOGIN_REDIRECT_URL", 'http://localhost/id/perfil/')
-LOGOUT_REDIRECT_URL = env("DJANGO_LOGOUT_REDIRECT_URL", 'http://localhost/id/perfil/')
+LOGIN_URL = env("DJANGO_LOGIN_URL", 'http://localhost/ege/perfil/jwt/login')
+LOGOUT_URL = env("DJANGO_LOGOUT_URL", 'http://localhost/ege/perfil/logout/')
+LOGIN_REDIRECT_URL = env("DJANGO_LOGIN_REDIRECT_URL", 'http://localhost/ege/perfil/')
+LOGOUT_REDIRECT_URL = env("DJANGO_LOGOUT_REDIRECT_URL", 'http://localhost/ege/perfil/')
 AUTHENTICATION_BACKENDS = (
     # 'ege_django_auth_jwt.backends.EgeAcessoJwt',
     'django.contrib.auth.backends.ModelBackend',
 )
-EGE_ACESSO_JWT_AUTHORIZE = env("EGE_ACESSO_JWT_ROOT_URL", 'http://localhost/id/acesso/jwt/authorize/')
-EGE_ACESSO_JWT_VALIDATE = env("EGE_ACESSO_JWT_ROOT_URL", 'http://acesso:8000/id/acesso/jwt/validate/')
+EGE_ACESSO_JWT_AUTHORIZE = env("EGE_ACESSO_JWT_AUTHORIZE", 'http://localhost/ege/acesso/jwt/authorize/')
+EGE_ACESSO_JWT_VALIDATE = env("EGE_ACESSO_JWT_VALIDATE", 'http://acesso:8000/ege/acesso/jwt/validate/')
+EGE_ACESSO_JWT_LOGOUT = env("EGE_ACESSO_JWT_LOGOUT", 'http://acesso:8000/ege/acesso/logout/')
 EGE_ACESSO_JWT_CLIENT_ID = env("EGE_ACESSO_JWT_CLIENT_ID", '_EGE_ACESSO_JWT_CLIENT_ID_')
+EGE_ACESSO_JWT_SECRET = env("EGE_ACESSO_JWT_SECRET", '_EGE_ACESSO_JWT_SECRET_')
+EGE_ACESSO_BACKEND = env("EGE_ACESSO_BACKEND", 'ege_django_auth_jwt.backends.PreExistentUserJwtBackend')

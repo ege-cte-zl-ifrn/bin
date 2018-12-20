@@ -27,7 +27,7 @@ SECRET_KEY = env('DJANGO_SECRET_KEY', 'changeme')
 DEBUG = env_as_bool('DJANGO_DEBUG', True)
 ALLOWED_HOSTS = env_as_list('DJANGO_ALLOWED_HOSTS', '*' if DEBUG else '')
 
-URL_PATH_PREFIX = env('URL_PATH_PREFIX', 'id/authn')
+URL_PATH_PREFIX = env('URL_PATH_PREFIX', 'ege/authn')
 
 USE_LDAP = LDAP_AUTH_URL=env('LDAP_AUTH_URL', None) is not None
 

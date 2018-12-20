@@ -25,12 +25,7 @@ from django.contrib import admin
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
-from django.conf.urls import include as include_old, url
-
-
-
-def redirect_to(to):
-    return RedirectView.as_view(url=to)
+from ege_django_auth_jwt.views import jwt_logout
 
 
 urlpatterns = [
@@ -38,13 +33,14 @@ urlpatterns = [
         settings.URL_PATH_PREFIX,
         include(
             [
+                path('logout/', jwt_logout, name='logout'),
                 path('', include('ege_perfil.urls')),
                 path('', include('ege_django_auth_jwt.urls', namespace='ege_django_auth_jwt')),
                 path('admin/', admin.site.urls),
             ]
         )
     ),
-    path('', redirect_to(settings.URL_PATH_PREFIX)),
+    path('', RedirectView.as_view(url=settings.URL_PATH_PREFIX)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
