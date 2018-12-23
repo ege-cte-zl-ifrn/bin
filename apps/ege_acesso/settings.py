@@ -31,7 +31,7 @@ ALLOWED_HOSTS = env_as_list('DJANGO_ALLOWED_HOSTS', '*' if DEBUG else '')
 # Apps
 MY_APPS = env_as_list('MY_APPS', 'ege_acesso')
 DEV_APPS = env_as_list('DEV_APPS', 'debug_toolbar,django_extensions' if DEBUG else '')
-THIRD_APPS = env_as_list('THIRD_APPS', 'django_python3_ldap,rest_framework,rest_framework.authtoken')
+THIRD_APPS = env_as_list('THIRD_APPS', 'django_python3_ldap,rest_framework')
 DJANGO_APPS = env_as_list('DJANGO_APPS', 'django.contrib.admin,'
                                          'django.contrib.auth,'
                                          'django.contrib.contenttypes,'
@@ -121,14 +121,18 @@ ROOT_URLCONF = env('DJANGO_ROOT_URLCONF', 'urls')
 
 # REST Framework
 REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': (
+    'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.BrowsableAPIRenderer',
         'rest_framework.renderers.JSONRenderer',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-    ),
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
     # 'DEFAULT_THROTTLE_CLASSES': (
     #     'rest_framework.throttling.AnonRateThrottle',
     #     'rest_framework.throttling.UserRateThrottle'
@@ -138,11 +142,6 @@ REST_FRAMEWORK = {
     #     'user': '20/second'
     # },
     # 'DEFAULT_FILTER_BACKENDS': 'cnes.apiutils.APIFilterBackend',
-    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    # 'PAGE_SIZE': 2,
-    # 'ORDERING': 'codigo',
-    # 'PAGINATE_BY': 10,
-    # 'PAGINATE_BY_PARAM': 'page_size',
 }
 
 

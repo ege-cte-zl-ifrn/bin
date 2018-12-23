@@ -96,7 +96,7 @@ class Aplicacao(Model):
     urls_callbacks_permitidas = TextField(_('URLs de callback permitidas'), null=True, blank=True)
     urls_origem_permitidas = TextField(_('URLs de origem permitidas'), null=True, blank=True)
     expiracao = PositiveIntegerField(_('Expira em segundos'), default=300)
-    criado_em = DateTimeField(_('whenCreated'))
+    criado_em = DateTimeField(_('whenCreated'), auto_now_add=True)
     excluido_em = DateTimeField(_('is deleted'), null=True, blank=True)
 
     class Meta:
