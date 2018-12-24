@@ -2,5 +2,5 @@
 source _color_logs
 
 ./acesso_migrate
-./acesso_manage init_dev
+./acesso_run python manage.py init_dev
 
