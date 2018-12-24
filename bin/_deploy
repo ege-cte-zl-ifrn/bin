@@ -11,9 +11,6 @@ echo_info "Construir o mundo"
 echo_info "Subir o banco"
 ./db_up
 
-echo_info "Esperar o banco subir"
-./db_wait
-
 echo_info "Migrar o banco"
 ./acesso_migrate
 ./perfil_migrate
