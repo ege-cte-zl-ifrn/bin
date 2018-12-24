@@ -17,11 +17,11 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
-from rest_framework import routers, serializers, viewsets
-from .models import Usuario
-from .serializers import UsuarioSerializer
+from rest_framework import viewsets
+from .models import User
+from .serializers import UserSerializer
 
 
-class UsuarioService(viewsets.ModelViewSet):
-    queryset = Usuario.objects.all()
-    serializer_class = UsuarioSerializer
+class UserService(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

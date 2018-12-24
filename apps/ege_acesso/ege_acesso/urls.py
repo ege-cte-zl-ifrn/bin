@@ -22,11 +22,11 @@ from django.conf import settings
 from django.views.generic.base import TemplateView
 from rest_framework import routers
 from .views import authorize_view, validate_view
-from .services import UsuarioService
+from .services import UserService
 
 
 router = routers.DefaultRouter()
-router.register('usuarios', UsuarioService)
+router.register('users', UserService)
 
 
 app_name='ege_acesso'

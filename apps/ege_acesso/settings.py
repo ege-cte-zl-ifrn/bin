@@ -158,7 +158,7 @@ AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS',
                                                'django.contrib.auth.password_validation.MinimumLengthValidator,'
                                                'django.contrib.auth.password_validation.CommonPasswordValidator,'
                                                'django.contrib.auth.password_validation.NumericPasswordValidator')
-AUTH_USER_MODEL = env("DJANGO_AUTH_USER_MODEL", 'ege_acesso.Usuario')
+AUTH_USER_MODEL = env("DJANGO_AUTH_USER_MODEL", 'ege_acesso.User')
 
 
 # LDAP
