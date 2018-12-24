@@ -91,8 +91,8 @@ implementaçãom em Django vamos testar http://www.marinamele.com/2014/09/securi
 
 ## Iniciando o projeto
 ```
-git clone https://github.com/CoticEaDIFRN/suapsso-build.git
-cd suapsso-build
+git clone https://github.com/CoticEaDIFRN/ege_build.git
+cd ege_build
 git submodule update --init
 cd bin
 cp example.env .env
