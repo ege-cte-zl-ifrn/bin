@@ -135,7 +135,7 @@ class Command(BaseCommand):
         app.client_id = env('EGE_ACESSO_JWT_CLIENT_ID')
         app.secret = env('EGE_ACESSO_JWT_SECRET')
         app.logo = None
-        app.allowed_callback_urls = 'http://localhost/ege/perfil/jwt/complete'
+        app.allowed_callback_urls = 'http://localhost/ege/perfil/jwt/complete/?original_next=/ege/perfil/'
         app.allowed_web_origins = 'http://localhost/ege/perfil/jwt/login'
         app.allowed_logout_urls = 'http://localhost/ege/perfil/logout'
         app.expiration = 600

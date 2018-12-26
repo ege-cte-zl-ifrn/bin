@@ -36,7 +36,7 @@ def authorize_view(request):
                                        request.GET['client_id'],
                                        request.GET['state'],
                                        redirect_uri,
-                                       request.META['HTTP_REFERER'])
+                                       request.META.get('HTTP_REFERER'))
     return redirect("%s&auth_token=%s" % (redirect_uri, auth_token))
 
 
@@ -44,4 +44,4 @@ def authorize_view(request):
 def validate_view(request):
     assert 'client_id' in request.GET, "empty client_id on get"
     assert 'auth_token' in request.GET, "empty auth_token on get"
-    return HttpResponse(TransactionToken.validate(request.GET['auth_token'], request.GET['client_id']))
+    return HttpResponse(TransactionToken.validate(request.GET['client_id'], request.GET['auth_token']))

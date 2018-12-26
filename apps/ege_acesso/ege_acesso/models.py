@@ -139,18 +139,22 @@ class Application(Model):
         app = Application.validate_client_id(client_id)
 
         try:
-            state = jwt.decode(state, app.secret)
+            state = jwt.decode(state, app.secret, algorithm='HS512')
         except Exception as e:
             raise Exception("Invalid 'state'")
         assert 'client_id' in state, "state invalid encoded, client_id not present"
         assert 'uuid' in state, "state invalid encoded, uuid not present"
 
-        assert app.allowed_web_origins is None and validate_url(referer, app.allowed_web_origins), \
-            "'referer' not present on '%s'" % _('allowed_web_origins')
+        # if referer is not None:
+        #     referer = referer
+        #     assert app.allowed_web_origins is None and validate_url(referer.split("?")[0], app.allowed_web_origins), \
+        #         "'referer (%s)' not present on '%s (%s)'" % (referer.split("?")[0],
+        #                                                     _('allowed_web_origins'),
+        #                                                      app.allowed_web_origins)
 
         redirect_uri = urllib.parse.unquote_plus(redirect_uri)
         assert validate_url(redirect_uri, app.allowed_callback_urls), \
-            "'referer' not present on '%s'" % _('allowed_callback_urls')
+            "'redirect_uri' not present on '%s'" % (_('allowed_callback_urls'))
 
         expire_at = datetime.datetime.now() + datetime.timedelta(minutes=10)
 
@@ -178,7 +182,7 @@ class TransactionToken(Model):
     hashcode = CharField(_('hash'), max_length=150)
     state = CharField(_('state'), max_length=150)
     redirect_uri = CharField(_('redirect_uri'), max_length=150)
-    referer = CharField(_('referer'), max_length=150)
+    referer = CharField(_('referer'), max_length=150, null=True, blank=True)
     expire_at = DateTimeField(_('expireAt'))
 
     class Meta:
