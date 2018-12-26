@@ -96,8 +96,14 @@ cd ege_build
 git submodule update --init
 cd bin
 cp example.env .env
-./build 
-./up -d db
+./_build 
+./_deploy
+./db_up
+./proxy_up
 
+# em outra janela
+./acesso_up
 
+# em mais uma janela
+./perfil_up
 ``` 
