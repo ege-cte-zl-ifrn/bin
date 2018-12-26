@@ -22,12 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 from django.utils.translation import gettext as _
-from django.db.models import Model, CharField, TextField, NullBooleanField, FileField, ForeignKey, CASCADE
+from django.db.models import Model, CharField, TextField, NullBooleanField, FileField
+from django.db.models import ForeignKey, OneToOneField, CASCADE
 from django.contrib.auth.models import User
 
 
 class Perfil(Model):
-    usuario = ForeignKey(User, verbose_name=_('Usuário'), on_delete=CASCADE)
+    usuario = OneToOneField(User, verbose_name=_('Usuário'), on_delete=CASCADE)
     polo_nome = CharField(_('Nome do pólo'), max_length=250, blank=True, null=True)
     polo_codigo = CharField(_('Código do pólo'), max_length=250, blank=True, null=True)
     campus_nome = CharField(_('Nome do campus'), max_length=250, blank=True, null=True)
