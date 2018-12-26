@@ -107,3 +107,7 @@ cp example.env .env
 # em mais uma janela
 ./perfil_up
 ``` 
+
+## Testar
+
+Acesse http://localhost/  e, quando solicitado, informe o usuário e senha do superusário que você criou, caso tenha deixado o deploy criar o usuário será ```admin``` e a senha será ```admin```.
