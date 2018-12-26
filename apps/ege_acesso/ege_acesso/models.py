@@ -179,10 +179,10 @@ class Application(Model):
 class TransactionToken(Model):
     application = ForeignKey(verbose_name=_('application'), to=Application, on_delete=CASCADE)
     user = ForeignKey(verbose_name=_('user'), to=User, on_delete=CASCADE)
-    hashcode = CharField(_('hash'), max_length=150)
-    state = CharField(_('state'), max_length=150)
-    redirect_uri = CharField(_('redirect_uri'), max_length=150)
-    referer = CharField(_('referer'), max_length=150, null=True, blank=True)
+    hashcode = TextField(_('hash'))
+    state = TextField(_('state'))
+    redirect_uri = TextField(_('redirect_uri'))
+    referer = TextField(_('referer'), null=True, blank=True)
     expire_at = DateTimeField(_('expireAt'))
 
     class Meta:
