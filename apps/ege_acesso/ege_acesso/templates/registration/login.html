@@ -230,12 +230,9 @@
             <div id="main" class="d-flex flex-row justify-content-center">
                 <form action="{{ app_path }}" method="post">{% csrf_token %}
                     <input type="hidden" name="next" value="{{ next }}">
-                    <img class="w-50" src="https://ead.ifrn.edu.br/portal/wp-content/uploads/2017/04/logo_IFRN_EaD.png" alt="Logo IFRN EaD">
-                    <div class="d-md-none w-100">
-                        <p class="text-center mt-4" style="color: green; font-size: 11px;">Acesso</p>
-                    </div>
-                    <div class="d-none d-md-block group">
-                        <h5 class="text-center mt-4" style="color: green; font-size: 25px">Acesso</h5>
+                    <img class="w-50 d-md-none" src="https://ead.ifrn.edu.br/portal/wp-content/uploads/2017/04/logo_IFRN_EaD.png" alt="Logo IFRN EaD">
+                    <div class="group">
+                        <h5 class="text-center mt-4 mt-md-0" style="color: green; font-size: 25px">Acesso</h5>
                     </div>
 
                     <div class="group">
@@ -260,7 +257,7 @@
 
                 </form>
 
-                <div id="instanciaMoodle" class="d-none d-md-flex flex-row justify-content-center align-items-center mt-3 mb-3">
+                <div id="instanciaMoodle" class="d-none d-md-flex flex-row justify-content-center align-items-center mt-3 mb-4">
                     <img class="w-50" src="https://ead.ifrn.edu.br/ava/academico/theme/boost_eadifrn/pix/eadifrn-logo.svg" alt="Logo IFRN EaD">
                 </div>
             </div>
