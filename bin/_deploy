@@ -11,9 +11,14 @@ echo_info "Construir o mundo"
 echo_info "Subir o banco"
 ./db_up
 
-echo_info "Migrar o banco"
+echo_info "Migrar o banco..."
+
+echo_info "... acesso"
 ./acesso_migrate
+
+echo_info "... perfil"
 ./perfil_migrate
+
 ./acesso_run python manage.py init_dev
 
 echo_info "Parar o mundo novamente"
