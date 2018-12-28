@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-toolbar app color="#5AC26C">
-      <img :src=logo class="mr-5" style="width:10%">
+      <img :src="logo" class="mr-5" style="width:10%">
       <v-divider vertical dark style="border-width:thin"></v-divider>
       <h2 class="ml-3" style="color:white">Perfil</h2>
       <v-spacer></v-spacer>
@@ -44,7 +44,7 @@ export default {
   data () {
     return {
       logo: 'ege.svg',
-      photo_user: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/lists/1.jpg'
+      photo_user: 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538642-user_512x512.png'
     }
   }
 }

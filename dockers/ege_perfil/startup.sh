@@ -1,4 +1,4 @@
-pip install -r requirements-app.txt 
+pip install -r requirements-app.txt
 
 if [ "True" = "$DJANGO_DEBUG" ]; then
     python3 manage.py runserver 0.0.0.0:8000
