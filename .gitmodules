@@ -7,3 +7,6 @@
 [submodule "apps/ege_django_base"]
 	path = apps/ege_django_base
 	url = https://github.com/CoticEaDIFRN/ege_django_base.git
+[submodule "apps/ege_acesso"]
+	path = apps/ege_acesso
+	url = git@github.com:CoticEaDIFRN/ege_acesso.git
