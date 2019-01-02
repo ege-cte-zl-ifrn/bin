@@ -38,4 +38,4 @@ services:
       - .env
     volumes:
       - '../apps/ege_perfil:/apps/app'
-#      - '../apps/ege_django_auth_jwt/:/libs/ege_django_auth_jwt/'
+      - '../apps/ege_django_auth_jwt/:/libs/ege_django_auth_jwt/'
