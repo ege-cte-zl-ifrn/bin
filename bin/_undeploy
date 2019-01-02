@@ -5,3 +5,4 @@ source _color_logs
 #rm -f .env
 sudo rm -rf ../volumes
 
+docker system prune -a
