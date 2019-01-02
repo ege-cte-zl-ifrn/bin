@@ -17,9 +17,9 @@ services:
       - "${NGINX_EXTERNAL_PORT}:80"
     volumes:
       - "../dockers/proxy/conf.d:/etc/nginx/conf.d"
-    depends_on:
-      - acesso
-      - perfil
+#    depends_on:
+#      - acesso
+#      - perfil
 
   acesso:
     image: 'ifrn/ege.acesso'
@@ -27,6 +27,7 @@ services:
       context: ../dockers/ege_acesso
     env_file:
       - .env
+      - .acesso.env
     volumes:
       - '../apps/ege_acesso:/apps/app'
 
@@ -39,3 +40,4 @@ services:
     volumes:
       - '../apps/ege_perfil:/apps/app'
       - '../apps/ege_django_auth_jwt/:/libs/ege_django_auth_jwt/'
+      - '../apps/ege_django_theme/:/libs/ege_django_theme/'
