@@ -22,45 +22,61 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 from django.utils.translation import gettext as _
-from django.db.models import Model, CharField, TextField, NullBooleanField, FileField
-from django.db.models import ForeignKey, OneToOneField, CASCADE
-from django.contrib.auth.models import User
+from django.db.models import Model, CharField, TextField, NullBooleanField, FileField, DateTimeField, SmallIntegerField,\
+    BooleanField
+from django.db.models import ManyToManyField
+from django.contrib.auth.models import AbstractUser
+from python_brfied import to_choice
+import ege_django_theme
 
 
-class Perfil(Model):
-    usuario = OneToOneField(User, verbose_name=_('Usuário'), on_delete=CASCADE)
-    polo_nome = CharField(_('Nome do pólo'), max_length=250, blank=True, null=True)
-    polo_codigo = CharField(_('Código do pólo'), max_length=250, blank=True, null=True)
-    campus_nome = CharField(_('Nome do campus'), max_length=250, blank=True, null=True)
-    campus_codigo = CharField(_('Código do campus'), max_length=250, blank=True, null=True)
-    biografia = TextField(_('Biografia'), blank=True, null=True)
-    email_publico = NullBooleanField(_('Exibir para todos'))
-    necessidade_especial_publico = NullBooleanField(_('Exibir para todos'))
+class SpecialNeed(Model):
+    VISION = _('Visão')
+    AUDITION = _('Audição')
+    OTHERS = _('Outras')
+    CHOICES = to_choice(VISION, AUDITION, OTHERS)
+
+    name = CharField(_('name'), max_length=250, blank=False, null=False)
+    category = CharField(_('category'), max_length=250, choices=CHOICES, blank=False, null=False)
 
     class Meta:
-        verbose_name = _('Perfil')
-        verbose_name_plural = _('Perfis')
+        verbose_name = _('special need')
+        verbose_name_plural = _('special needs')
+
+    def __str__(self):
+        return "%s (%s)" % (self.name, self.category)
 
 
-class PerfilFoto(Model):
-    imagem = FileField(_('Exibir para todos'))
-    status = FileField(_('Exibir para todos'))
-    solicitada_em = FileField(_('Exibir para todos'))
-    homologacao_em = FileField(_('Exibir para todos'))
-    homologacao_por = FileField(_('Exibir para todos'))
-    
+class Profile(AbstractUser):
+    username = CharField(_('username'), max_length=150, primary_key=True)
 
-class OpcoesAcessibilidade(Model):
-    fonte_tamanho = CharField(_('Exibir para todos'), max_length=250, blank=True, null=True)
-    paleta = CharField(_('Exibir para todos'), max_length=250, blank=True, null=True)
-    legendagem = NullBooleanField(_('Exibir para todos'), max_length=250, blank=True, null=True)
-    libras = NullBooleanField(_('Exibir para todos'), max_length=250, blank=True, null=True)
-    ledor = NullBooleanField(_('Exibir para todos'), max_length=250, blank=True, null=True)
+    is_active = BooleanField(_('is active'), default=True)
+    is_staff = BooleanField(_('staff status'), default=False)
+    is_superuser = BooleanField(_('superuser status'), default=False)
 
+    is_personal_email_public = NullBooleanField(_('show to all'))
 
-class NecessidadeEspecial(Model):
-    nome = CharField(_('Exibir para todos'), max_length=250, blank=True, null=True)
+    biografy = TextField(_('biografy'), blank=True, null=True)
+    is_biografy_public = TextField(_('show to all'), blank=True, null=True)
 
+    valid_photo = FileField(_('valid photo'))
+    pending_photo = FileField(_('pending photo'))
+    solicitation_at = DateTimeField(_('solicitation_at'), blank=True, null=True)
+    approved_at = DateTimeField(_('approved at'), blank=True, null=True)
+    approved_by = CharField(_('approved by'), max_length=250, blank=True, null=True)
 
-class PerfilNecessidadeEspecial(Model):
-    nome = CharField(_('Exibir para todos'), max_length=250, blank=True, null=True)
+    font_size = SmallIntegerField(_('font size'), blank=True, null=True)
+    theme_skin = CharField(_('theme skin'), choices=ege_django_theme.skins, max_length=250, blank=True, null=True)
+    legends = NullBooleanField(_('legends'), blank=True, null=True)
+    sign_language = NullBooleanField(_('sign language'), blank=True, null=True)
+    screen_reader = NullBooleanField(_('screen reader'), blank=True, null=True)
+
+    special_needs = ManyToManyField(SpecialNeed, verbose_name=_('special needs'))
+    is_special_needs_public = NullBooleanField(_('show to all'))
+
+    class Meta:
+        verbose_name = _('profile')
+        verbose_name_plural = _('profiles')
+
+    def __str__(self):
+        return "%s (%s)" % (self.username, self.is_active)

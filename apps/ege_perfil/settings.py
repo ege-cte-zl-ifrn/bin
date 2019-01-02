@@ -17,9 +17,7 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
-import os
-import json
-from python_brfied.env import env, env_as_bool, env_as_list, env_as_list_of_maps, env_as_int, env_from_json
+from python_brfied.env import env, env_as_bool, env_as_list
 
 # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -73,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'ege_perfil.context_processors.ege',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -117,13 +116,12 @@ LOGIN_URL = env("DJANGO_LOGIN_URL", 'http://localhost/ege/perfil/jwt/login')
 LOGOUT_URL = env("DJANGO_LOGOUT_URL", 'http://localhost/ege/perfil/logout/')
 LOGIN_REDIRECT_URL = env("DJANGO_LOGIN_REDIRECT_URL", 'http://localhost/ege/perfil/')
 LOGOUT_REDIRECT_URL = env("DJANGO_LOGOUT_REDIRECT_URL", 'http://localhost/ege/perfil/')
-AUTHENTICATION_BACKENDS = (
-    # 'ege_django_auth_jwt.backends.EgeAcessoJwt',
-    'django.contrib.auth.backends.ModelBackend',
-)
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
 EGE_ACESSO_JWT_AUTHORIZE = env("EGE_ACESSO_JWT_AUTHORIZE", 'http://localhost/ege/acesso/jwt/authorize/')
 EGE_ACESSO_JWT_VALIDATE = env("EGE_ACESSO_JWT_VALIDATE", 'http://acesso:8000/ege/acesso/jwt/validate/')
 EGE_ACESSO_JWT_LOGOUT = env("EGE_ACESSO_JWT_LOGOUT", 'http://acesso:8000/ege/acesso/logout/')
 EGE_ACESSO_JWT_CLIENT_ID = env("EGE_ACESSO_JWT_CLIENT_ID", '_EGE_ACESSO_JWT_CLIENT_ID_')
 EGE_ACESSO_JWT_SECRET = env("EGE_ACESSO_JWT_SECRET", '_EGE_ACESSO_JWT_SECRET_')
 EGE_ACESSO_BACKEND = env("EGE_ACESSO_BACKEND", 'ege_django_auth_jwt.backends.PreExistentUserJwtBackend')
+
+AUTH_USER_MODEL = env("DJANGO_AUTH_USER_MODEL", 'ege_perfil.Profile')
