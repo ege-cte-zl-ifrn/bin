@@ -11,7 +11,7 @@
 </head>
 <body>
     <img src="https://www.volacci.com/sites/default/files/Icon-user.png" />
-    <dl>
+    <dl>[{{user.jwt_data}}]
         <dt>Nome</dt><dd>{{ege_user.nome_apresentacao}}</dd>
         <dt>Matricula</dt><dd>{{user.username}}</dd>
         {% if is_aluno and ege_user.polo %}
