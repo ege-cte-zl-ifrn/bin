@@ -12,7 +12,7 @@
 	url = https://github.com/CoticEaDIFRN/ege_acesso.git
 [submodule "apps/ege_integrador_ui"]
 	path = apps/ege_integrador_ui
-	url = git@github.com:CoticEaDIFRN/ege_integrador_ui.git
+	url = https://github.com/CoticEaDIFRN/ege_integrador_ui.git
 [submodule "apps/ege_integrador_ms"]
 	path = apps/ege_integrador_ms
-	url = git@github.com:CoticEaDIFRN/ege_integrador_ms.git
+	url = https://github.com/CoticEaDIFRN/ege_integrador_ms.git
