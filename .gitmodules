@@ -22,3 +22,6 @@
 [submodule "apps/ege_processo_seletivo_administrativo"]
 	path = apps/ege_processo_seletivo_administrativo
 	url = git@github.com:CoticEaDIFRN/ege_processo_seletivo_administrativo.git
+[submodule "apps/ege_perfil"]
+	path = apps/ege_perfil
+	url = git@github.com:CoticEaDIFRN/ege_perfil.git
