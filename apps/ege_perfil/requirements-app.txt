@@ -1,2 +1,0 @@
--e /libs/ege_django_auth_jwt
--e /libs/ege_django_theme
