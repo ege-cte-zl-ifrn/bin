@@ -19,3 +19,6 @@
 [submodule "apps/ege_processo_seletivo_publico"]
 	path = apps/ege_processo_seletivo_publico
 	url = git@github.com:CoticEaDIFRN/ege_processo_seletivo_publico.git
+[submodule "apps/ege_processo_seletivo_administrativo"]
+	path = apps/ege_processo_seletivo_administrativo
+	url = git@github.com:CoticEaDIFRN/ege_processo_seletivo_administrativo.git
