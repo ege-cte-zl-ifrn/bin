@@ -41,3 +41,17 @@ services:
       - '../apps/ege_perfil:/apps/app'
       - '../apps/ege_django_auth_jwt/:/libs/ege_django_auth_jwt/'
       - '../apps/ege_django_theme/:/libs/ege_django_theme/'
+
+  processo_seletivo_administrativo:
+    image: 'ifrn/ege.django_base:1.3.1'
+    env_file:
+      - .env
+    volumes:
+      - '../apps/ege_processo_seletivo_administrativo:/apps/app'
+
+  processo_seletivo_publico:
+    image: 'ifrn/ege.django_base:1.3.1'
+    env_file:
+      - .env
+    volumes:
+      - '../apps/ege_processo_seletivo_publico:/apps/app'
