@@ -19,6 +19,9 @@ echo_info "... acesso"
 echo_info "... perfil"
 ./perfil_migrate
 
+echo_info "... processo seletivo"
+./seletivo_migrate
+
 ./acesso_run python manage.py init_dev
 
 echo_info "Parar o mundo novamente"

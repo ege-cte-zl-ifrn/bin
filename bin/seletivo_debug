@@ -1,0 +1,4 @@
+#!/bin/bash
+source _color_logs
+
+docker-compose run --service-ports processo_seletivo $@

@@ -15,7 +15,15 @@ cd ege_build
 git submodule update --init
 cd bin
 cp example.env .env
-cp acesso_example.env .acesso.env
+cp example_acesso.env .acesso.env
+cp example_acesso_ldap.env .acesso_ldap.env
+# caso não queira usar LDAP
+# echo "" > .acesso_ldap.env
+cp example_perfil.env .perfil.env
+cp example_processo_seletivo.env .processo_seletivo.env
+cp example_selecao.env .selecao.env
+cp example_integrador_ms.env .integrador_ms.env
+cp example_integrador_ui.env .integrador_ui.env
 ./_deploy
 ./db_up
 ./proxy_up
