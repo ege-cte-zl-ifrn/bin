@@ -22,6 +22,8 @@ echo_info "... perfil"
 echo_info "... processo seletivo"
 ./seletivo_migrate
 
+
+echo_info "Iniciando o ambiente de desenvolvimento"
 ./acesso_run python manage.py init_dev
 
 echo_info "Parar o mundo novamente"
