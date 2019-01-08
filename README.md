@@ -38,3 +38,7 @@ cp example_integrador_ui.env .integrador_ui.env
 ## Testar
 
 Acesse http://localhost/  e, quando solicitado, informe o usuário e senha do superusário que você criou, caso tenha deixado o deploy criar o usuário será ```admin``` e a senha será ```admin```.
+
+## Observação
+
+Antes de fazer qualquer alteração em um dos APPS, é necessário certificar-se de que está trabalhando na branch adequada.

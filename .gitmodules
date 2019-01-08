@@ -1,21 +1,21 @@
 [submodule "apps/ege_django_theme"]
 	path = apps/ege_django_theme
-	url = https://github.com/CoticEaDIFRN/ege_django_theme.git
+	url = git@github.com:CoticEaDIFRN/ege_django_theme.git
 [submodule "apps/ege_django_auth_jwt"]
 	path = apps/ege_django_auth_jwt
-	url = https://github.com/CoticEaDIFRN/ege_django_auth_jwt.git
+	url = git@github.com:CoticEaDIFRN/ege_django_auth_jwt.git
 [submodule "apps/ege_django_base"]
 	path = apps/ege_django_base
-	url = https://github.com/CoticEaDIFRN/ege_django_base.git
+	url = git@github.com:CoticEaDIFRN/ege_django_base.git
 [submodule "apps/ege_acesso"]
 	path = apps/ege_acesso
-	url = https://github.com/CoticEaDIFRN/ege_acesso.git
+	url = git@github.com:CoticEaDIFRN/ege_acesso.git
 [submodule "apps/ege_integrador_ui"]
 	path = apps/ege_integrador_ui
-	url = https://github.com/CoticEaDIFRN/ege_integrador_ui.git
+	url = git@github.com:CoticEaDIFRN/ege_integrador_ui.git
 [submodule "apps/ege_integrador_ms"]
 	path = apps/ege_integrador_ms
-	url = https://github.com/CoticEaDIFRN/ege_integrador_ms.git
+	url = git@github.com:CoticEaDIFRN/ege_integrador_ms.git
 [submodule "apps/ege_processo_seletivo_publico"]
 	path = apps/ege_processo_seletivo_publico
 	url = git@github.com:CoticEaDIFRN/ege_processo_seletivo_publico.git
