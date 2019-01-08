@@ -51,6 +51,7 @@ services:
       - .processo_seletivo.env
     volumes:
       - '../apps/ege_processo_seletivo_administrativo:/apps/app'
+#      - '../apps/ege_django_auth_jwt/:/libs/ege_django_auth_jwt/'
 #
 #  selecao:
 #    image: 'ifrn/ege.django_base:1.3.1'
