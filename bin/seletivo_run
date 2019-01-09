@@ -1,5 +1,5 @@
 #!/bin/bash
 source _color_logs
 
-docker-compose run processo_seletivo $@
+docker-compose run seletivo $@
 

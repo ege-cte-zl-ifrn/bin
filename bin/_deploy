@@ -19,7 +19,7 @@ echo_info "... acesso"
 echo_info "... perfil"
 ./perfil_migrate
 
-echo_info "... processo seletivo"
+echo_info "... seletivo"
 ./seletivo_migrate
 
 
