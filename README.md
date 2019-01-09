@@ -9,30 +9,34 @@ project com o propósito de ajuda no processo de desenvolvimento e implantação
 
 
 ## Iniciando o projeto
-```
+```bash
 git clone https://github.com/CoticEaDIFRN/ege_build.git
-cd ege_build
+cd ege_build/bin
 git submodule update --init
-cd bin
 cp example.env .env
 cp example_acesso.env .acesso.env
-cp example_acesso_ldap.env .acesso_ldap.env
-# caso não queira usar LDAP
-# echo "" > .acesso_ldap.env
 cp example_perfil.env .perfil.env
 cp example_processo_seletivo.env .processo_seletivo.env
 cp example_selecao.env .selecao.env
 cp example_integrador_ms.env .integrador_ms.env
 cp example_integrador_ui.env .integrador_ui.env
+# caso queira usar LDAP
+# cp example_acesso_ldap.env .acesso_ldap.env
+# caso NÃO queira usar LDAP
+# echo "" > .acesso_ldap.env
 ./_deploy
 ./db_up
-./proxy_up
 
-# em outra janela
+# em outra janela, o acesso é obrigatório
 ./acesso_up
 
-# em mais uma janela
+# em mais uma janela, o perfil é desejável
 ./perfil_up
+
+# em mais uma janela, caso queira desenvolver o processo_seletivo
+./seletivo_up
+
+./proxy_up
 ``` 
 
 ## Testar
