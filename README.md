@@ -11,8 +11,8 @@ project com o propósito de ajuda no processo de desenvolvimento e implantação
 ## Iniciando o projeto
 ```bash
 git clone https://github.com/CoticEaDIFRN/ege_build.git
-cd ege_build/bin
-git submodule update --init
+
+cd ege_build/conf
 cp example.env .env
 cp example_acesso.env .acesso.env
 cp example_perfil.env .perfil.env
@@ -24,6 +24,9 @@ cp example_integrador_ui.env .integrador_ui.env
 # cp example_acesso_ldap.env .acesso_ldap.env
 # caso NÃO queira usar LDAP
 # echo "" > .acesso_ldap.env
+
+git submodule update --init
+cd ege_build/bin
 ./_deploy
 ./db_up
 
