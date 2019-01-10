@@ -16,12 +16,12 @@
 [submodule "apps/ege_integrador_ms"]
 	path = apps/ege_integrador_ms
 	url = git@github.com:CoticEaDIFRN/ege_integrador_ms.git
-[submodule "apps/ege_processo_seletivo_publico"]
+[submodule "apps/ege_selecao"]
 	path = apps/ege_selecao
-	url = git@github.com:CoticEaDIFRN/ege_processo_seletivo_publico.git
-[submodule "apps/ege_processo_seletivo_administrativo"]
+	url = git@github.com:CoticEaDIFRN/ege_selecao.git
+[submodule "apps/ege_seletivo"]
 	path = apps/ege_seletivo
-	url = git@github.com:CoticEaDIFRN/ege_processo_seletivo_administrativo.git
+	url = git@github.com:CoticEaDIFRN/ege_seletivo.git
 [submodule "apps/ege_perfil"]
 	path = apps/ege_perfil
 	url = git@github.com:CoticEaDIFRN/ege_perfil.git
