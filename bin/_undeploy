@@ -2,7 +2,7 @@
 source _color_logs
 
 ./_down
-#rm -f .env
+#rm -f .ege.env
 sudo rm -rf ../volumes
 
 docker system prune -a

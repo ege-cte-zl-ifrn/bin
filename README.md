@@ -13,19 +13,21 @@ project com o propósito de ajuda no processo de desenvolvimento e implantação
 git clone https://github.com/CoticEaDIFRN/ege_build.git
 
 cd ege_build/conf
-cp example.env .env
-cp example_acesso.env .acesso.env
-cp example_perfil.env .perfil.env
-cp example_processo_seletivo.env .processo_seletivo.env
-cp example_selecao.env .selecao.env
-cp example_integrador_ms.env .integrador_ms.env
-cp example_integrador_ui.env .integrador_ui.env
+cp -n example_db.env .db.env
+cp -n example_ege.env .ege.env
+cp -n example_acesso.env .acesso.env
+cp -n example_perfil.env .perfil.env
+cp -n example_seletivo.env .seletivo.env
+cp -n example_selecao.env .selecao.env
+cp -n example_integrador_ms.env .integrador_ms.env
+cp -n example_integrador_ui.env .integrador_ui.env
 # caso queira usar LDAP
-# cp example_acesso_ldap.env .acesso_ldap.env
+# cp -n example_acesso_ldap.env .acesso_ldap.env
 # caso NÃO queira usar LDAP
 # echo "" > .acesso_ldap.env
 
 git submodule update --init
+cp example.env .env
 cd ege_build/bin
 ./_deploy
 ./db_up

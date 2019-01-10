@@ -7,11 +7,11 @@ NO_COLOR='\033[0m'
 
 pwd=$(pwd -P)
 
-if [[ ! -f "$pwd/.env" ]]; then
-  cp $pwd/../conf/example.env $pwd/../conf/.env
+if [[ ! -f "$pwd/.ege.env" ]]; then
+  cp $pwd/example.env $pwd/.env
 fi
 
-source "$pwd/../conf/.env"
+source "$pwd/.env"
 
 echo_warning() {
   echo ${@:3} -e "$ORANGE_COLOR WARN: $(date +\"%F\ %T\") $1$NO_COLOR"
