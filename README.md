@@ -11,24 +11,7 @@ project com o propósito de ajuda no processo de desenvolvimento e implantação
 ## Iniciando o projeto
 ```bash
 git clone https://github.com/CoticEaDIFRN/ege_build.git
-
-cd ege_build/conf
-cp -n example_db.env .db.env
-cp -n example_ege.env .ege.env
-cp -n example_acesso.env .acesso.env
-cp -n example_perfil.env .perfil.env
-cp -n example_seletivo.env .seletivo.env
-cp -n example_selecao.env .selecao.env
-cp -n example_integrador_ms.env .integrador_ms.env
-cp -n example_integrador_ui.env .integrador_ui.env
-# caso queira usar LDAP
-# cp -n example_acesso_ldap.env .acesso_ldap.env
-# caso NÃO queira usar LDAP
-# echo "" > .acesso_ldap.env
-
 git submodule update --init
-cp example.env .env
-cd ege_build/bin
 ./_deploy
 ./db_up
 
@@ -41,8 +24,25 @@ cd ege_build/bin
 # em mais uma janela, caso queira desenvolver o processo_seletivo
 ./seletivo_up
 
+# recomendamos que o proxy_up só seja executado depois que as outras aplicações terminarem o UP
 ./proxy_up
 ``` 
+
+
+### Caso queiras usar LDAP
+
+```bash
+
+cp conf/examples/acesso_ldap.env conf/.acesso_ldap.env
+
+```
+
+Recomendamos que, antes de alterar um código coloque em uma branch, no caso, se quiseres usar a branch master use o script abaixo.
+```bash
+# estando em bin
+./_to_branch master
+
+```
 
 ## Testar
 
