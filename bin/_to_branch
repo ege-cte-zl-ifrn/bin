@@ -16,3 +16,9 @@ for f in ../apps/*; do
     git pull origin $branch
   echo
 done
+
+cd "$pwd/../dockers/ege_base" && \
+    git fetch
+    git checkout $branch && \
+    git pull origin $branch
+echo
