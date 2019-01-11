@@ -1,4 +1,4 @@
 #!/bin/bash
 source _color_logs
 
-docker-compose run perfil sh -c 'pip install --upgrade -r requirements-app.txt && python3 manage.py migrate'
+docker-compose run perfil sh -c '/install_packages.sh && python3 manage.py migrate'

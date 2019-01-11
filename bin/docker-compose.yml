@@ -22,7 +22,7 @@ services:
 #      - perfil
 
   acesso:
-    image: 'ifrn/ege_base:1.5.0'
+    image: 'ifrn/ege_base:1.5.1'
     env_file:
       - ../conf/.db.env
       - ../conf/.ege.env
@@ -33,7 +33,7 @@ services:
       - '../apps/ege_theme/:/libs/ege_theme/'
 
   perfil:
-    image: 'ifrn/ege_base:1.5.0'
+    image: 'ifrn/ege_base:1.5.1'
     env_file:
       - ../conf/.db.env
       - ../conf/.ege.env
@@ -44,7 +44,7 @@ services:
       - '../apps/ege_theme/:/libs/ege_theme/'
 
   seletivo:
-    image: 'ifrn/ege_base:1.5.0'
+    image: 'ifrn/ege_base:1.5.1'
     env_file:
       - ../conf/.db.env
       - ../conf/.ege.env
@@ -55,7 +55,7 @@ services:
       - '../apps/ege_theme/:/libs/ege_theme/'
 
 #  selecao:
-#    image: 'ifrn/ege_base:1.5.0'
+#    image: 'ifrn/ege_base:1.5.1'
 #    env_file:
 #      - ../conf/.db.env
 #      - ../conf/.ege.env
