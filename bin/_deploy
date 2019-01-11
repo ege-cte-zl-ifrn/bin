@@ -49,7 +49,7 @@ echo_info "... seletivo"
 
 echo ""
 echo_info "Iniciando o ambiente de desenvolvimento"
-./acesso_run python manage.py init_dev
+./acesso_run /install_packages.sh && python manage.py init_dev
 
 echo ""
 echo_info "Parar o mundo novamente"
