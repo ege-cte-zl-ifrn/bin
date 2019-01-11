@@ -11,7 +11,9 @@ project com o propósito de ajuda no processo de desenvolvimento e implantação
 ## Iniciando o projeto
 ```bash
 git clone https://github.com/CoticEaDIFRN/ege_build.git
+cd ege_build
 git submodule update --init
+cd bin
 ./_deploy
 ./db_up
 
@@ -37,6 +39,9 @@ cp conf/examples/acesso_ldap.env conf/.acesso_ldap.env
 
 ```
 
+
+## Observação
+
 Recomendamos que, antes de alterar um código coloque em uma branch, no caso, se quiseres usar a branch master use o script abaixo.
 ```bash
 # estando em bin
@@ -44,10 +49,7 @@ Recomendamos que, antes de alterar um código coloque em uma branch, no caso, se
 
 ```
 
+
 ## Testar
 
 Acesse http://localhost/  e, quando solicitado, informe o usuário e senha do superusário que você criou, caso tenha deixado o deploy criar o usuário será ```admin``` e a senha será ```admin```.
-
-## Observação
-
-Antes de fazer qualquer alteração em um dos APPS, é necessário certificar-se de que está trabalhando na branch adequada.
