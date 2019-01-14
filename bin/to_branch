@@ -1,0 +1,24 @@
+#!/bin/bash
+source color_logs
+
+
+if [[ $# -eq 0 ]]; then
+  branch='master'
+else
+  branch=$1
+fi
+
+for f in ../apps/*; do
+  echo_info "Changing branch of $f to $branch..."
+  cd "$pwd/$f" && \
+    git fetch
+    git checkout $branch && \
+    git pull origin $branch
+  echo
+done
+
+cd "$pwd/../dockers/ege_base" && \
+    git fetch
+    git checkout $branch && \
+    git pull origin $branch
+echo

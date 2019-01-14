@@ -1,0 +1,56 @@
+#!/bin/bash
+
+source color_logs
+
+
+echo_info "Copiando arquivos"
+cp -n example.env .env
+if [[ ! -e ../conf/.acesso_ldap.env ]]; then
+    echo "" > ../conf/.acesso_ldap.env
+fi
+for f in ../conf/examples/*; do
+  filename=$(basename $f)
+  if [[ "$filename" != "acesso_ldap.env" ]]; then
+    cp -n ../conf/examples/$filename ../conf/.$filename
+  fi
+done
+
+
+echo ""
+echo_info "Parar o mundo"
+./down
+
+echo ""
+echo_info "Construir o mundo"
+./build
+
+echo ""
+echo_info "Subir o banco"
+./db/up
+
+echo ""
+echo_info "Migrar os bancos..."
+
+echo ""
+echo_info "... acesso"
+./acesso/migrate
+
+echo ""
+echo_info "... perfil"
+./perfil/migrate
+
+echo ""
+echo_info "... seletivo"
+./seletivo/migrate
+
+
+echo ""
+echo_info "Iniciando o ambiente de desenvolvimento"
+./acesso/run ./manage.sh init_dev
+
+echo ""
+echo_info "Parar o mundo novamente"
+down
+
+echo ""
+echo_success "Tudo pronto"

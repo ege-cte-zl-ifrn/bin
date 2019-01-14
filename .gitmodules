@@ -1,8 +1,8 @@
 [submodule "apps/ege_django_theme"]
-	path = apps/ege_theme
+	path = libs/ege_theme
 	url = git@github.com:CoticEaDIFRN/ege_django_theme.git
 [submodule "apps/ege_django_auth_jwt"]
-	path = apps/ege_auth_jwt
+	path = libs/ege_utils
 	url = git@github.com:CoticEaDIFRN/ege_django_auth_jwt.git
 [submodule "apps/ege_django_base"]
 	path = dockers/ege_base

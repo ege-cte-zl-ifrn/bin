@@ -30,7 +30,7 @@ services:
       - ../conf/.acesso_ldap.env
     volumes:
       - '../apps/ege_acesso:/apps/app'
-      - '../apps/ege_theme/:/libs/ege_theme/'
+      - '../libs/:/libs/'
 
   perfil:
     image: 'ifrn/ege_base:1.5.2'
@@ -40,8 +40,7 @@ services:
       - ../conf/.perfil.env
     volumes:
       - '../apps/ege_perfil:/apps/app'
-      - '../apps/ege_auth_jwt/:/libs/ege_auth_jwt/'
-      - '../apps/ege_theme/:/libs/ege_theme/'
+      - '../libs/:/libs/'
 
   seletivo:
     image: 'ifrn/ege_base:1.5.2'
@@ -51,8 +50,27 @@ services:
       - ../conf/.seletivo.env
     volumes:
       - '../apps/ege_seletivo:/apps/app'
-      - '../apps/ege_auth_jwt/:/libs/ege_auth_jwt/'
-      - '../apps/ege_theme/:/libs/ege_theme/'
+      - '../libs/:/libs/'
+
+  c_acesso:
+    image: 'ifrn/ege_base:1.5.2'
+    env_file:
+      - ../conf/.db.env
+      - ../conf/.ege.env
+      - ../conf/.c_acesso.env
+    volumes:
+      - '../apps/ege_acesso:/apps/app'
+      - '../libs/:/libs/'
+
+  c_perfil:
+    image: 'ifrn/ege_base:1.5.2'
+    env_file:
+      - ../conf/.db.env
+      - ../conf/.ege.env
+      - ../conf/.c_perfil.env
+    volumes:
+      - '../apps/ege_perfil:/apps/app'
+      - '../libs/:/libs/'
 
 #  selecao:
 #    image: 'ifrn/ege_base:1.5.2'
@@ -62,3 +80,4 @@ services:
 #      - ../conf/.selecao.env
 #    volumes:
 #      - '../apps/ege_selecao:/apps/app'
+#      - '../libs/:/libs/'

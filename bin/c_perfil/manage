@@ -1,0 +1,5 @@
+#!/bin/bash
+source ../color_logs
+
+exec python3 manage.py $@
+
