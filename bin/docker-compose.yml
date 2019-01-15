@@ -32,6 +32,16 @@ services:
       - '../apps/ege_acesso:/apps/app'
       - '../libs/:/libs/'
 
+  dashboard:
+    image: 'ifrn/ege_base:1.5.2'
+    env_file:
+      - ../conf/.db.env
+      - ../conf/.ege.env
+      - ../conf/.dashboard.env
+    volumes:
+      - '../apps/ege_dashboard:/apps/app'
+      - '../libs/:/libs/'
+
   perfil:
     image: 'ifrn/ege_base:1.5.2'
     env_file:
