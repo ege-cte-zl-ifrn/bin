@@ -13,21 +13,24 @@ project com o propósito de ajuda no processo de desenvolvimento e implantação
 git clone https://github.com/CoticEaDIFRN/ege_build.git
 cd ege_build
 git submodule update --init
+
 cd bin
-./_deploy
-./db_up
+./deploy
+
+# subindo o banco
+./db/up
 
 # em outra janela, o acesso é obrigatório
-./acesso_up
+./acesso/up
 
 # em mais uma janela, o perfil é desejável
-./perfil_up
+./perfil/up
 
 # em mais uma janela, caso queira desenvolver o processo_seletivo
-./seletivo_up
+./seletivo/up
 
 # recomendamos que o proxy_up só seja executado depois que as outras aplicações terminarem o UP
-./proxy_up
+./proxy/up
 ``` 
 
 
@@ -42,10 +45,10 @@ cp conf/examples/acesso_ldap.env conf/.acesso_ldap.env
 
 ## Observação
 
-Recomendamos que, antes de alterar um código coloque em uma branch, no caso, se quiseres usar a branch master use o script abaixo.
+Antes de alterar um código, é recomendado que coloque em uma branch, no caso, se quiseres usar a branch master use o script abaixo.
 ```bash
 # estando em bin
-./_to_branch master
+./to_branch master
 
 ```
 
