@@ -82,12 +82,12 @@ services:
       - '../apps/ege_perfil:/apps/app'
       - '../libs/:/libs/'
 
-#  selecao:
-#    image: 'ifrn/ege_base:1.5.2'
-#    env_file:
-#      - ../conf/.db.env
-#      - ../conf/.ege.env
-#      - ../conf/.selecao.env
-#    volumes:
-#      - '../apps/ege_selecao:/apps/app'
-#      - '../libs/:/libs/'
+  selecao:
+    image: 'ifrn/ege_base:1.5.2'
+    env_file:
+      - ../conf/.db.env
+      - ../conf/.ege.env
+      - ../conf/.selecao.env
+    volumes:
+      - '../apps/ege_selecao:/apps/app'
+      - '../libs/:/libs/'
