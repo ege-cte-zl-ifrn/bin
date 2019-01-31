@@ -43,6 +43,9 @@ echo ""
 echo_info "... seletivo"
 ./seletivo/migrate
 
+echo ""
+echo_info "... selecao"
+./selecao/migrate
 
 echo ""
 echo_info "Iniciando o ambiente de desenvolvimento"
