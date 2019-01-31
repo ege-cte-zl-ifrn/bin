@@ -81,6 +81,15 @@ services:
     volumes:
       - '../apps/ege_perfil:/apps/app'
       - '../libs/:/libs/'
+  
+  integrador_ui:
+    image: 'ifrn/ege_base:1.5.2'
+    env_file:
+      - ../conf/.ege.env
+      - ../conf/.integrador_ui.env
+    volumes:
+      - '../apps/ege_integrador_ui:/apps/app'
+      - '../libs/:/libs/'
 
   selecao:
     image: 'ifrn/ege_base:1.5.2'

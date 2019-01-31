@@ -29,6 +29,9 @@ cd bin
 # em mais uma janela, caso queira desenvolver o processo_seletivo
 ./seletivo/up
 
+# em mais uma janela, caso queira desenvolver o integrador_ui
+./integrador_ui/up
+
 # recomendamos que o proxy_up só seja executado depois que as outras aplicações terminarem o UP
 ./proxy/up
 ``` 
