@@ -53,7 +53,7 @@ echo_info "Iniciando o ambiente de desenvolvimento"
 
 echo ""
 echo_info "Parar o mundo novamente"
-./down
+./restart
 
 echo ""
 echo_success "Tudo pronto"
