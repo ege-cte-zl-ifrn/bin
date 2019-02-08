@@ -44,6 +44,11 @@ echo_info "... seletivo"
 ./seletivo/migrate
 
 echo ""
+echo_info "... selecao"
+./selecao/migrate
+
+
+echo ""
 echo_info "... integrador_ui"
 ./integrador_ui/migrate
 
