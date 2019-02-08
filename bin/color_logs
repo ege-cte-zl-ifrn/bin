@@ -9,7 +9,7 @@ SERVICE_NAME=$(basename $(dirname $0))
 
 pwd=$(pwd -P)
 
-if [[ ! -f "$pwd/.ege.env" ]]; then
+if [[ ! -f .env ]]; then
   cp example.env .env
 fi
 

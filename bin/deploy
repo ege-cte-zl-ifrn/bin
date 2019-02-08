@@ -4,7 +4,6 @@ source color_logs
 
 
 echo_info "Copiando arquivos"
-cp -n example.env .env
 if [[ ! -e ../conf/.acesso_ldap.env ]]; then
     echo "" > ../conf/.acesso_ldap.env
 fi
@@ -57,3 +56,5 @@ echo_info "Parar o mundo novamente"
 
 echo ""
 echo_success "Tudo pronto"
+
+1669524
