@@ -2,4 +2,3 @@
 source color_logs
 
 docker-compose build $@
-
