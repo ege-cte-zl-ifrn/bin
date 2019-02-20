@@ -22,7 +22,7 @@ services:
 #      - perfil
 
   acesso:
-    image: 'ifrn/ege_base:1.5.3'
+    image: 'ifrn/ege_base:1.5.4'
     env_file:
       - ../conf/.db.env
       - ../conf/.ege.env
@@ -33,7 +33,7 @@ services:
       - '../libs/:/libs/'
 
   dashboard:
-    image: 'ifrn/ege_base:1.5.3'
+    image: 'ifrn/ege_base:1.5.4'
     env_file:
       - ../conf/.db.env
       - ../conf/.ege.env
@@ -43,7 +43,7 @@ services:
       - '../libs/:/libs/'
 
   perfil:
-    image: 'ifrn/ege_base:1.5.3'
+    image: 'ifrn/ege_base:1.5.4'
     env_file:
       - ../conf/.db.env
       - ../conf/.ege.env
@@ -53,7 +53,7 @@ services:
       - '../libs/:/libs/'
 
   seletivo:
-    image: 'ifrn/ege_base:1.5.3'
+    image: 'ifrn/ege_base:1.5.4'
     env_file:
       - ../conf/.db.env
       - ../conf/.ege.env
@@ -63,7 +63,7 @@ services:
       - '../libs/:/libs/'
 
   c_acesso:
-    image: 'ifrn/ege_base:1.5.3'
+    image: 'ifrn/ege_base:1.5.4'
     env_file:
       - ../conf/.db.env
       - ../conf/.ege.env
@@ -73,7 +73,7 @@ services:
       - '../libs/:/libs/'
 
   c_perfil:
-    image: 'ifrn/ege_base:1.5.3'
+    image: 'ifrn/ege_base:1.5.4'
     env_file:
       - ../conf/.db.env
       - ../conf/.ege.env
@@ -83,7 +83,7 @@ services:
       - '../libs/:/libs/'
   
   integrador_ui:
-    image: 'ifrn/ege_base:1.5.3'
+    image: 'ifrn/ege_base:1.5.4'
     env_file:
       - ../conf/.ege.env
       - ../conf/.integrador_ui.env
@@ -92,7 +92,7 @@ services:
       - '../libs/:/libs/'
 
   selecao:
-    image: 'ifrn/ege_base:1.5.3'
+    image: 'ifrn/ege_base:1.5.4'
     env_file:
       - ../conf/.db.env
       - ../conf/.ege.env
