@@ -12,22 +12,23 @@ for app in ../apps/*; do
   echo_info "Changing branch of $app to $branch..."
   cd "$pwd/$app" && \
     git fetch
-    git checkout $branch && \
+  git checkout $branch && \
     git pull origin $branch
   echo
 done
 
-#for lib in ../libs/*; do
-#  echo_info "Changing branch of $lib to $branch..."
-#  cd "$pwd/$lib" && \
-#    git fetch
-#    git checkout $branch && \
-#    git pull origin $branch
-#  echo
-#done
+for lib in $pwd/../libs/*; do
+  echo_info "Changing branch of $lib to $branch..."
+  cd "$pwd/$lib" && \
+    git fetch
+  git checkout $branch && \
+    git pull origin $branch
+  echo
+done
 
 cd "$pwd/../dockers/ege_base" && \
     git fetch
     git checkout $branch && \
     git pull origin $branch
 echo
+
