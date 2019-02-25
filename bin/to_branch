@@ -17,7 +17,8 @@ for app in ../apps/*; do
   echo
 done
 
-for lib in $pwd/../libs/*; do
+cd $pwd
+for lib in ../libs/*; do
   echo_info "Changing branch of $lib to $branch..."
   cd "$pwd/$lib" && \
     git fetch
