@@ -1,5 +1,5 @@
 #!/bin/bash
 source color_logs
 
-docker stop ${COMPOSE_PROJECT_NAME}${SERVICE_NAME}_1 && \
-docker rm ${COMPOSE_PROJECT_NAME}${SERVICE_NAME}_1
+docker stop ${COMPOSE_PROJECT_NAME}_${SERVICE_NAME}_1 && \
+docker rm ${COMPOSE_PROJECT_NAME}_${SERVICE_NAME}_1
