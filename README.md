@@ -4,9 +4,15 @@
 
 ## Objetivo
 
-O EGE é um Ecossistema de Gestão Educacional feito em Django usando vários microserviços, portanto, para facilitar o desenvolvimento criamos este 
-project com o propósito de ajuda no processo de desenvolvimento e implantação.
+O EGE é um Ecossistema de Gestão Educacional feito em Django usando vários microserviços, portanto, para facilitar o desenvolvimento criamos este projeto com o propósito de ajuda no processo de desenvolvimento e implantação.
 
+## Iniciando o ambiente de desenvolvimento
+
+O pressuposto é que você já tenha o Git, Docker e o Docker Compose instalado e devidamente configurados. No caso do Docker, é pressuposto que você o tenha em execução.
+
+```bash
+curl -s https://gist.githubusercontent.com/kelsoncm/8e80f8f8de06cba5380dc5a66827a698/raw/b8fee3f5e0ea459f53694a43722b85e557ef6819/ege_start_dev_env.sh |  bash -s --
+```
 
 ## Iniciando o projeto
 ```bash
