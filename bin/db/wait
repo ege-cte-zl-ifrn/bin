@@ -2,12 +2,10 @@
 source color_logs
 source ../conf/.db.env
 
-echo $POSTGRES_USER
-
 echo_info "Aguardando a base de dados..."
-until ./db/exec psql -U $POSTGRES_USER -A -c '\l' >/dev/null 2>&1; do
-  E=$(docker-compose logs --tail 1 db | tail -1)
-  echo_warning "Postgres is unavailable - sleeping $E"
+until docker-compose exec $SERVICE_NAME psql -U $POSTGRES_USER -A -c '\l'>/dev/null 2>&1; do
+  E=$(docker-compose logs --tail 1 $SERVICE_NAME | tail -1)
+  echo_warning "Postgres is unavailable - sleeping. ERROR: $E"
   sleep 1
 done
 
