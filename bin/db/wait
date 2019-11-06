@@ -5,9 +5,9 @@ source ../conf/.db.env
 echo $POSTGRES_USER
 
 echo_info "Aguardando a base de dados..."
-until docker-compose exec $SERVICE_NAME psql -h localhost -U $POSTGRES_USER -A -c '\l' >/dev/null 2>&1; do
-  E=$(docker-compose logs --tail 1 | tail -1)
-  echo_warning "Postgres is unavailable - sleeping"
+until ./db/exec psql -U $POSTGRES_USER -A -c '\l' >/dev/null 2>&1; do
+  E=$(docker-compose logs --tail 1 db | tail -1)
+  echo_warning "Postgres is unavailable - sleeping $E"
   sleep 1
 done
 

@@ -5,4 +5,4 @@ source ../conf/.db.env
 
 ./db/up
 
-./db/exec psql -h localhost -U $POSTGRES_USER -d $POSTGRES_DB_ACESSO $@
+./db/exec psql -U $POSTGRES_USER $@

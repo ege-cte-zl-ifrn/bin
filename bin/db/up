@@ -3,5 +3,5 @@ source color_logs
 
 docker-compose up -d $SERVICE_NAME $@
 
-./db/wait
+./$SERVICE_NAME/wait
 
