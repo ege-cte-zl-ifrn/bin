@@ -1,7 +1,7 @@
 #!/bin/bash
 source color_logs
 
-docker-compose up -d $SERVICE_NAME $@
+docker-compose up -d $@ $SERVICE_NAME
 
 ./$SERVICE_NAME/wait
 
