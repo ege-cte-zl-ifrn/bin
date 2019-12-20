@@ -1,12 +1,12 @@
 [submodule "apps/ege_django_theme"]
 	path = libs/ege_theme
-	url = git@github.com:CoticEaDIFRN/ege_django_theme.git
+	url = git@github.com:ege-cte-zl-ifrn/ege_theme.git
 [submodule "apps/ege_django_auth_jwt"]
 	path = libs/ege_utils
-	url = git@github.com:CoticEaDIFRN/ege_django_auth_jwt.git
+	url = git@github.com:ege-cte-zl-ifrn/ege_utils.git
 [submodule "apps/ege_django_base"]
 	path = dockers/ege_base
-	url = git@github.com:CoticEaDIFRN/ege_django_base.git
+	url = git@github.com:ege-cte-zl-ifrn/ege_base.git
 [submodule "apps/ege_acesso"]
 	path = apps/ege_acesso
 	url = git@github.com:CoticEaDIFRN/ege_acesso.git
