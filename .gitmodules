@@ -31,9 +31,3 @@
 [submodule "apps/ege_bolsitas_antigo"]
 	path = apps/ege_baggins
 	url = git@github.com:CoticEaDIFRN/ege_bolsistas_antigo.git
-[submodule "libs/django_brfied"]
-	path = libs/django_brfied
-	url = git@github.com:kelsoncm/django_brfied.git
-[submodule "libs/python_brfied"]
-	path = libs/python_brfied
-	url = git@github.com:kelsoncm/python_brfied.git
