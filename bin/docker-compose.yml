@@ -19,7 +19,7 @@ services:
       - "../conf/proxy:/etc/nginx/conf.d"
 
   acesso:
-    image: 'ifrn/ege_base:1.5.9'
+    image: 'ifrn/ege_base:1.5.10'
     env_file:
       - ../conf/.db.env
       - ../conf/.ege.env
@@ -30,7 +30,7 @@ services:
       - '../libs/:/libs/'
 
   perfil:
-    image: 'ifrn/ege_base:1.5.9'
+    image: 'ifrn/ege_base:1.5.10'
     env_file:
       - ../conf/.db.env
       - ../conf/.ege.env
@@ -38,9 +38,10 @@ services:
     volumes:
       - '../apps/ege_perfil:/apps/app'
       - '../libs/:/libs/'
+      - '/Users/kelson/devel/pessoal/sc4/sc4net:/libs/sc4net'
 
   dashboard:
-    image: 'ifrn/ege_base:1.5.9'
+    image: 'ifrn/ege_base:1.5.10'
     env_file:
       - ../conf/.db.env
       - ../conf/.ege.env
@@ -50,7 +51,7 @@ services:
       - '../libs/:/libs/'
 
   baggins:
-    image: 'ifrn/ege_base:1.5.9'
+    image: 'ifrn/ege_base:1.5.10'
     env_file:
       - ../conf/.db.env
       - ../conf/.ege.env
@@ -60,7 +61,7 @@ services:
       - '../libs/:/libs/'
 
   # c_acesso:
-  #   image: 'ifrn/ege_base:1.5.9'
+  #   image: 'ifrn/ege_base:1.5.10'
   #   env_file:
   #     - ../conf/.db.env
   #     - ../conf/.ege.env
@@ -70,7 +71,7 @@ services:
   #     - '../libs/:/libs/'
 
   # c_perfil:
-  #   image: 'ifrn/ege_base:1.5.9'
+  #   image: 'ifrn/ege_base:1.5.10'
   #   env_file:
   #     - ../conf/.db.env
   #     - ../conf/.ege.env
@@ -80,7 +81,7 @@ services:
   #     - '../libs/:/libs/'
   
   # integrador_ui:
-  #   image: 'ifrn/ege_base:1.5.9'
+  #   image: 'ifrn/ege_base:1.5.10'
   #   env_file:
   #     - ../conf/.ege.env
   #     - ../conf/.integrador_ui.env
@@ -89,7 +90,7 @@ services:
   #     - '../libs/:/libs/'
 
   # seletivo:
-  #   image: 'ifrn/ege_base:1.5.9'
+  #   image: 'ifrn/ege_base:1.5.10'
   #   env_file:
   #     - ../conf/.db.env
   #     - ../conf/.ege.env
@@ -99,7 +100,7 @@ services:
   #     - '../libs/:/libs/'
 
   # selecao:
-  #   image: 'ifrn/ege_base:1.5.9'
+  #   image: 'ifrn/ege_base:1.5.10'
   #   env_file:
   #     - ../conf/.db.env
   #     - ../conf/.ege.env
