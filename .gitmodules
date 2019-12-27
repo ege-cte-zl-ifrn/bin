@@ -1,33 +1,33 @@
-[submodule "apps/ege_django_theme"]
+[submodule "libs/ege_theme"]
 	path = libs/ege_theme
 	url = git@github.com:ege-cte-zl-ifrn/ege_theme.git
-[submodule "apps/ege_django_auth_jwt"]
+[submodule "libs/ege_utils"]
 	path = libs/ege_utils
 	url = git@github.com:ege-cte-zl-ifrn/ege_utils.git
-[submodule "apps/ege_django_base"]
+[submodule "dockers/ege_base"]
 	path = dockers/ege_base
 	url = git@github.com:ege-cte-zl-ifrn/ege_base.git
 [submodule "apps/ege_acesso"]
 	path = apps/ege_acesso
-	url = git@github.com:CoticEaDIFRN/ege_acesso.git
-[submodule "apps/ege_integrador_ui"]
-	path = apps/ege_integrador_ui
-	url = git@github.com:CoticEaDIFRN/ege_integrador_ui.git
-[submodule "apps/ege_integrador_ms"]
-	path = apps/ege_integrador_ms
-	url = git@github.com:CoticEaDIFRN/ege_integrador_ms.git
-[submodule "apps/ege_selecao"]
-	path = apps/ege_selecao
-	url = git@github.com:CoticEaDIFRN/ege_selecao.git
-[submodule "apps/ege_seletivo"]
-	path = apps/ege_seletivo
-	url = git@github.com:CoticEaDIFRN/ege_seletivo.git
+	url = git@github.com:ege-cte-zl-ifrn/ege_acesso.git 
+[submodule "apps/ege_dashboard"]
+	path = apps/ege_dashboard
+	url = git@github.com:ege-cte-zl-ifrn/ege_dashboard.git
 [submodule "apps/ege_perfil"]
 	path = apps/ege_perfil
-	url = git@github.com:CoticEaDIFRN/ege_perfil.git
-[submodule "ege_dashboard"]
-	path = apps/ege_dashboard
-	url = git@github.com:CoticEaDIFRN/ege_dashboard.git
+	url = git@github.com:ege-cte-zl-ifrn/ege_perfil.git 
+[submodule "apps/ege_integrador_ui"]
+	path = apps/ege_integrador_ui
+	url = git@github.com:ege-cte-zl-ifrn/ege_integrador_ui.git
+[submodule "apps/ege_integrador_ms"]
+	path = apps/ege_integrador_ms
+	url = git@github.com:ege-cte-zl-ifrn/ege_integrador_ms.git
+[submodule "apps/ege_selecao"]
+	path = apps/ege_selecao
+	url = git@github.com:ege-cte-zl-ifrn/ege_selecao.git
+[submodule "apps/ege_seletivo"]
+	path = apps/ege_seletivo
+	url = git@github.com:ege-cte-zl-ifrn/ege_seletivo.git
 [submodule "apps/ege_bolsitas_antigo"]
 	path = apps/ege_baggins
-	url = git@github.com:CoticEaDIFRN/ege_bolsistas_antigo.git
+	url = git@github.com:ege-cte-zl-ifrn/ege_bolsistas_antigo.git
