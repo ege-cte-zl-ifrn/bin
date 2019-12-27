@@ -1,5 +1,11 @@
 #!/bin/bash
 source color_logs
 
-./$SERVICE_NAME/exec python3 manage.py $@
+
+if [[ `docker container ls | grep ege_{$SERVICE_NAME}_1` ]]; then 
+  ./$SERVICE_NAME/exec python3 manage.py $@
+else
+  ./$SERVICE_NAME/run python3 manage.py $@
+fi
+
 
