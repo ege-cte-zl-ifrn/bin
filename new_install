@@ -15,5 +15,26 @@ if [[ -f ~/.zshrc ]]; then
     source ~/.zshrc
 fi
 
+export EGE_HOME=~/devel/ege
+
 echo $EGE_HOME
-# mkdir -p $EGE_HOME
+mkdir -p $EGE_HOME
+
+
+if [ ! -d "$destin" ]; then
+    git clone git@github.com:ege-cte-zl-ifrn/bin.git $EGE_HOME/bin
+fi
+
+cd $EGE_HOME/bin
+
+source color_logs
+
+clone_repositories
+
+echo ""
+echo "--- UNDEPLOY ----"
+./undeploy
+
+echo ""
+echo "--- DEPLOY ----"
+./deploy

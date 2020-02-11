@@ -4,27 +4,27 @@ services:
   db:
     image: postgres:12.1-alpine
     env_file:
-      - ../conf/.db.env
+      - ../confs/db.env
     ports:
       - "${POSTGRES_EXTERNAL_PORT}:5432"
     volumes:
       - "../volumes/pgdata:/var/lib/postgresql/data"
-      - "../conf/db:/docker-entrypoint-initdb.d"
+      - "../confs/db:/docker-entrypoint-initdb.d"
 
   proxy:
     image: nginx:1.17.6-alpine
     ports:
       - "${NGINX_EXTERNAL_PORT}:80"
     volumes:
-      - "../conf/proxy:/etc/nginx/conf.d"
+      - "../confs/proxy:/etc/nginx/conf.d"
 
   acesso:
     image: 'ifrn/ege_base:1.5.10'
     env_file:
-      - ../conf/.db.env
-      - ../conf/.ege.env
-      - ../conf/.acesso.env
-      - ../conf/.acesso_ldap.env
+      - ../confs/db.env
+      - ../confs/ege.env
+      - ../confs/acesso.env
+      - ../confs/acesso_ldap.env
     volumes:
       - '../apps/ege_acesso:/apps/app'
       - '../libs/:/libs/'
@@ -32,9 +32,9 @@ services:
   perfil:
     image: 'ifrn/ege_base:1.5.10'
     env_file:
-      - ../conf/.db.env
-      - ../conf/.ege.env
-      - ../conf/.perfil.env
+      - ../confs/db.env
+      - ../confs/ege.env
+      - ../confs/perfil.env
     volumes:
       - '../apps/ege_perfil:/apps/app'
       - '../libs/:/libs/'
@@ -43,9 +43,9 @@ services:
   dashboard:
     image: 'ifrn/ege_base:1.5.10'
     env_file:
-      - ../conf/.db.env
-      - ../conf/.ege.env
-      - ../conf/.dashboard.env
+      - ../confs/db.env
+      - ../confs/ege.env
+      - ../confs/dashboard.env
     volumes:
       - '../apps/ege_dashboard:/apps/app'
       - '../libs/:/libs/'
@@ -53,9 +53,9 @@ services:
   baggins:
     image: 'ifrn/ege_base:1.5.10'
     env_file:
-      - ../conf/.db.env
-      - ../conf/.ege.env
-      - ../conf/.baggins.env
+      - ../confs/db.env
+      - ../confs/ege.env
+      - ../confs/baggins.env
     volumes:
       - '../apps/ege_baggins:/apps/app'
       - '../libs/:/libs/'
@@ -63,9 +63,9 @@ services:
   # c_acesso:
   #   image: 'ifrn/ege_base:1.5.10'
   #   env_file:
-  #     - ../conf/.db.env
-  #     - ../conf/.ege.env
-  #     - ../conf/.c_acesso.env
+  #     - ../confs/db.env
+  #     - ../confs/ege.env
+  #     - ../confs/c_acesso.env
   #   volumes:
   #     - '../apps/ege_acesso:/apps/app'
   #     - '../libs/:/libs/'
@@ -73,9 +73,9 @@ services:
   # c_perfil:
   #   image: 'ifrn/ege_base:1.5.10'
   #   env_file:
-  #     - ../conf/.db.env
-  #     - ../conf/.ege.env
-  #     - ../conf/.c_perfil.env
+  #     - ../confs/db.env
+  #     - ../confs/ege.env
+  #     - ../confs/c_perfil.env
   #   volumes:
   #     - '../apps/ege_perfil:/apps/app'
   #     - '../libs/:/libs/'
@@ -83,8 +83,8 @@ services:
   # integrador_ui:
   #   image: 'ifrn/ege_base:1.5.10'
   #   env_file:
-  #     - ../conf/.ege.env
-  #     - ../conf/.integrador_ui.env
+  #     - ../confs/ege.env
+  #     - ../confs/integrador_ui.env
   #   volumes:
   #     - '../apps/ege_integrador_ui:/apps/app'
   #     - '../libs/:/libs/'
@@ -92,9 +92,9 @@ services:
   # seletivo:
   #   image: 'ifrn/ege_base:1.5.10'
   #   env_file:
-  #     - ../conf/.db.env
-  #     - ../conf/.ege.env
-  #     - ../conf/.seletivo.env
+  #     - ../confs/db.env
+  #     - ../confs/ege.env
+  #     - ../confs/seletivo.env
   #   volumes:
   #     - '../apps/ege_seletivo:/apps/app'
   #     - '../libs/:/libs/'
@@ -102,9 +102,9 @@ services:
   # selecao:
   #   image: 'ifrn/ege_base:1.5.10'
   #   env_file:
-  #     - ../conf/.db.env
-  #     - ../conf/.ege.env
-  #     - ../conf/.selecao.env
+  #     - ../confs/db.env
+  #     - ../confs/ege.env
+  #     - ../confs/selecao.env
   #   volumes:
   #     - '../apps/ege_selecao:/apps/app'
   #     - '../libs/:/libs/'

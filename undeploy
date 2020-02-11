@@ -7,12 +7,10 @@ echo_info "Stop the world"
 echo_info "Reset confs"
 rm -rf $EGE_HOME/confs
 mkdir $EGE_HOME/confs
-cp -r $EGE_HOME/bin/confs_examples $EGE_HOME/confs
+cp -r $EGE_HOME/bin/confs_examples/* $EGE_HOME/confs/
 
 echo_info "Reset volumes"
 sudo rm -rf $EGE_HOME/volumes
-
-clone_repositories
 
 echo_info "Prune system"
 docker system prune -a

@@ -36,7 +36,6 @@ clone_repository() {
   source=$2
   destin=$3
   branch=$4
-  echo $repository 
   if [ -d "$destin" ]; then
     echo_info "Skipping $repository" 
   else
@@ -44,7 +43,6 @@ clone_repository() {
     git clone $source $destin
   fi
   if [ "$branch" ]; then
-    cd $destin
     git checkout -b $branch origin/$branch
   fi
   cd $EGE_HOME/bin
