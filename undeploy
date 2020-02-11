@@ -5,12 +5,12 @@ echo_info "Stop the world"
 ./down
 
 echo_info "Reset confs"
-rm -rf $EGE_HOME/confs
-mkdir $EGE_HOME/confs
-cp -r $EGE_HOME/bin/confs_examples/* $EGE_HOME/confs/
+rm -rf $SEAD_HOME/confs
+mkdir $SEAD_HOME/confs
+cp -r $SEAD_HOME/bin/confs_examples/* $SEAD_HOME/confs/
 
 echo_info "Reset volumes"
-sudo rm -rf $EGE_HOME/volumes
+sudo rm -rf $SEAD_HOME/volumes
 
 echo_info "Prune system"
 docker system prune -a
