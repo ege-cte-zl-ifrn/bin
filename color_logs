@@ -52,9 +52,9 @@ clone_repository() {
 clone_repositories() {
   echo_info "Cloning repositories"
 
-  clone_repository docker_base git@github.com:ege-cte-zl-ifrn/docker_base.git $EGE_HOME/dockers/base
-  clone_repository lib_theme git@github.com:ege-cte-zl-ifrn/theme.git $EGE_HOME/libs/theme
-  clone_repository app_acesso git@github.com:ege-cte-zl-ifrn/acesso.git $EGE_HOME/apps/acesso
-  clone_repository app_dashboard git@github.com:ege-cte-zl-ifrn/dashboard.git $EGE_HOME/apps/dashboard
-  clone_repository app_perfil git@github.com:ege-cte-zl-ifrn/perfil.git $EGE_HOME/apps/perfil
+  clone_repository docker_base git@github.com:suap-ead/docker_base.git $EGE_HOME/dockers/base
+  clone_repository lib_theme git@github.com:suap-ead/theme.git $EGE_HOME/libs/theme
+  clone_repository app_acesso git@github.com:suap-ead/acesso.git $EGE_HOME/apps/acesso
+  clone_repository app_dashboard git@github.com:suap-ead/dashboard.git $EGE_HOME/apps/dashboard
+  clone_repository app_perfil git@github.com:suap-ead/perfil.git $EGE_HOME/apps/perfil
 }
