@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+if [[ -f ~/.bashrc ]]; then
+    echo  >> ~/.bashrc
+    echo "# EGE" >> ~/.bashrc
+    echo "export EGE_HOME=~/devel/ege" >> ~/.bashrc
+    source ~/.bashrc
+fi
+
+if [[ -f ~/.zshrc ]]; then
+    echo  >> ~/.zshrc
+    echo "# EGE" >> ~/.zshrc
+    echo "export EGE_HOME=~/devel/ege" >> ~/.zshrc
+    source ~/.zshrc
+fi
+
+echo $EGE_HOME
+# mkdir -p $EGE_HOME
