@@ -53,6 +53,7 @@ clone_repositories() {
   echo_info "Cloning repositories"
 
   clone_repository docker_base git@github.com:suap-ead/docker_base.git $SEAD_HOME/dockers/base
+  clone_repository lib_theme git@github.com:suap-ead/lib_utils.git $SEAD_HOME/libs/utils
   clone_repository lib_theme git@github.com:suap-ead/lib_theme.git $SEAD_HOME/libs/theme
   clone_repository app_acesso git@github.com:suap-ead/app_acesso.git $SEAD_HOME/apps/acesso
   clone_repository app_dashboard git@github.com:suap-ead/app_dashboard.git $SEAD_HOME/apps/dashboard
