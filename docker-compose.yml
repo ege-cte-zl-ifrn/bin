@@ -9,7 +9,7 @@ services:
       - "${POSTGRES_EXTERNAL_PORT}:5432"
     volumes:
       - "../volumes/pgdata:/var/lib/postgresql/data"
-      - "../confs/db:/docker-entrypoint-initdb.d"
+      - "./db/initdb_scripts:/docker-entrypoint-initdb.d"
 
   proxy:
     image: nginx:1.17.6-alpine

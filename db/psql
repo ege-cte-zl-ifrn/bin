@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source color_logs
-source ../conf/.db.env
+source ../confs/db.env
 
 ./db/up
 
