@@ -1,4 +1,4 @@
 #!/bin/bash
-source color_logs
+source functions
 
 docker-compose up $@ $SERVICE_NAME

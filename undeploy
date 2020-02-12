@@ -1,5 +1,5 @@
 #!/bin/bash
-source color_logs
+source functions
 
 echo_info "Reset confs"
 rm -rf $SEAD_HOME/confs
@@ -11,6 +11,8 @@ echo_info "Stop the world"
 
 echo_info "Reset volumes"
 sudo rm -rf $SEAD_HOME/volumes
+
+clone_repositories
 
 echo_info "Prune system"
 docker system prune -a

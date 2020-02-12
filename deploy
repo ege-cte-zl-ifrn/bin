@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source color_logs
+source functions
 
 echo ""
 echo_info "Parar o mundo"

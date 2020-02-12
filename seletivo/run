@@ -1,5 +1,5 @@
 #!/bin/bash
-source color_logs
+source functions
 
 docker-compose run $SERVICE_NAME $@
 

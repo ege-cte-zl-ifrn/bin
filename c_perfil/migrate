@@ -1,4 +1,4 @@
 #!/bin/bash
-source ../color_logs
+source ../functions
 
 docker-compose run $SERVICE_NAME sh -c '/install_packages.sh && python3 manage.py migrate'

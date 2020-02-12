@@ -1,5 +1,5 @@
 #!/bin/bash
-source color_logs
+source functions
 
 ./$SERVICE_NAME/migrate
 ./$SERVICE_NAME/run ./manage.sh init_dev

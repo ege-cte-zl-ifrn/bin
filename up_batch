@@ -1,5 +1,5 @@
 #!/bin/bash
-source color_logs
+source functions
 
 echo_info "Iniciando serviços básicos..."
 echo_info "Serviço de banco de dados..."

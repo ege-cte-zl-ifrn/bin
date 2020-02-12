@@ -1,5 +1,5 @@
 #!/bin/bash
-source color_logs
+source functions
 source ../confs/db.env
 
 echo_info "Aguardando a base de dados..."

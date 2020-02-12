@@ -1,5 +1,5 @@
 #!/bin/bash
-source color_logs
+source functions
 
 
 if [[ `docker container ls | grep ege_{$SERVICE_NAME}_1` ]]; then 

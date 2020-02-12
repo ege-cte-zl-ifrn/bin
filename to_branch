@@ -1,5 +1,5 @@
 #!/bin/bash
-source color_logs
+source functions
 
 
 if [[ $# -eq 0 ]]; then
