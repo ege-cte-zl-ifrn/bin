@@ -12,7 +12,7 @@ services:
       - "./db/initdb_scripts:/docker-entrypoint-initdb.d"
 
   proxy:
-    image: nginx:1.17.6-alpine
+    image: nginx:1.17.8-alpine
     ports:
       - "${NGINX_EXTERNAL_PORT}:80"
     volumes:
@@ -26,85 +26,85 @@ services:
       - ../confs/acesso.env
       - ../confs/acesso_ldap.env
     volumes:
-      - '../apps/ege_acesso:/apps/app'
+      - '../apps/acesso:/apps/app'
       - '../libs/:/libs/'
 
-  perfil:
-    image: 'ifrn/ege_base:1.5.10'
-    env_file:
-      - ../confs/db.env
-      - ../confs/ege.env
-      - ../confs/perfil.env
-    volumes:
-      - '../apps/ege_perfil:/apps/app'
-      - '../libs/:/libs/'
-      - '/Users/kelson/devel/pessoal/sc4/sc4net:/libs/sc4net'
-
-  dashboard:
-    image: 'ifrn/ege_base:1.5.10'
-    env_file:
-      - ../confs/db.env
-      - ../confs/ege.env
-      - ../confs/dashboard.env
-    volumes:
-      - '../apps/ege_dashboard:/apps/app'
-      - '../libs/:/libs/'
-
-  baggins:
-    image: 'ifrn/ege_base:1.5.10'
-    env_file:
-      - ../confs/db.env
-      - ../confs/ege.env
-      - ../confs/baggins.env
-    volumes:
-      - '../apps/ege_baggins:/apps/app'
-      - '../libs/:/libs/'
-
-  # c_acesso:
+  # perfil:
   #   image: 'ifrn/ege_base:1.5.10'
   #   env_file:
   #     - ../confs/db.env
   #     - ../confs/ege.env
-  #     - ../confs/c_acesso.env
-  #   volumes:
-  #     - '../apps/ege_acesso:/apps/app'
-  #     - '../libs/:/libs/'
-
-  # c_perfil:
-  #   image: 'ifrn/ege_base:1.5.10'
-  #   env_file:
-  #     - ../confs/db.env
-  #     - ../confs/ege.env
-  #     - ../confs/c_perfil.env
+  #     - ../confs/perfil.env
   #   volumes:
   #     - '../apps/ege_perfil:/apps/app'
   #     - '../libs/:/libs/'
+  #     - '/Users/kelson/devel/pessoal/sc4/sc4net:/libs/sc4net'
+
+  # dashboard:
+  #   image: 'ifrn/ege_base:1.5.10'
+  #   env_file:
+  #     - ../confs/db.env
+  #     - ../confs/ege.env
+  #     - ../confs/dashboard.env
+  #   volumes:
+  #     - '../apps/ege_dashboard:/apps/app'
+  #     - '../libs/:/libs/'
+
+  # baggins:
+  #   image: 'ifrn/ege_base:1.5.10'
+  #   env_file:
+  #     - ../confs/db.env
+  #     - ../confs/ege.env
+  #     - ../confs/baggins.env
+  #   volumes:
+  #     - '../apps/ege_baggins:/apps/app'
+  #     - '../libs/:/libs/'
+
+  # # c_acesso:
+  # #   image: 'ifrn/ege_base:1.5.10'
+  # #   env_file:
+  # #     - ../confs/db.env
+  # #     - ../confs/ege.env
+  # #     - ../confs/c_acesso.env
+  # #   volumes:
+  # #     - '../apps/ege_acesso:/apps/app'
+  # #     - '../libs/:/libs/'
+
+  # # c_perfil:
+  # #   image: 'ifrn/ege_base:1.5.10'
+  # #   env_file:
+  # #     - ../confs/db.env
+  # #     - ../confs/ege.env
+  # #     - ../confs/c_perfil.env
+  # #   volumes:
+  # #     - '../apps/ege_perfil:/apps/app'
+  # #     - '../libs/:/libs/'
   
-  # integrador_ui:
-  #   image: 'ifrn/ege_base:1.5.10'
-  #   env_file:
-  #     - ../confs/ege.env
-  #     - ../confs/integrador_ui.env
-  #   volumes:
-  #     - '../apps/ege_integrador_ui:/apps/app'
-  #     - '../libs/:/libs/'
+  # # integrador_ui:
+  # #   image: 'ifrn/ege_base:1.5.10'
+  # #   env_file:
+  # #     - ../confs/ege.env
+  # #     - ../confs/integrador_ui.env
+  # #   volumes:
+  # #     - '../apps/ege_integrador_ui:/apps/app'
+  # #     - '../libs/:/libs/'
 
-  # seletivo:
-  #   image: 'ifrn/ege_base:1.5.10'
-  #   env_file:
-  #     - ../confs/db.env
-  #     - ../confs/ege.env
-  #     - ../confs/seletivo.env
-  #   volumes:
-  #     - '../apps/ege_seletivo:/apps/app'
-  #     - '../libs/:/libs/'
+  # # seletivo:
+  # #   image: 'ifrn/ege_base:1.5.10'
+  # #   env_file:
+  # #     - ../confs/db.env
+  # #     - ../confs/ege.env
+  # #     - ../confs/seletivo.env
+  # #   volumes:
+  # #     - '../apps/ege_seletivo:/apps/app'
+  # #     - '../libs/:/libs/'
 
-  # selecao:
-  #   image: 'ifrn/ege_base:1.5.10'
-  #   env_file:
-  #     - ../confs/db.env
-  #     - ../confs/ege.env
-  #     - ../confs/selecao.env
-  #   volumes:
-  #     - '../apps/ege_selecao:/apps/app'
-  #     - '../libs/:/libs/'
+  # # selecao:
+  # #   image: 'ifrn/ege_base:1.5.10'
+  # #   env_file:
+  # #     - ../confs/db.env
+  # #     - ../confs/ege.env
+  # #     - ../confs/selecao.env
+  # #   volumes:
+  # #     - '../apps/ege_selecao:/apps/app'
+  # #     - '../libs/:/libs/'
