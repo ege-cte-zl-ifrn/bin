@@ -32,14 +32,13 @@ echo_success() {
 }
 
 clone_repository() {
-  repository=$1
-  source=$2
-  destin=$3
-  branch=$4
+  source=$1
+  destin=$2
+  branch=$3
   if [ -d "$destin" ]; then
-    echo_info "Skipping $repository" 
+    echo_info "Skipping $destin" 
   else
-    echo_info "Cloning $repository" 
+    echo_info "Cloning to $destin" 
     git clone $source $destin
   fi
   if [ "$branch" ]; then
@@ -52,10 +51,10 @@ clone_repository() {
 clone_repositories() {
   echo_info "Cloning repositories"
 
-  clone_repository docker_base git@github.com:suap-ead/docker_base.git $SEAD_HOME/dockers/base
-  clone_repository lib_theme git@github.com:suap-ead/lib_utils.git $SEAD_HOME/libs/utils
-  clone_repository lib_theme git@github.com:suap-ead/lib_theme.git $SEAD_HOME/libs/theme
-  clone_repository app_acesso git@github.com:suap-ead/app_acesso.git $SEAD_HOME/apps/acesso
-  clone_repository app_dashboard git@github.com:suap-ead/app_dashboard.git $SEAD_HOME/apps/dashboard
-  clone_repository app_perfil git@github.com:suap-ead/app_perfil.git $SEAD_HOME/apps/perfil
+  clone_repository git@github.com:suap-ead/docker_base.git $SEAD_HOME/dockers/base
+  clone_repository git@github.com:suap-ead/lib_utils.git $SEAD_HOME/libs/utils
+  clone_repository git@github.com:suap-ead/lib_theme.git $SEAD_HOME/libs/theme
+  clone_repository git@github.com:suap-ead/app_acesso.git $SEAD_HOME/apps/acesso
+  clone_repository git@github.com:suap-ead/app_dashboard.git $SEAD_HOME/apps/dashboard
+  clone_repository git@github.com:suap-ead/app_perfil.git $SEAD_HOME/apps/perfil
 }
