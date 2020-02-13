@@ -19,92 +19,81 @@ services:
       - "../confs/proxy:/etc/nginx/conf.d"
 
   acesso:
-    image: 'ifrn/ege_base:1.5.10'
+    image: 'ifrn/suap_ead_base:1.5.10'
     env_file:
       - ../confs/db.env
-      - ../confs/ege.env
+      - ../confs/suap_ead.env
       - ../confs/acesso.env
       - ../confs/acesso_ldap.env
     volumes:
       - '../apps/acesso:/apps/app'
       - '../libs/:/libs/'
 
-  # perfil:
-  #   image: 'ifrn/ege_base:1.5.10'
-  #   env_file:
-  #     - ../confs/db.env
-  #     - ../confs/ege.env
-  #     - ../confs/perfil.env
-  #   volumes:
-  #     - '../apps/ege_perfil:/apps/app'
-  #     - '../libs/:/libs/'
-  #     - '/Users/kelson/devel/pessoal/sc4/sc4net:/libs/sc4net'
-
-  # dashboard:
-  #   image: 'ifrn/ege_base:1.5.10'
-  #   env_file:
-  #     - ../confs/db.env
-  #     - ../confs/ege.env
-  #     - ../confs/dashboard.env
-  #   volumes:
-  #     - '../apps/ege_dashboard:/apps/app'
-  #     - '../libs/:/libs/'
+  dashboard:
+    image: 'ifrn/suap_ead_base:1.5.10'
+    env_file:
+      - ../confs/db.env
+      - ../confs/suap_ead.env
+      - ../confs/dashboard.env
+    volumes:
+      - '../apps/suap_ead_dashboard:/apps/app'
+      - '../libs/:/libs/'
 
   # baggins:
-  #   image: 'ifrn/ege_base:1.5.10'
+  #   image: 'ifrn/suap_ead_base:1.5.10'
   #   env_file:
   #     - ../confs/db.env
-  #     - ../confs/ege.env
+  #     - ../confs/suap_ead.env
   #     - ../confs/baggins.env
   #   volumes:
-  #     - '../apps/ege_baggins:/apps/app'
+  #     - '../apps/suap_ead_baggins:/apps/app'
   #     - '../libs/:/libs/'
 
   # # c_acesso:
-  # #   image: 'ifrn/ege_base:1.5.10'
+  # #   image: 'ifrn/suap_ead_base:1.5.10'
   # #   env_file:
   # #     - ../confs/db.env
-  # #     - ../confs/ege.env
+  # #     - ../confs/suap_ead.env
   # #     - ../confs/c_acesso.env
   # #   volumes:
-  # #     - '../apps/ege_acesso:/apps/app'
+  # #     - '../apps/suap_ead_acesso:/apps/app'
   # #     - '../libs/:/libs/'
 
   # # c_perfil:
-  # #   image: 'ifrn/ege_base:1.5.10'
+  # #   image: 'ifrn/suap_ead_base:1.5.10'
   # #   env_file:
   # #     - ../confs/db.env
-  # #     - ../confs/ege.env
+  # #     - ../confs/suap_ead.env
   # #     - ../confs/c_perfil.env
   # #   volumes:
-  # #     - '../apps/ege_perfil:/apps/app'
+  # #     - '../apps/suap_ead_perfil:/apps/app'
   # #     - '../libs/:/libs/'
   
   # # integrador_ui:
-  # #   image: 'ifrn/ege_base:1.5.10'
+  # #   image: 'ifrn/suap_ead_base:1.5.10'
   # #   env_file:
-  # #     - ../confs/ege.env
+  # #     - ../confs/suap_ead.env
   # #     - ../confs/integrador_ui.env
   # #   volumes:
-  # #     - '../apps/ege_integrador_ui:/apps/app'
+  # #     - '../apps/suap_ead_integrador_ui:/apps/app'
   # #     - '../libs/:/libs/'
 
   # # seletivo:
-  # #   image: 'ifrn/ege_base:1.5.10'
+  # #   image: 'ifrn/suap_ead_base:1.5.10'
   # #   env_file:
   # #     - ../confs/db.env
-  # #     - ../confs/ege.env
+  # #     - ../confs/suap_ead.env
   # #     - ../confs/seletivo.env
   # #   volumes:
-  # #     - '../apps/ege_seletivo:/apps/app'
+  # #     - '../apps/suap_ead_seletivo:/apps/app'
   # #     - '../libs/:/libs/'
 
   # # selecao:
-  # #   image: 'ifrn/ege_base:1.5.10'
+  # #   image: 'ifrn/suap_ead_base:1.5.10'
   # #   env_file:
   # #     - ../confs/db.env
-  # #     - ../confs/ege.env
+  # #     - ../confs/suap_ead.env
   # #     - ../confs/selecao.env
   # #   volumes:
-  # #     - '../apps/ege_selecao:/apps/app'
+  # #     - '../apps/suap_ead_selecao:/apps/app'
   # #     - '../libs/:/libs/'

@@ -27,7 +27,7 @@ for lib in ../libs/*; do
   echo
 done
 
-cd "$pwd/../dockers/ege_base" && \
+cd "$pwd/../dockers/base" && \
     git fetch
     git checkout $branch && \
     git pull origin $branch
