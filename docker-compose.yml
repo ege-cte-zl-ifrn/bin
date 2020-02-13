@@ -36,7 +36,7 @@ services:
       - ../confs/suap_ead.env
       - ../confs/dashboard.env
     volumes:
-      - '../apps/suap_ead_dashboard:/apps/app'
+      - '../apps/dashboard:/apps/app'
       - '../libs/:/libs/'
 
   # baggins:
