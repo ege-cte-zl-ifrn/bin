@@ -18,15 +18,15 @@ services:
     volumes:
       - "../confs/proxy:/etc/nginx/conf.d"
 
-  acesso:
+  id:
     image: 'ifrn/suap_ead_base:1.5.10'
     env_file:
       - ../confs/db.env
       - ../confs/suap_ead.env
-      - ../confs/acesso.env
-      - ../confs/acesso_ldap.env
+      - ../confs/id.env
+      - ../confs/id_ldap.env
     volumes:
-      - '../apps/acesso:/apps/app'
+      - '../apps/id:/apps/app'
       - '../libs/:/libs/'
 
   dashboard:
