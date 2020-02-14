@@ -1,4 +1,5 @@
 #!/bin/bash
-source ../functions
+source functions
 
 docker-compose run $SERVICE_NAME $@
+

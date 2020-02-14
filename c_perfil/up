@@ -3,3 +3,4 @@ source functions
 
 ./db/up
 docker-compose up $@ $SERVICE_NAME
+

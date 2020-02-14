@@ -1,4 +1,4 @@
 #!/bin/bash
 source functions
 
-./$SERVICE_NAME/run ./manage.sh migrate
+./$SERVICE_NAME/manage migrate
