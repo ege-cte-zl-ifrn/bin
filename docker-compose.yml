@@ -49,24 +49,14 @@ services:
   #     - '../apps/suap_ead_baggins:/apps/app'
   #     - '../libs/:/libs/'
 
-  # # c_acesso:
+  # # c_id:
   # #   image: 'ifrn/suap_ead_base:1.5.10'
   # #   env_file:
   # #     - ../confs/db.env
   # #     - ../confs/suap_ead.env
-  # #     - ../confs/c_acesso.env
+  # #     - ../confs/c_id.env
   # #   volumes:
-  # #     - '../apps/suap_ead_acesso:/apps/app'
-  # #     - '../libs/:/libs/'
-
-  # # c_perfil:
-  # #   image: 'ifrn/suap_ead_base:1.5.10'
-  # #   env_file:
-  # #     - ../confs/db.env
-  # #     - ../confs/suap_ead.env
-  # #     - ../confs/c_perfil.env
-  # #   volumes:
-  # #     - '../apps/suap_ead_perfil:/apps/app'
+  # #     - '../apps/suap_ead_id:/apps/app'
   # #     - '../libs/:/libs/'
   
   # # integrador_ui:
