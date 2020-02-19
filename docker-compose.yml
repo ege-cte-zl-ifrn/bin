@@ -1,6 +1,14 @@
 version: '3'
 
 services:
+
+  proxy:
+    image: nginx:1.17.8-alpine
+    ports:
+      - "${NGINX_EXTERNAL_PORT}:80"
+    volumes:
+      - "../confs/proxy:/etc/nginx/conf.d"
+
   db:
     image: postgres:12.1-alpine
     env_file:
@@ -11,12 +19,9 @@ services:
       - "../volumes/pgdata:/var/lib/postgresql/data"
       - "./db/initdb_scripts:/docker-entrypoint-initdb.d"
 
-  proxy:
-    image: nginx:1.17.8-alpine
-    ports:
-      - "${NGINX_EXTERNAL_PORT}:80"
-    volumes:
-      - "../confs/proxy:/etc/nginx/conf.d"
+  redis:
+    image: redis:5.0-alpine
+    command: redis-server --requirepass redis_password
 
   id:
     image: 'ifrn/suap_ead_base:1.5.10'
