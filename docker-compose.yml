@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
 
@@ -44,6 +44,18 @@ services:
       - '../apps/dashboard:/apps/app'
       - '../libs/:/libs/'
 
+  pre_matricula:
+    image: 'ifrn/suap_ead_base:1.5.11'
+    ports:
+      - "7001:8000"
+    env_file:
+      - ../confs/db.env
+      - ../confs/suap_ead.env
+      - ../confs/pre_matricula.env
+    volumes:
+      - '../apps/pre_matricula:/apps/app'
+      - '../libs/:/libs/'
+    
   # baggins:
   #   image: 'ifrn/suap_ead_base:1.5.11'
   #   env_file:
