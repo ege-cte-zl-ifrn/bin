@@ -6,9 +6,10 @@ echo ""
 echo_info "Parar o mundo"
 # ./down
 
-echo ""
-echo_info "Subir o banco"
-./db/up
+# echo ""
+# echo_info "Subir o banco"
+# ./db/up
+# ./db/wait
 
 echo ""
 echo_info "Migrar os bancos..."
@@ -20,6 +21,11 @@ echo_info "... id"
 echo ""
 echo_info "... dashboard"
 ./dashboard/migrate
+
+echo ""
+echo_info "... pre_matricula"
+./pre_matricula/migrate
+./pre_matricula/run fixtures.sh
 
 # echo ""
 # echo_info "... baggins"
