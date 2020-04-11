@@ -14,6 +14,7 @@ source functions
 ./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/nivel_ensino.yaml
 ./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/tipo_instituicao.yaml
 ./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/ano_conclusao.yaml
+./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/ano_letivo.yaml
 ./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/tipo_necessidade_especial.yaml
 ./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/tipo_transtorno.yaml
 ./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/tipo_superdotacao.yaml
