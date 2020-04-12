@@ -1,10 +1,12 @@
 #!/bin/sh
 source functions
 
-./$SERVICE_NAME/migrate
-
 USER="admin"
 EMAIL="admin@example.com"
 PASS="admin"
-echo "from django.contrib.auth.models import User; User.objects.create_superuser('${USER}', '${EMAIL}', '${PASS}')" | ./$SERVICE_NAME/manage shell
+PY_SCRIPT="from django.contrib.auth.models import User; User.objects.create_superuser('${USER}', '${EMAIL}', '${PASS}')"
+
+./db/up
+./$SERVICE_NAME/migrate
+echo $PY_SCRIPT | ./$SERVICE_NAME/manage shell
 ./$SERVICE_NAME/fixtures
