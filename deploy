@@ -24,8 +24,7 @@ echo_info "... dashboard"
 
 echo ""
 echo_info "... pre_matricula"
-./pre_matricula/migrate
-./pre_matricula/run fixtures.sh
+./pre_matricula/deploy
 
 # echo ""
 # echo_info "... baggins"
