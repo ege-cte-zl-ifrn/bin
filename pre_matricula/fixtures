@@ -27,3 +27,4 @@ source functions
 ./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/polo.yaml
 ./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/convenio.yaml
 ./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/orgao_emissao_rg.yaml
+./$SERVICE_NAME/exec ./manage.sh loaddata ./solicitacao/fixtures/documentacao.yaml
