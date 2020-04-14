@@ -1,30 +1,30 @@
 #!/bin/sh
 source functions
 
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/nacionalidade.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/estado.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/estado_civil.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/pais_origem.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/raca.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/responsavel.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/sexo.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/tipo_sanguineo.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/transporte_publico.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/zona_residencial.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/nivel_ensino.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/tipo_instituicao.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/ano_conclusao.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/ano_letivo.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/tipo_necessidade_especial.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/tipo_transtorno.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/tipo_superdotacao.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/tipo_transporte.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/tipo_veiculo.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/tipo_certidao.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/periodo_letivo.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/turno.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/forma_ingresso.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/polo.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/convenio.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./dominio_suap/fixtures/orgao_emissao_rg.yaml
-./$SERVICE_NAME/exec ./manage.sh loaddata ./solicitacao/fixtures/documentacao.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/nacionalidade.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/estado.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/estado_civil.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/pais_origem.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/raca.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/responsavel.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/sexo.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/tipo_sanguineo.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/transporte_publico.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/zona_residencial.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/nivel_ensino.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/tipo_instituicao.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/ano_conclusao.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/ano_letivo.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/tipo_necessidade_especial.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/tipo_transtorno.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/tipo_superdotacao.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/tipo_transporte.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/tipo_veiculo.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/tipo_certidao.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/periodo_letivo.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/turno.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/forma_ingresso.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/polo.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/convenio.yaml
+./$SERVICE_NAME/manage loaddata ./dominio_suap/fixtures/orgao_emissao_rg.yaml
+./$SERVICE_NAME/manage loaddata ./solicitacao/fixtures/documentacao.yaml
