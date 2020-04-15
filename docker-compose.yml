@@ -24,7 +24,7 @@ services:
     command: redis-server --requirepass redis_password
 
   id:
-    image: 'ifrn/suap_ead_base:1.5.11'
+    image: 'ifrn/suap_ead_base:1.5.12'
     env_file:
       - ../confs/db.env
       - ../confs/suap_ead.env
@@ -35,7 +35,7 @@ services:
       - '../libs/:/libs/'
 
   dashboard:
-    image: 'ifrn/suap_ead_base:1.5.11'
+    image: 'ifrn/suap_ead_base:1.5.12'
     env_file:
       - ../confs/db.env
       - ../confs/suap_ead.env
@@ -45,7 +45,7 @@ services:
       - '../libs/:/libs/'
 
   pre_matricula:
-    image: 'ifrn/suap_ead_base:1.5.11'
+    image: 'ifrn/suap_ead_base:1.5.12'
     ports:
       - "7001:8000"
     env_file:
@@ -57,7 +57,7 @@ services:
       - '../libs/:/libs/'
     
   # baggins:
-  #   image: 'ifrn/suap_ead_base:1.5.11'
+  #   image: 'ifrn/suap_ead_base:1.5.12'
   #   env_file:
   #     - ../confs/db.env
   #     - ../confs/suap_ead.env
@@ -67,7 +67,7 @@ services:
   #     - '../libs/:/libs/'
 
   # # c_id:
-  # #   image: 'ifrn/suap_ead_base:1.5.11'
+  # #   image: 'ifrn/suap_ead_base:1.5.12'
   # #   env_file:
   # #     - ../confs/db.env
   # #     - ../confs/suap_ead.env
@@ -77,7 +77,7 @@ services:
   # #     - '../libs/:/libs/'
   
   # # integrador_ui:
-  # #   image: 'ifrn/suap_ead_base:1.5.11'
+  # #   image: 'ifrn/suap_ead_base:1.5.12'
   # #   env_file:
   # #     - ../confs/suap_ead.env
   # #     - ../confs/integrador_ui.env
@@ -86,7 +86,7 @@ services:
   # #     - '../libs/:/libs/'
 
   # # seletivo:
-  # #   image: 'ifrn/suap_ead_base:1.5.11'
+  # #   image: 'ifrn/suap_ead_base:1.5.12'
   # #   env_file:
   # #     - ../confs/db.env
   # #     - ../confs/suap_ead.env
@@ -96,7 +96,7 @@ services:
   # #     - '../libs/:/libs/'
 
   # # selecao:
-  # #   image: 'ifrn/suap_ead_base:1.5.11'
+  # #   image: 'ifrn/suap_ead_base:1.5.12'
   # #   env_file:
   # #     - ../confs/db.env
   # #     - ../confs/suap_ead.env
