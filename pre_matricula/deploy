@@ -1,4 +1,4 @@
 #!/bin/sh
 source functions
 
-./$SERVICE_NAME/deploy
+./$SERVICE_NAME/run ./deploy
