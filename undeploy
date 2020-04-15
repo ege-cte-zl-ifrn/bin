@@ -14,5 +14,5 @@ sudo rm -rf $SEAD_HOME/volumes
 
 clone_repositories
 
-echo_info "Prune system"
-docker system prune -a
+# echo_info "Prune system"
+# docker system prune -a
