@@ -55,6 +55,7 @@ services:
     volumes:
       - '../apps/pre_matricula:/apps/app'
       - '../libs/:/libs/'
+      - "../volumes/media/pre_matricula:/media/sead/pre_matricula"
     
   # baggins:
   #   image: 'ifrn/suap_ead_base:1.5.13'
