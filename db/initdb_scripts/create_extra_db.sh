@@ -7,4 +7,4 @@ createdb -e -U $POSTGRES_USER -O $POSTGRES_USER sead_selecao
 createdb -e -U $POSTGRES_USER -O $POSTGRES_USER sead_integrador_ms
 createdb -e -U $POSTGRES_USER -O $POSTGRES_USER sead_integrador_ui
 createdb -e -U $POSTGRES_USER -O $POSTGRES_USER sead_dashboard
-createdb -e -U $POSTGRES_USER -O $POSTGRES_USER sead_avaportal
+createdb -e -U $POSTGRES_USER -O $POSTGRES_USER sead_agendamento
