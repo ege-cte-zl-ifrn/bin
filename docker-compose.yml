@@ -8,6 +8,7 @@ services:
       - "${NGINX_EXTERNAL_PORT}:80"
     volumes:
       - "../confs/proxy:/etc/nginx/conf.d"
+    restart: unless-stopped
 
   db:
     image: postgres:12.4-alpine
@@ -18,10 +19,12 @@ services:
     volumes:
       - "../volumes/pgdata:/var/lib/postgresql/data"
       - "./db/initdb_scripts:/docker-entrypoint-initdb.d"
+    restart: unless-stopped
 
   redis:
     image: redis:6.0.8-alpine
     command: redis-server --requirepass redis_password
+    restart: unless-stopped
 
   id:
     image: 'ifrn/suap_ead_base:1.6.2'
@@ -33,6 +36,7 @@ services:
     volumes:
       - '../apps/id:/apps/app'
       - '../libs/:/libs/'
+    restart: unless-stopped
 
   dashboard:
     image: 'ifrn/suap_ead_base:1.6.2'
@@ -43,6 +47,7 @@ services:
     volumes:
       - '../apps/dashboard:/apps/app'
       - '../libs/:/libs/'
+    restart: unless-stopped
 
   pre_matricula:
     image: 'ifrn/suap_ead_base:1.6.2'
@@ -56,6 +61,7 @@ services:
       - '../apps/pre_matricula:/apps/app'
       - '../libs/:/libs/'
       - "../volumes/media/pre_matricula:/media/sead/pre_matricula"
+    restart: unless-stopped
 
   agendamento:
     image: 'ifrn/suap_ead_base:1.6.2'
@@ -69,6 +75,7 @@ services:
       - '../apps/agendamento:/apps/app'
       - '../libs/:/libs/'
       - "../volumes/media/agendamento:/media/sead/agendamento"
+    restart: unless-stopped
 
     
   # baggins:
@@ -80,6 +87,7 @@ services:
   #   volumes:
   #     - '../apps/suap_ead_baggins:/apps/app'
   #     - '../libs/:/libs/'
+  #   restart: unless-stopped
 
   # # c_id:
   # #   image: 'ifrn/suap_ead_base:1.5.14'
@@ -90,6 +98,7 @@ services:
   # #   volumes:
   # #     - '../apps/suap_ead_id:/apps/app'
   # #     - '../libs/:/libs/'
+  # #   restart: unless-stopped
   
   # # integrador_ui:
   # #   image: 'ifrn/suap_ead_base:1.5.14'
@@ -99,6 +108,7 @@ services:
   # #   volumes:
   # #     - '../apps/suap_ead_integrador_ui:/apps/app'
   # #     - '../libs/:/libs/'
+  # #   restart: unless-stopped
 
   # # seletivo:
   # #   image: 'ifrn/suap_ead_base:1.5.14'
@@ -109,6 +119,7 @@ services:
   # #   volumes:
   # #     - '../apps/suap_ead_seletivo:/apps/app'
   # #     - '../libs/:/libs/'
+  # #   restart: unless-stopped
 
   # # selecao:
   # #   image: 'ifrn/suap_ead_base:1.5.14'
@@ -119,3 +130,4 @@ services:
   # #   volumes:
   # #     - '../apps/suap_ead_selecao:/apps/app'
   # #     - '../libs/:/libs/'
+  # #   restart: unless-stopped
